@@ -9,7 +9,7 @@ const suggestionSchema = new mongoose.Schema({
     enum: ["UI", "UX", "Enhancement", "Bug", "Feature"],
     required: true,
   },
-  uppvotes: Number,
+  uppvotes: {type: Number, default: 0},
   status: {
     type: String,
     enum: ["Planned", "In-Progress", "Live"],
@@ -18,6 +18,6 @@ const suggestionSchema = new mongoose.Schema({
   comments: [{ type: ObjectID, ref: "Comment" }],
 })
 
-const Suggestion = mongoose.model("Suggestion", SuggestionSchema)
+const Suggestion = mongoose.model("Suggestion", suggestionSchema)
 
 module.exports = Suggestion

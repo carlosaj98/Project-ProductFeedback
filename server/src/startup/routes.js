@@ -8,7 +8,7 @@ module.exports = function (app) {
 	app.use(morgan('tiny'))
 
 	app.use('/api/users', require('../routes/usersRoutes'))
-	// app.use('/api/categories', require('../routes/categoriesRoutes'))
+	app.use('/api/suggestions', require('../routes/suggestionsRoutes'))
 	// app.use('/api/movies', require('../routes/moviesRoutes'))
 	// app.use('/api/scores', require('../routes/scoreRoutes'))
 	// app.use(errors)
