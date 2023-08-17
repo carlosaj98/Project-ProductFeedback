@@ -1,4 +1,5 @@
 const Suggestion = require("../models/suggestion")
+const Comment = require("../models/comment")
 
 const getAll = async(req, res) =>{
   const suggestions = await Suggestion.find()
@@ -32,6 +33,12 @@ const updateSuggestion = async(req, res) => {
 }
 
 const deleteSuggestion = async (req, res) => {
+  const findSuggestion = await Suggestion.findById(req.params.suggestionID)
+
+  for (const commentID of findSuggestion.comments) {
+    await Comment.findByIdAndDelete(commentID)
+  }
+
 	const deletedSuggestion = await Suggestion.findByIdAndDelete(req.params.suggestionID)
 
 	if (!deletedSuggestion) return res.status(404).send('The suggestion not exist')
