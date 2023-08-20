@@ -16,7 +16,7 @@ const suggestionSchema = new mongoose.Schema({
     required: true,
   },
   comments: [{ type: ObjectID, ref: "Comment" }],
-})
+}, { timestamps: true })
 
 const Suggestion = mongoose.model("Suggestion", suggestionSchema)
 

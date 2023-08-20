@@ -2,7 +2,20 @@ const Suggestion = require("../models/suggestion")
 const Comment = require("../models/comment")
 
 const getAll = async (req, res) => {
-  const suggestions = await Suggestion.find().populate({
+  console.log(req.query)
+  // const {filterByCategory, sortByCreation} = req.query
+
+  // let filter = {}
+  // let sort = {}
+
+  // if(filterByCategory){
+  //   filter.category = { $in: filterByCategory}
+  // }
+  
+  // if(sortByCreation && ["asc","desc"].includes(sortByCreation)){
+  //   sort.createdAt = sortByCreation
+  // }
+  const suggestions = await Suggestion.populate({
     path: "comments",
     populate: {
       path: "replies",
