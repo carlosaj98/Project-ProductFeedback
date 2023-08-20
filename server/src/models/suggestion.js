@@ -9,7 +9,7 @@ const suggestionSchema = new mongoose.Schema({
     enum: ["UI", "UX", "Enhancement", "Bug", "Feature"],
     required: true,
   },
-  uppvotes: {type: Number, default: 0},
+  upvotes: {type: Number, default: 0},
   status: {
     type: String,
     enum: ["Planned", "In-Progress", "Live"],

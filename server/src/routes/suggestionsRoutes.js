@@ -34,6 +34,11 @@ router.put(
 	SuggestionControllers.updateSuggestion
 )
 
+router.put(
+	'/:suggestionID/votes',
+	SuggestionControllers.updateVotes
+)
+
 router.delete(
 	'/:suggestionID',
 	SuggestionControllers.deleteSuggestion

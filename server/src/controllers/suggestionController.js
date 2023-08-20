@@ -3,19 +3,25 @@ const Comment = require("../models/comment")
 
 const getAll = async (req, res) => {
   console.log(req.query)
-  // const {filterByCategory, sortByCreation} = req.query
+  const {category, status, sortByCreation} = req.query
 
-  // let filter = {}
-  // let sort = {}
+  let filter = {}
+  let sort = {
+    createdAt:""
+  }
 
-  // if(filterByCategory){
-  //   filter.category = { $in: filterByCategory}
-  // }
-  
-  // if(sortByCreation && ["asc","desc"].includes(sortByCreation)){
-  //   sort.createdAt = sortByCreation
-  // }
-  const suggestions = await Suggestion.populate({
+  if(category){
+    filter.category = { $in: category}
+  }
+
+  if(status){
+    filter.status = { $in: status}
+  }
+
+  if(sortByCreation && ["asc","desc"].includes(sortByCreation)){
+    sort.createdAt = sortByCreation
+  }
+  const suggestions = await Suggestion.find(filter).sort(sort).populate({
     path: "comments",
     populate: {
       path: "replies",
@@ -58,11 +64,21 @@ const updateSuggestion = async (req, res) => {
   res.json(updatedSuggestion)
 }
 
+const updateVotes = async (req, res) => {
+  const addUpvote = await Suggestion.findByIdAndUpdate(req.params.suggestionID,
+    { $inc: {uppvotes: 1} },
+    {new: true}
+  )
+  res.json(addUpvote)
+}
+
 const deleteSuggestion = async (req, res) => {
-  const findSuggestion = await Suggestion.findById(req.params.suggestionID).populate("comments")
-  
+  const findSuggestion = await Suggestion.findById(
+    req.params.suggestionID
+  ).populate("comments")
+
   for (const commentID of findSuggestion.comments) {
-    for(const replyID of commentID.replies){
+    for (const replyID of commentID.replies) {
       await Comment.findByIdAndDelete(replyID)
     }
     await Comment.findByIdAndDelete(commentID)
@@ -83,5 +99,6 @@ module.exports = {
   getOne,
   createSuggestion,
   updateSuggestion,
+  updateVotes,
   deleteSuggestion,
 }
