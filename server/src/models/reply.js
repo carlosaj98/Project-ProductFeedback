@@ -2,12 +2,11 @@ const mongoose = require("mongoose")
 
 const { ObjectId } = mongoose.Schema.Types
 
-const commentSchema = new mongoose.Schema({
+const replySchema = new mongoose.Schema({
   user:{type: ObjectId, ref: "User", required: true},
   content: {type: String, required: true},
-  replies:[{type: ObjectId, ref: "Reply"}]
 })
 
-const Comment = mongoose.model("Comment", commentSchema)
+const Reply = mongoose.model("Reply", replySchema)
 
-module.exports = Comment
+module.exports = Reply

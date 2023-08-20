@@ -2,7 +2,6 @@ const Suggestion = require("../models/suggestion")
 const Comment = require("../models/comment")
 
 const getAll = async (req, res) => {
-  console.log(req.query)
   const {category, status, sortByCreation} = req.query
 
   let filter = {}
