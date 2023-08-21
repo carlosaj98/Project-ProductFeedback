@@ -1,47 +1,82 @@
-const express = require('express')
-// const { param, body } = require('express-validator')
-// const validate = require('../middlewares/validate')
-// const isAuth = require('../middlewares/isAuth')
-// const isAdmin = require('../middlewares/isAdmin')
+const express = require("express")
+const { param, body } = require("express-validator")
+const validate = require("../middlewares/validationReq")
+const isAuth = require("../middlewares/isAuth")
+const isAdmin = require("../middlewares/isAdmin")
 
-// const categoryValidationSchema = [
-// 	body('title')
-// 		.notEmpty()
-// 		.withMessage('El título no puede estar vacío')
-// 		.isString()
-// 		.withMessage('Debe proporcionar un título de texto'),
-// ]
+const options = {
+  category: ["UI", "UX", "Enhancement", "Bug", "Feature"],
+  status: ["Planned", "In-Progress", "Live"],
+}
 
-// const idValidationSchema = param('id')
-// 	.isMongoId()
-// 	.withMessage('Id invalida')
+const suggestionValidationSchema = [
+  body("title")
+    .notEmpty()
+    .withMessage("The title is required")
+    .isString()
+    .withMessage("The title has to be words"),
+  body("category")
+    .notEmpty()
+    .withMessage("The category is required")
+    .isIn(options.category)
+    .withMessage("The category not exist"),
+  body("status")
+    .notEmpty()
+    .withMessage("The status is required")
+    .isIn(options.status)
+    .withMessage("The status not exist"),
+]
+
+const idValidationSchema = param("suggestionID")
+  .isMongoId()
+  .withMessage("Invalid Suggestion ID")
 
 const SuggestionControllers = require("../controllers/suggestionController")
 
 const router = express.Router()
 
-router.get('/', SuggestionControllers.getAll)
+router.get("/", SuggestionControllers.getAll)
 
-router.get('/:suggestionID', SuggestionControllers.getOne)
+router.get(
+  "/:suggestionID",
+  idValidationSchema,
+  validate,
+  SuggestionControllers.getOne
+)
 
 router.post(
-	'/',
-	SuggestionControllers.createSuggestion
+  "/",
+  isAuth,
+  suggestionValidationSchema,
+  validate,
+  SuggestionControllers.createSuggestion
 )
 
 router.put(
-	'/:suggestionID',
-	SuggestionControllers.updateSuggestion
+  "/:suggestionID",
+  isAuth,
+	idValidationSchema,
+  suggestionValidationSchema,
+  validate,
+  SuggestionControllers.updateSuggestion
 )
 
 router.put(
-	'/:suggestionID/votes',
-	SuggestionControllers.updateVotes
+  "/:suggestionID/votes",
+  isAuth,
+	idValidationSchema,
+  validate,
+  SuggestionControllers.updateVotes
 )
 
 router.delete(
-	'/:suggestionID',
-	SuggestionControllers.deleteSuggestion
+  "/:suggestionID",
+  isAuth,
+  isAdmin,
+	idValidationSchema,
+  suggestionValidationSchema,
+  validate,
+  SuggestionControllers.deleteSuggestion
 )
 
 module.exports = router

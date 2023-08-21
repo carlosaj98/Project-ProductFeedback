@@ -69,17 +69,17 @@ const updateSuggestion = async (req, res) => {
 
 const updateVotes = async (req, res) => {
   const suggestion = await Suggestion.findById(req.params.suggestionID)
-  if(suggestion.upvotes.includes(req.body.userID)){
+  if(suggestion.upvotes.includes(req.user.id)){
     const removeUpvote = await Suggestion.findByIdAndUpdate(
       req.params.suggestionID,
-      { $pull: { upvotes: req.body.userID } },
+      { $pull: { upvotes: req.user.id } },
       { new: true }
     )
     res.json(removeUpvote)
   }else{
     const addUpvote = await Suggestion.findByIdAndUpdate(
       req.params.suggestionID,
-      { $push: { upvotes: req.body.userID } },
+      { $push: { upvotes: req.user.id } },
       { new: true }
     )
     res.json(addUpvote)
