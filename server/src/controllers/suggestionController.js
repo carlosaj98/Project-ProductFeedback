@@ -1,31 +1,35 @@
 const Suggestion = require("../models/suggestion")
 const Comment = require("../models/comment")
+const User = require("../models/user")
+const { includes } = require("lodash")
 
 const getAll = async (req, res) => {
-  const {category, status, sortByCreation} = req.query
+  const { category, status, sortByCreation } = req.query
 
   let filter = {}
   let sort = {
-    createdAt:""
+    createdAt: "",
   }
 
-  if(category){
-    filter.category = { $in: category}
+  if (category) {
+    filter.category = { $in: category }
   }
 
-  if(status){
-    filter.status = { $in: status}
+  if (status) {
+    filter.status = { $in: status }
   }
 
-  if(sortByCreation && ["asc","desc"].includes(sortByCreation)){
+  if (sortByCreation && ["asc", "desc"].includes(sortByCreation)) {
     sort.createdAt = sortByCreation
   }
-  const suggestions = await Suggestion.find(filter).sort(sort).populate({
-    path: "comments",
-    populate: {
-      path: "replies",
-    },
-  })
+  const suggestions = await Suggestion.find(filter)
+    .sort(sort)
+    .populate({
+      path: "comments",
+      populate: {
+        path: "replies",
+      },
+    })
 
   res.json(suggestions)
 }
@@ -64,11 +68,22 @@ const updateSuggestion = async (req, res) => {
 }
 
 const updateVotes = async (req, res) => {
-  const addUpvote = await Suggestion.findByIdAndUpdate(req.params.suggestionID,
-    { $inc: {upvotes: 1} },
-    {new: true}
-  )
-  res.json(addUpvote)
+  const suggestion = await Suggestion.findById(req.params.suggestionID)
+  if(suggestion.upvotes.includes(req.body.userID)){
+    const removeUpvote = await Suggestion.findByIdAndUpdate(
+      req.params.suggestionID,
+      { $pull: { upvotes: req.body.userID } },
+      { new: true }
+    )
+    res.json(removeUpvote)
+  }else{
+    const addUpvote = await Suggestion.findByIdAndUpdate(
+      req.params.suggestionID,
+      { $push: { upvotes: req.body.userID } },
+      { new: true }
+    )
+    res.json(addUpvote)
+  }
 }
 
 const deleteSuggestion = async (req, res) => {
