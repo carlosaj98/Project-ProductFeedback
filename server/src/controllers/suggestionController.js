@@ -65,7 +65,7 @@ const updateSuggestion = async (req, res) => {
 
 const updateVotes = async (req, res) => {
   const addUpvote = await Suggestion.findByIdAndUpdate(req.params.suggestionID,
-    { $inc: {uppvotes: 1} },
+    { $inc: {upvotes: 1} },
     {new: true}
   )
   res.json(addUpvote)
