@@ -11,6 +11,7 @@ const createComment = async (req, res) => {
 
   await Suggestion.findByIdAndUpdate(req.params.suggestionID, {
     $set: { user: req.user.id },
+    $push: { comments: comment.id }
   })
 
   res.json(comment)

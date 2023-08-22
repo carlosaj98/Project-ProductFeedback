@@ -26,9 +26,13 @@ const getAll = async (req, res) => {
     .sort(sort)
     .populate({
       path: "comments",
-      populate: {
-        path: "replies",
-      },
+      populate: [
+        {
+          path: "user",
+          select: ["username", "avatar"]
+        },
+        { path: "replies" },
+      ],
     })
 
   res.json(suggestions)
@@ -69,14 +73,14 @@ const updateSuggestion = async (req, res) => {
 
 const updateVotes = async (req, res) => {
   const suggestion = await Suggestion.findById(req.params.suggestionID)
-  if(suggestion.upvotes.includes(req.user.id)){
+  if (suggestion.upvotes.includes(req.user.id)) {
     const removeUpvote = await Suggestion.findByIdAndUpdate(
       req.params.suggestionID,
       { $pull: { upvotes: req.user.id } },
       { new: true }
     )
     res.json(removeUpvote)
-  }else{
+  } else {
     const addUpvote = await Suggestion.findByIdAndUpdate(
       req.params.suggestionID,
       { $push: { upvotes: req.user.id } },
