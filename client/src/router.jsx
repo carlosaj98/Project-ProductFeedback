@@ -8,6 +8,7 @@ import CreateSuggestionPage from "./pages/CreateSuggestionPage"
 import EditSuggestionPage from "./pages/EditSuggestionPage"
 import RegisterPage from "./pages/RegisterPage"
 import LoginPage from "./pages/LoginPage"
+
 const router = createBrowserRouter([
   {
     path: "/",
