@@ -1,6 +1,6 @@
 function Headerbar() {
   return (
-    <div id="header-container">
+    <header id="header-container">
       <div id="title-header">
       <p>0 Suggestions</p>
       </div>
@@ -11,7 +11,7 @@ function Headerbar() {
       <div id="add-suggestion">
         <button>+ Add Feedback</button>
       </div>
-    </div>
+    </header>
   )
 }
 export default Headerbar

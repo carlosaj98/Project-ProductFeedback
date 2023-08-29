@@ -1,8 +1,8 @@
 import RoadmapPreview from "../RoadmapPreview"
-
+import Styled from "./Style"
 function Navbar() {
   return (
-    <nav>
+    <Styled.Navbar>
       <div id="feedbackBoard">
         <h2>Frontend Mentor</h2>
         <p>Feedback Board</p>
@@ -16,7 +16,7 @@ function Navbar() {
           <button>Feature</button>
       </div>
       <RoadmapPreview />
-    </nav>
+    </Styled.Navbar>
   )
 }
 export default Navbar
