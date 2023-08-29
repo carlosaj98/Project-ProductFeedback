@@ -8,11 +8,19 @@ function HomePage() {
     const suggestionData = data.productRequests
     return (
         <Container id="home-page-container" disableGutters>
-            <Grid container>
-                <Grid item >
+            <Grid
+                container
+                sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    gap: "30px",
+                    marginTop: "94px",
+                }}
+            >
+                <Grid item sx={{ width: "255px" }}>
                     <Navbar />
                 </Grid>
-                <Grid item >
+                <Grid item sx={{ width: "825px" }}>
                     <Headerbar />
                     <Box component={"main"}>
                         {suggestionData.map((suggestion) => {

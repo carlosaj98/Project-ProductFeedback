@@ -13,6 +13,23 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <>
         <GlobalStyles
             styles={{
+                ":root":{
+                    "--main-bg-color": "#F7F8FD",
+                    "--white": "#FFFFFF",
+                    "--purple": "#AD1FEA",
+                    "--blue":"#4661E6",
+                    "--light-blue":"#62BCFA",
+                    "--dark-blue-bg": "#373F68",
+                    "--dark-blue-text": "#3A4374",
+                    "--semi-light-gray": "#F2F4FF",
+                    "--light-gray": "#F7F8FD",
+                    "--gray": "#647196",
+                    "--orange": "#F49F85",
+                    "--purple-hover": "#C75AF6",
+                    "--blue-hover": "#7C91F9",
+                    "--dark-blue-hover":"#656EA3"
+
+                },
                 "*": {
                     margin: "0",
                     padding: "0",

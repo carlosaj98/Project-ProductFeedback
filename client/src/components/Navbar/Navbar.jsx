@@ -1,5 +1,6 @@
 import RoadmapPreview from "../RoadmapPreview"
 import Styled from "./Style"
+
 function Navbar() {
   return (
     <Styled.Navbar>
@@ -8,12 +9,12 @@ function Navbar() {
         <p>Feedback Board</p>
       </div>
       <div id="suggestionCategories">
-          <button>All</button>
-          <button>UI</button>
-          <button>UX</button>
-          <button>Enhancement</button>
-          <button>Bug</button>
-          <button>Feature</button>
+          <Styled.CategoryButton>All</Styled.CategoryButton>
+          <Styled.CategoryButton>UI</Styled.CategoryButton>
+          <Styled.CategoryButton>UX</Styled.CategoryButton>
+          <Styled.CategoryButton>Enhancement</Styled.CategoryButton>
+          <Styled.CategoryButton>Bug</Styled.CategoryButton>
+          <Styled.CategoryButton>Feature</Styled.CategoryButton>
       </div>
       <RoadmapPreview />
     </Styled.Navbar>
