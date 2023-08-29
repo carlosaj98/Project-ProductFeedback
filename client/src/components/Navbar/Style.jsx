@@ -7,12 +7,11 @@ const Navbar = styled("nav")({
 
     "#feedbackBoard": {
         width: "100%",
-        height: "137px",
         backgroundImage: `url("../../../assets/suggestions/desktop/background-header.png")`,
         backgroundSize: "cover",
         borderRadius: "10px",
         color: "var(--white)",
-        paddingLeft: "24px",
+        padding: "24px",
     },
 
     "#feedbackBoard h2": {
@@ -31,19 +30,17 @@ const Navbar = styled("nav")({
 
     "#suggestionCategories": {
         width: "100%",
-        height: "166px",
         backgroundColor: "var(--white)",
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "flex-start",
-        gap: "7px",
+        gap: "8px",
         padding: "24px",
         borderRadius: "10px",
     },
 
     "#roadmap-preview":{
         width: "100%",
-        height: "178px",
         backgroundColor:"var(--white)",
         display: "flex",
         flexDirection:"column",
@@ -112,6 +109,12 @@ const Navbar = styled("nav")({
 
     ".rm-item-number":{
         fontWeight:"700"
+    },
+
+    "@media(max-width: 900px)":{
+        flexDirection: "row",
+        height: "178px",
+        gap: "10px"
     }
 
 })
