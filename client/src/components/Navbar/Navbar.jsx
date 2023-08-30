@@ -2,7 +2,7 @@ import Styled from "./Style"
 
 function Navbar() {
   return (
-    <Styled.Navbar sx={{ width: { md: "255px" } }}>
+    <Styled.Navbar sx={{ width: { md: "256px" } }}>
       <div id="feedbackBoard">
         <h2>Frontend Mentor</h2>
         <p>Feedback Board</p>

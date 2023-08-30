@@ -7,7 +7,7 @@ const Navbar = styled("nav")({
 
     "#feedbackBoard": {
         width: "100%",
-        backgroundImage: `url("../../../assets/suggestions/desktop/background-header.png")`,
+        backgroundImage: "url(../../../assets/suggestions/desktop/background-header.png)",
         backgroundSize: "cover",
         borderRadius: "10px",
         color: "var(--white)",
