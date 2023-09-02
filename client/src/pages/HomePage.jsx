@@ -3,9 +3,11 @@ import Headerbar from "../components/Headerbar/Headerbar"
 import SuggestionCard from "../components/SuggestionCard/SuggestionCard"
 import { Container, Stack, Box } from "@mui/material"
 
+
 import data from "../../data.json"
 function HomePage() {
   const suggestionData = data.productRequests
+
   return (
     <Container id="home-page-container" disableGutters>
       <Stack
@@ -16,9 +18,9 @@ function HomePage() {
         justifyContent="flex-start"
       >
         <Navbar />
-        <Box >
+        <Box>
           <Headerbar />
-          <Box component={"main"}>
+          <Box component={"main"} marginTop={"24px"} marginBottom={"120px"}>
             {suggestionData.map((suggestion) => {
               return (
                 <SuggestionCard
@@ -26,6 +28,9 @@ function HomePage() {
                   title={suggestion.title}
                   description={suggestion.description}
                   category={suggestion.category}
+                  comments={
+                    suggestion.comments ? suggestion.comments.length : 0
+                  }
                 />
               )
             })}

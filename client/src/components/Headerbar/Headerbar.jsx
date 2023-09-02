@@ -1,5 +1,5 @@
 import Styled from "./Style"
-import { IconSuggestion } from "../Icons/IconsSVG"
+import { IconSuggestion, ArrowDown } from "../Icons/IconsSVG"
 function Headerbar() {
   return (
     <Styled.Header id="header-container">
@@ -11,6 +11,7 @@ function Headerbar() {
         <p>
           Sort by : <span>Most Upvotes</span>
         </p>
+        <ArrowDown stroke={"white"}/>
       </button>
       <div id="add-suggestion">
         <Styled.ButtonHeader variant="contained">

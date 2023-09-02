@@ -6,11 +6,12 @@ const Header = styled("header")({
   justifyContent: "flex-start",
   alignItems: "center",
   borderRadius:"10px",
-  padding: "24px 16px 24px 24px",
+  padding: "14px 0px",
   color: "var(--white)",
 
   svg:{
-    marginRight:"16px"
+    marginRight:"16px",
+    marginLeft: "24px"
   },
 
   "#title-header":{
@@ -22,10 +23,17 @@ const Header = styled("header")({
     fontSize: "14px",
     fontWeight: "400",
     display: "flex",
+    alignItems: "baseline",
+    justifyContent: "flex-start",
     color:"var(--semi-light-gray)",
     background: "none",
     border: "none",
     marginRight:"273px"
+  },
+
+  "#sort-container svg":{
+    marginLeft: "9px",
+    color: "white"
   },
 
   "#sort-container span":{
@@ -35,8 +43,16 @@ const Header = styled("header")({
 
 const ButtonHeader = styled(Button)({
   backgroundColor:"var(--purple)",
+  marginRight: "16px",
   borderRadius:"10px",
   textTransform: "none",
+  padding: "12.5px 24px",
+  fontFamily:"Jost",
+  fontSize: "14px",
+  fontWeight: "600",
+  "&:hover":{
+    backgroundColor: "var(--purple-hover)"
+  }
 })
 
 export default {Header, ButtonHeader}
