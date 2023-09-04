@@ -1,6 +1,8 @@
+import SignUpPage from "./SignUpPage"
+
 function RegisterPage() {
   return (
-    <div>RegisterPage</div>
+    <SignUpPage />
   )
 }
 export default RegisterPage

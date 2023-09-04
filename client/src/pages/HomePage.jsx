@@ -25,6 +25,7 @@ function HomePage() {
               return (
                 <SuggestionCard
                   key={suggestion._id}
+                  upvotes={suggestion.upvotes.length}
                   title={suggestion.title}
                   description={suggestion.description}
                   category={suggestion.category}

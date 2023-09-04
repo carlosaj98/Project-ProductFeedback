@@ -1,7 +1,7 @@
 import Styled from "./Style"
 import { IconComments, ArrowUp } from "../Icons/IconsSVG"
 
-function SuggestionCard({ title, category, description, comments}) {
+function SuggestionCard({ title, category, description, comments, upvotes}) {
   const categoryCapitalize =
     category.charAt(0).toUpperCase() + category.slice(1)
   return (
@@ -9,7 +9,7 @@ function SuggestionCard({ title, category, description, comments}) {
       <div className="upvote-container">
         <Styled.ButtonScore>
           <ArrowUp />
-          <p>100</p>
+          <p>{upvotes}</p>
           </Styled.ButtonScore>
       </div>
       <div className="suggestion-card-text">

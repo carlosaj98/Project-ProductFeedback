@@ -1,6 +1,8 @@
+import SignInPage from "./SignInPage"
+
 function LoginPage() {
   return (
-    <div>LoginPage</div>
+    <SignInPage />
   )
 }
 export default LoginPage
