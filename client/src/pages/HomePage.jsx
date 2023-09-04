@@ -2,11 +2,11 @@ import Navbar from "../components/Navbar/Navbar"
 import Headerbar from "../components/Headerbar/Headerbar"
 import SuggestionCard from "../components/SuggestionCard/SuggestionCard"
 import { Container, Stack, Box } from "@mui/material"
-
-
-import data from "../../data.json"
+import { useSuggestions } from "../hooks"
 function HomePage() {
-  const suggestionData = data.productRequests
+  const {suggestions, setSuggestions} = useSuggestions()
+  console.log(suggestions)
+
 
   return (
     <Container id="home-page-container" disableGutters>
@@ -21,10 +21,10 @@ function HomePage() {
         <Box>
           <Headerbar />
           <Box component={"main"} marginTop={"24px"} marginBottom={"120px"}>
-            {suggestionData.map((suggestion) => {
+            {suggestions.map((suggestion) => {
               return (
                 <SuggestionCard
-                  key={suggestion.id}
+                  key={suggestion._id}
                   title={suggestion.title}
                   description={suggestion.description}
                   category={suggestion.category}
