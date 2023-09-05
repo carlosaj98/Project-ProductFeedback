@@ -74,7 +74,6 @@ router.delete(
   isAuth,
   isAdmin,
 	idValidationSchema,
-  suggestionValidationSchema,
   validate,
   SuggestionControllers.deleteSuggestion
 )

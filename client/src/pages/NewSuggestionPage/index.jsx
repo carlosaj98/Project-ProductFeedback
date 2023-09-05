@@ -4,11 +4,13 @@ import { Stack, Typography, Button } from "@mui/material"
 import Form from "../../components/Form"
 import { formFields, validationSchema } from "./form-fields"
 import suggestionService from '../../services/suggestion-service'
+import { useNavigate } from 'react-router-dom'
 
 function NewSuggestionPage() {
+    const navigate = useNavigate()
     const onSubmit = (data) => {
         suggestionService.create(data)
-        .then(console.log(data))
+        .then((data) => navigate(-1, {replace: true}))
         .catch((err) => console.log(err))
 	}
 

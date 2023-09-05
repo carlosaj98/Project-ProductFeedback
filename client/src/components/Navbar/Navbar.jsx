@@ -12,7 +12,6 @@ function Navbar() {
 
 	    dispatch({ type: 'logout' })
     }
-    console.log(value)
     return (
         <Styled.Navbar sx={{ width: { md: "256px" } }}>
             <div id="feedbackBoard">
