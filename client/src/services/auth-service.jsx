@@ -19,8 +19,23 @@ const login = async(user) =>{
     return jwt_decode(token)
 }
 
-const register = () => {
-	const endpoint = '/signup'
+const loginWithToken = async (token) => {
+	localStorage.setItem(tokenKey, token)
+
+	setToken(token)
+
+	return jwt_decode(token)
+}
+
+
+const register = async (user) => {
+	const endpoint = getEndpoint('/signup')
+
+	const response = await apiClient.post(endpoint, user)
+
+	const token = response.headers['x-auth-token']
+
+	return token
 }
 
 const logout = () => {
@@ -44,6 +59,7 @@ function getToken() {
 
 const authService = {
 	login,
+	loginWithToken,
 	register,
 	logout,
 	getCurrentUser,
