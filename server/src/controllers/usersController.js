@@ -23,7 +23,7 @@ const register = async (req, res) => {
     { username: user.username, isAdmin: user.isAdmin, id: user.id },
     process.env.jwtPrivateKey
   )
-
+  res.setHeader("Access-Control-Expose-Headers", "x-auth-token")
   res.setHeader("x-auth-token", token)
   res.send("Usuario registrado y logueado")
 }
@@ -43,6 +43,7 @@ const login = async (req, res) => {
     process.env.jwtPrivateKey
   )
 
+  res.setHeader("Access-Control-Expose-Headers", "x-auth-token")
   res.setHeader("x-auth-token", token)
   res.send("Usuario logueado")
 }

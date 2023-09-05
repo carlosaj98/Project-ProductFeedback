@@ -1,5 +1,6 @@
 import Styled from "./Style"
 import { IconSuggestion, ArrowDown } from "../Icons/IconsSVG"
+import {Link} from 'react-router-dom'
 function Headerbar() {
   return (
     <Styled.Header id="header-container">
@@ -14,7 +15,7 @@ function Headerbar() {
         <ArrowDown stroke={"white"}/>
       </button>
       <div id="add-suggestion">
-        <Styled.ButtonHeader variant="contained">
+        <Styled.ButtonHeader variant="contained" component={Link} to="/suggestion/createsuggestion">
           + Add Feedback
         </Styled.ButtonHeader>
       </div>

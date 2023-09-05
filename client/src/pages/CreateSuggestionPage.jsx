@@ -1,6 +1,7 @@
+
 function CreateSuggestionPage() {
   return (
-    <div>CreateSuggestionPage</div>
+    <div>Create Suggestion Page</div>
   )
 }
 export default CreateSuggestionPage

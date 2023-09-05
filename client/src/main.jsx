@@ -7,18 +7,18 @@ import "@fontsource/jost/800.css"
 import { GlobalStyles } from "@mui/material"
 import { RouterProvider } from "react-router-dom"
 import router from "./router"
-
+import { AuthProvider } from "./hooks/auth"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <>
         <GlobalStyles
             styles={{
-                ":root":{
+                ":root": {
                     "--main-bg-color": "#F7F8FD",
                     "--white": "#FFFFFF",
                     "--purple": "#AD1FEA",
-                    "--blue":"#4661E6",
-                    "--light-blue":"#62BCFA",
+                    "--blue": "#4661E6",
+                    "--light-blue": "#62BCFA",
                     "--dark-blue-bg": "#373F68",
                     "--dark-blue-text": "#3A4374",
                     "--semi-light-gray": "#F2F4FF",
@@ -27,8 +27,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     "--orange": "#F49F85",
                     "--purple-hover": "#C75AF6",
                     "--blue-hover": "#7C91F9",
-                    "--dark-blue-hover":"#656EA3"
-
+                    "--dark-blue-hover": "#656EA3",
                 },
                 "*": {
                     margin: "0",
@@ -40,6 +39,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 },
             }}
         />
-        <RouterProvider router={router} />
+        <AuthProvider>
+            <RouterProvider router={router} />
+        </AuthProvider>
     </>
 )

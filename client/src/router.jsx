@@ -8,6 +8,7 @@ import CreateSuggestionPage from "./pages/CreateSuggestionPage"
 import EditSuggestionPage from "./pages/EditSuggestionPage"
 import RegisterPage from "./pages/RegisterPage"
 import LoginPage from "./pages/LoginPage"
+// import ProtectedRoute from "./utils/ProtectedRoute"
 
 const router = createBrowserRouter([
   {
@@ -15,14 +16,15 @@ const router = createBrowserRouter([
     element: <HomePage />,
     errorElement: <ErrorPage />,
   },
+
   {
-    path: "/suggestion/createsuggestion",
+    path: "/suggestion",
     element: <DetailPage />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/suggestion/createsuggestion",
-    element: <CreateSuggestionPage />,
+    element: <CreateSuggestionPage/>,
     errorElement: <ErrorPage />,
   },
   {

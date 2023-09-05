@@ -1,8 +1,18 @@
 import Styled from "./Style"
 import { Link } from "react-router-dom"
 import { Button, Stack } from "@mui/material"
+import authService from "../../services/auth-service"
+import { useAuth } from "../../hooks/auth"
+import { Navigate } from "react-router-dom"
 
 function Navbar() {
+    const [value, dispatch] = useAuth()
+    const handleLogout = () => {
+        authService.logout()
+
+	    dispatch({ type: 'logout' })
+    }
+    console.log(value)
     return (
         <Styled.Navbar sx={{ width: { md: "256px" } }}>
             <div id="feedbackBoard">
@@ -47,12 +57,35 @@ function Navbar() {
                     justifyContent: "space-evenly",
                 }}
             >
-                <Button variant="contained" component={Link} to="/signin">
-                    Sign In
-                </Button>
-                <Button variant="contained" component={Link} to="/signup">
-                    Sign Up
-                </Button>
+                <>
+                    {value.isAuth ? (
+                            <Button
+                                variant="contained"
+                                component={Link}
+                                color="error"
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </Button>
+                    ) : (
+                        <>
+                            <Button
+                                variant="contained"
+                                component={Link}
+                                to="/signin"
+                            >
+                                Sign In
+                            </Button>
+                            <Button
+                                variant="contained"
+                                component={Link}
+                                to="/signup"
+                            >
+                                Sign Up
+                            </Button>
+                        </>
+                    )}
+                </>
             </Stack>
         </Styled.Navbar>
     )
