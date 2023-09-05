@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 
 import HomePage from "./pages/HomePage"
 import ErrorPage from "./pages/ErrorPage"
-import DetailPage from "./pages/DetailPage"
+import DetailPage from "./pages/DetailPage/DetailPage"
 import RoadmapPage from "./pages/RoadmapPage"
 import CreateSuggestionPage from "./pages/NewSuggestionPage/CreateSuggestionPage"
 import EditSuggestionPage from "./pages/EditSuggestionPage"
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/suggestion",
+    path: "/suggestion/:suggestionID",
     element: <DetailPage />,
     errorElement: <ErrorPage />,
   },

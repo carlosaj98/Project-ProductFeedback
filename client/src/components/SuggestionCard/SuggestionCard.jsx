@@ -3,9 +3,18 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import { Button } from "@mui/material"
 import { IconComments, ArrowUp } from "../Icons/IconsSVG"
 import { useAuth } from "../../hooks/auth"
-import { useState } from "react"
+import { Link } from "react-router-dom"
 
-function SuggestionCard({ title, category, description, comments, upvotes, onSetID, onDelete, id }) {
+function SuggestionCard({
+    title,
+    category,
+    description,
+    comments,
+    upvotes,
+    onSetID,
+    onDelete,
+    id,
+}) {
     const [value] = useAuth()
     const categoryCapitalize =
         category.charAt(0).toUpperCase() + category.slice(1)
@@ -16,7 +25,6 @@ function SuggestionCard({ title, category, description, comments, upvotes, onSet
         totalReplies += comment.replies.length
     })
 
-
     return (
         <Styled.SuggestionCard className="suggestion-card-container">
             <div className="upvote-container">
@@ -26,20 +34,25 @@ function SuggestionCard({ title, category, description, comments, upvotes, onSet
                 </Styled.ButtonScore>
             </div>
             <div className="suggestion-card-text">
-                <h3>{title}</h3>
+                <Link to={`/suggestion/${id}`} style={{textDecoration: "none"}}>
+                    <h3>{title}</h3>
+                
                 <p>{description}</p>
                 <p>
                     <strong>{categoryCapitalize}</strong>
                 </p>
+                </Link>
             </div>
             <div className="icon-comment">
                 <IconComments />
                 <p>{totalComments + totalReplies}</p>
                 {value.isAdmin && (
-                    <Button onClick={() => {
-                      onSetID(id)
-                      onDelete(id)
-                      }}>
+                    <Button
+                        onClick={() => {
+                            onSetID(id)
+                            onDelete(id)
+                        }}
+                    >
                         <DeleteIcon color="error" />
                     </Button>
                 )}
