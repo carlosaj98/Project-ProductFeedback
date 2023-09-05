@@ -15,7 +15,7 @@ function Headerbar() {
         <ArrowDown stroke={"white"}/>
       </button>
       <div id="add-suggestion">
-        <Styled.ButtonHeader variant="contained" component={Link} to="/suggestion/createsuggestion">
+        <Styled.ButtonHeader variant="contained" component={Link} to="/createsuggestion">
           + Add Feedback
         </Styled.ButtonHeader>
       </div>

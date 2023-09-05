@@ -4,10 +4,10 @@ import HomePage from "./pages/HomePage"
 import ErrorPage from "./pages/ErrorPage"
 import DetailPage from "./pages/DetailPage"
 import RoadmapPage from "./pages/RoadmapPage"
-import CreateSuggestionPage from "./pages/CreateSuggestionPage"
+import CreateSuggestionPage from "./pages/NewSuggestionPage/CreateSuggestionPage"
 import EditSuggestionPage from "./pages/EditSuggestionPage"
-import RegisterPage from "./pages/RegisterPage"
-import LoginPage from "./pages/LoginPage"
+import RegisterPage from "./pages/SignUpPage/RegisterPage"
+import LoginPage from "./pages/SignInPage/LoginPage"
 // import ProtectedRoute from "./utils/ProtectedRoute"
 
 const router = createBrowserRouter([
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/suggestion/createsuggestion",
+    path: "/createsuggestion",
     element: <CreateSuggestionPage/>,
     errorElement: <ErrorPage />,
   },

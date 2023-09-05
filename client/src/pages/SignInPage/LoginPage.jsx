@@ -1,4 +1,4 @@
-import SignInPage from "./SignInPage"
+import SignInPage from "."
 
 function LoginPage() {
   return (
