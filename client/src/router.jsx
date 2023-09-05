@@ -8,7 +8,7 @@ import CreateSuggestionPage from "./pages/NewSuggestionPage/CreateSuggestionPage
 import EditSuggestionPage from "./pages/EditSuggestionPage/EditSuggestionPage"
 import RegisterPage from "./pages/SignUpPage/RegisterPage"
 import LoginPage from "./pages/SignInPage/LoginPage"
-// import ProtectedRoute from "./utils/ProtectedRoute"
+import ProtectedRoute from "./utils/ProtectedRoute"
 
 const router = createBrowserRouter([
   {
@@ -24,12 +24,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/createsuggestion",
-    element: <CreateSuggestionPage/>,
+    element: <ProtectedRoute page={CreateSuggestionPage} role="isAuth"/>,
     errorElement: <ErrorPage />,
   },
   {
     path: "/suggestion/editsuggestion/:suggestionID",
-    element: <EditSuggestionPage />,
+    element: <ProtectedRoute page={EditSuggestionPage} role="isAuth"/>,
     errorElement: <ErrorPage />,
   },
   {
@@ -39,12 +39,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <RegisterPage />,
+    element: <ProtectedRoute page={RegisterPage} role="anonymous"/>,
     errorElement: <ErrorPage />,
   },
   {
     path: "/signin",
-    element: <LoginPage />,
+    element: <ProtectedRoute page={LoginPage} role="anonymous"/>,
     errorElement: <ErrorPage />,
   },
 ])

@@ -1,6 +1,8 @@
+import UpdateSuggestion from "."
+
 function EditSuggestionPage() {
   return (
-    <div>EditSuggestionPage</div>
+    <UpdateSuggestion />
   )
 }
 export default EditSuggestionPage
