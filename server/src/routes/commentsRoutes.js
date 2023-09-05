@@ -12,7 +12,11 @@ const commentValidationSchema = [
     .withMessage("The content have to be words"),
 ]
 
-const idValidationSchema = param("suggestionID", "commentID")
+const idValidationSchemaSuggestion = param("suggestionID")
+  .isMongoId()
+  .withMessage("Invalid ID")
+
+  const idValidationSchemaComment = param("commentID")
   .isMongoId()
   .withMessage("Invalid ID")
 
@@ -23,7 +27,7 @@ const CommentControllers = require("../controllers/commentController")
 router.post(
   "/:suggestionID/comments",
   isAuth,
-  idValidationSchema,
+  idValidationSchemaSuggestion,
   commentValidationSchema,
   validate,
   CommentControllers.createComment
@@ -32,7 +36,7 @@ router.post(
 router.put(
   "/comments/:commentID",
   isAuth,
-  idValidationSchema,
+  idValidationSchemaComment,
   commentValidationSchema,
   validate,
   CommentControllers.createReply

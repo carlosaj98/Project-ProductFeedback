@@ -1,0 +1,113 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Suggestions",
+    "dateExported": "2023-09-04T17:59:44.875Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "d210e3c2-2550-4fc0-af3f-48d838cb9c98",
+            "colId": "aa368d6c-106a-4f3c-b463-57b9e2be4aef",
+            "containerId": "",
+            "name": "AllSuggestions",
+            "url": "localhost:9000/api/suggestions",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-16T10:31:08.756Z",
+            "modified": "2023-08-20T15:27:37.595Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9a302e85-a0d0-43bb-a4fd-ba5de02045d2",
+            "colId": "aa368d6c-106a-4f3c-b463-57b9e2be4aef",
+            "containerId": "",
+            "name": "OneSuggestion",
+            "url": "localhost:9000/api/suggestions/64ddf4fe47025b58abfbabbd",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-08-16T10:31:35.181Z",
+            "modified": "2023-08-17T10:24:08.264Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "03b369ff-779d-448a-981c-1c1c472f2635",
+            "colId": "aa368d6c-106a-4f3c-b463-57b9e2be4aef",
+            "containerId": "",
+            "name": "CreateSuggestion",
+            "url": "localhost:9000/api/suggestions/",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-08-16T10:32:17.166Z",
+            "modified": "2023-08-22T14:39:59.707Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjEiLCJpc0FkbWluIjpmYWxzZSwiaWQiOiI2NGU0Yzg5Mzg1YmRiM2M2M2NlODEyYWYiLCJpYXQiOjE2OTI3MTUxODB9.er1-ym2OMA13mwcDJj9HoKc7FkXqM-1UreJ1VAd-fL0 "
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"dsaddsadss\",\n  \"category\": \"UX\",\n  \"status\": \"Live\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b4f3797d-7d02-472c-8c8d-85654c5834f6",
+            "colId": "aa368d6c-106a-4f3c-b463-57b9e2be4aef",
+            "containerId": "",
+            "name": "UpdateSuggestion",
+            "url": "localhost:9000/api/suggestions/64dcab969b6cb992ea9728fb",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-08-16T10:35:24.537Z",
+            "modified": "2023-08-16T10:58:05.100Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"sdasd\",\n  \"category\": \"UI\",\n  \"uppvotes\": 0,\n  \"status\": \"Live\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e38bc72c-958b-4f5c-a51f-876bf18409dc",
+            "colId": "aa368d6c-106a-4f3c-b463-57b9e2be4aef",
+            "containerId": "",
+            "name": "UpdateVotes",
+            "url": "localhost:9000/api/suggestions/64e376ae612f8b0f23b24eed/votes",
+            "method": "PUT",
+            "sortNum": 55000,
+            "created": "2023-08-20T15:08:57.164Z",
+            "modified": "2023-08-21T15:13:58.140Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjEiLCJpc0FkbWluIjpmYWxzZSwiaWQiOiI2NGUzNzYxMDYxMmY4YjBmMjNiMjRlZTUiLCJpYXQiOjE2OTI2Mjg1MDh9.6DNOrJd8HxDhgs1T1dJSVQM89NNPUDS_FW1hIUY3FSs "
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9a8e1d1e-6dd4-4af9-b419-5417421ae8bd",
+            "colId": "aa368d6c-106a-4f3c-b463-57b9e2be4aef",
+            "containerId": "",
+            "name": "DeleteSuggestion",
+            "url": "localhost:9000/api/suggestions/64e328098fbd78811cb30977",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-08-16T10:36:03.083Z",
+            "modified": "2023-08-21T14:37:22.437Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Users",
+    "dateExported": "2023-09-04T17:59:38.903Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "1eb13e49-4d79-4275-969e-19a2ffe5893e",
+            "colId": "c4f660d2-ab68-41f7-8968-65aa04fc559d",
+            "containerId": "",
+            "name": "SignUp",
+            "url": "localhost:9000/api/users/signup",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-08-16T08:28:27.199Z",
+            "modified": "2023-08-22T15:09:44.784Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "firstname",
+                        "value": "1"
+                    },
+                    {
+                        "name": "lastname",
+                        "value": "1"
+                    },
+                    {
+                        "name": "username",
+                        "value": "1"
+                    },
+                    {
+                        "name": "password",
+                        "value": "1"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "avatar",
+                        "value": "c:\\Users\\CARLOS\\Desktop\\Bootcamp\\Project-ProductFeedback\\server\\src\\assets\\user-images\\image-anne.jpg"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "69ee1b54-f293-4831-99b3-aec6dcf7c191",
+            "colId": "c4f660d2-ab68-41f7-8968-65aa04fc559d",
+            "containerId": "",
+            "name": "SignIn",
+            "url": "localhost:9000/api/users/signin",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-08-16T08:29:19.119Z",
+            "modified": "2023-08-21T14:35:08.761Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"password\":\"1\",\n  \"username\":\"1\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

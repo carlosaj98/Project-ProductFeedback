@@ -1,0 +1,52 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Comments",
+    "dateExported": "2023-09-04T17:59:48.783Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "7dc9b199-0f0b-469d-8256-b0dc9e540e18",
+            "colId": "2c184f36-ee6c-4cc3-a15e-a311268d9442",
+            "containerId": "",
+            "name": "CreateComment",
+            "url": "localhost:9000/api/suggestions/64e4c8bf85bdb3c63ce812b2/comments",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-08-17T08:29:15.943Z",
+            "modified": "2023-08-22T14:40:34.002Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjEiLCJpc0FkbWluIjpmYWxzZSwiaWQiOiI2NGU0Yzg5Mzg1YmRiM2M2M2NlODEyYWYiLCJpYXQiOjE2OTI3MTUxODB9.er1-ym2OMA13mwcDJj9HoKc7FkXqM-1UreJ1VAd-fL0 "
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"content\": \"dsadsd1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e439a5c3-2eec-4e82-a2e1-ffe7acf98490",
+            "colId": "2c184f36-ee6c-4cc3-a15e-a311268d9442",
+            "containerId": "",
+            "name": "CreateReply",
+            "url": "localhost:9000/api/suggestions/comments/64e23334868c0c1d3894260a",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2023-08-17T08:49:35.582Z",
+            "modified": "2023-08-20T15:37:55.963Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user\": \"64dddb3d281fe5bec9c1e77d\",\n  \"content\": \"reply3\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

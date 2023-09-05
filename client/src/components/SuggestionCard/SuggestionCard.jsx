@@ -4,6 +4,14 @@ import { IconComments, ArrowUp } from "../Icons/IconsSVG"
 function SuggestionCard({ title, category, description, comments, upvotes}) {
   const categoryCapitalize =
     category.charAt(0).toUpperCase() + category.slice(1)
+
+    let totalComments = comments.length
+    let totalReplies = 0
+    comments.forEach(comment => {
+      totalReplies += comment.replies.length
+    });
+
+
   return (
     <Styled.SuggestionCard className="suggestion-card-container">
       <div className="upvote-container">
@@ -21,7 +29,7 @@ function SuggestionCard({ title, category, description, comments, upvotes}) {
       </div>
       <div className="icon-comment">
         <IconComments />
-        <p>{comments}</p>
+        <p>{totalComments + totalReplies}</p>
       </div>
     </Styled.SuggestionCard>
   )

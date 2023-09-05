@@ -7,7 +7,6 @@ function HomePage() {
   const {suggestions, setSuggestions} = useSuggestions()
   console.log(suggestions)
 
-
   return (
     <Container id="home-page-container" disableGutters>
       <Stack
@@ -30,7 +29,7 @@ function HomePage() {
                   description={suggestion.description}
                   category={suggestion.category}
                   comments={
-                    suggestion.comments ? suggestion.comments.length : 0
+                    suggestion.comments
                   }
                 />
               )
