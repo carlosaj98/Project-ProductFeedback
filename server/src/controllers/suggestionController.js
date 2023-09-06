@@ -43,9 +43,13 @@ const getOne = async (req, res) => {
     req.params.suggestionID
   ).populate({
     path: "comments",
-    populate: {
-      path: "replies",
-    },
+    populate: [
+      {
+        path: "user",
+        select: ["username", "avatar"]
+      },
+      { path: "replies" },
+    ],
   })
 
   if (!suggestionID) return res.status(404).send("The suggestion not exist")
