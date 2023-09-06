@@ -1,6 +1,6 @@
 import { Card } from "@mui/material"
+import NewComment from "../../pages/DetailPage"
 function Comments({ content, user, replies }) {
-    console.log(replies)
     return (
         <>
             <Card
