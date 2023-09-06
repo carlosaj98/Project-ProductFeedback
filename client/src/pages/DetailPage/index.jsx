@@ -6,12 +6,11 @@ import { useSuggestion } from "../../hooks"
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import commentService from "../../services/comment-service"
-import { replace } from "lodash"
+import {useComment} from "../../hooks"
 
 function NewComment() {
     const navigate = useNavigate()
     const { suggestionID } = useParams()
-    const { suggestion, setSuggestion, loading } = useSuggestion(suggestionID)
     const onSubmit = (data) => {
         commentService
             .create(data, suggestionID)
@@ -33,4 +32,30 @@ function NewComment() {
         </Stack>
     )
 }
-export default NewComment
+
+function NewReply({commentID, replyingTo}) {
+    const navigate = useNavigate()
+    const onSubmit = (data) => {
+        const dataNew = {...data, replyingTo}
+        // console.log(dataNew, commentID)
+        commentService
+            .update(dataNew, commentID)
+            .then((data) => navigate(0, { replace: false }))
+            .catch((err) => console.log(err))
+    }
+
+    return (
+        <Stack spacing={3} alignItems="flex-start">
+            <Stack direction="row" justifyContent="space-between">
+                <Form
+                    heading=""
+                    buttonLabel="Add Reply"
+                    formFields={formFields}
+                    onSubmit={onSubmit}
+                    validationSchema={validationSchema}
+                />
+            </Stack>
+        </Stack>
+    )
+}
+export {NewComment, NewReply}

@@ -23,7 +23,6 @@ const createReply = async (req, res) => {
   const newReply = {user: userID, ...reqBody}
   const reply = await Reply.create(newReply)
   await Comment.findByIdAndUpdate(req.params.commentID, {
-    user: req.user.id ,
     $push: { replies: reply.id },
   })
 

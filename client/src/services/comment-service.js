@@ -7,7 +7,7 @@ function create(endpoint) {
 		getById: (id) => apiClient.get(endpoint + '/' + id),
 
 		create: (entity, id) => apiClient.post(endpoint + "/" + id + "/comments", entity),
-		update: (entity, id) => apiClient.put(endpoint + '/' + id, entity),
+		update: (entity, id) => apiClient.put(endpoint + '/comments/' + id, entity),
 
 		delete: (id) => apiClient.delete(endpoint + '/' + id),
 	}

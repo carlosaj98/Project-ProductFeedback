@@ -4,7 +4,7 @@ import { useSuggestion } from "../../hooks"
 import Comments from "../../components/CommentCard/Comments"
 import { Link } from "react-router-dom"
 import { CircularProgress, Stack, Button } from "@mui/material"
-import NewComment from "."
+import { NewComment, NewReply } from "."
 
 function DetailPage() {
     const { suggestionID } = useParams()
@@ -21,12 +21,14 @@ function DetailPage() {
             <h1 style={{ textAlign: "center" }}>Comments</h1>
             <Stack gap="16px" padding={"30px"}>
                 {suggestion.comments.map((comment) => (
-                    <Comments
-                        key={comment._id}
-                        content={comment.content}
-                        user={comment.user.username}
-                        replies={comment.replies}
-                    />
+                        <Comments
+                            key={comment._id}
+                            id= {comment._id}
+                            content={comment.content}
+                            user={comment.user.username}
+                            replies={comment.replies}
+                        >
+                        </Comments>
                 ))}
             </Stack>
             <Stack alignItems={"center"}>

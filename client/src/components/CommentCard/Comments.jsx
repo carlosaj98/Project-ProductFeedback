@@ -1,6 +1,6 @@
 import { Card } from "@mui/material"
-import NewComment from "../../pages/DetailPage"
-function Comments({ content, user, replies }) {
+import { NewReply } from "../../pages/DetailPage"
+function Comments({ content, user, replies, id }) {
     return (
         <>
             <Card
@@ -26,10 +26,11 @@ function Comments({ content, user, replies }) {
                             border: "2px solid var(--dark-blue-bg)",
                         }}
                     >
-                        <h3 style={{ color: "var(--orange)", marginBottom: "8px" }}>@{reply.replyingTo}</h3>
-                        <p>{reply.content}</p>
+                        <h3 style={{ color: "var(--orange)", marginBottom: "8px" }}>@{reply.user.username}</h3>
+                        <p><span style={{color:"var(--blue)"}}>@{reply.replyingTo}</span> {reply.content}</p>
                     </Card>
                 ))}
+                <NewReply commentID={id} replyingTo={user}/>
             </Card>
         </>
     )
