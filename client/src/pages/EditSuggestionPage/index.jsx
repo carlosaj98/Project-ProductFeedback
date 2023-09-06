@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from "react-router-dom"
-import { Stack, Typography, Button } from "@mui/material"
+import { Stack, Typography, Button, CircularProgress } from "@mui/material"
 import Form from "../../components/Form"
 import { formFields, validationSchema } from "./form-fields"
 import suggestionService from '../../services/suggestion-service'
@@ -12,13 +12,15 @@ import _ from 'lodash'
 function UpdateSuggestion() {
     const navigate = useNavigate()
     const {suggestionID} = useParams()
-    const {suggestion, setSuggestion} = useSuggestion(suggestionID)
+    const {suggestion, setSuggestion, loading} = useSuggestion(suggestionID)
 
     const onSubmit = (data) => {
         suggestionService.update(data, suggestionID)
         .then((data) => navigate(-1, {replace: true}))
         .catch((err) => console.log(err))
 	}
+
+    if(loading) return <CircularProgress />
 
     return (
         <Stack spacing={3} alignItems="flex-start">

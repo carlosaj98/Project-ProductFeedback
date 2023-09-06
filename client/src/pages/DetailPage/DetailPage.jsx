@@ -2,16 +2,18 @@ import * as React from "react"
 import { useParams } from "react-router-dom"
 import { useSuggestion } from "../../hooks"
 import Comments from "../../components/Comments"
+import { CircularProgress } from "@mui/material"
 
 function DetailPage() {
     const { suggestionID } = useParams()
     const { suggestion, setSuggestions, loading } = useSuggestion(suggestionID)
-    if (!loading) console.log(suggestion.comments[0].content)
+
+    if (loading) return <CircularProgress />
 
     return (
         // <div>{!loading && (suggestion.comments[0].content)}</div>
         <>
-            {!loading && suggestion.comments.map((comment) => (
+            {suggestion.comments.map((comment) => (
                 <Comments key={comment._id} content={comment.content}/>
             ))}
         </>

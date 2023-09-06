@@ -1,12 +1,12 @@
 import Navbar from "../components/Navbar/Navbar"
 import Headerbar from "../components/Headerbar/Headerbar"
 import SuggestionCard from "../components/SuggestionCard/SuggestionCard"
-import { Container, Stack, Box } from "@mui/material"
+import { Container, Stack, Box, CircularProgress } from "@mui/material"
 import { useSuggestions } from "../hooks"
 import suggestionService from "../services/suggestion-service"
 import { useState } from "react"
 function HomePage() {
-    const { suggestions, setSuggestions } = useSuggestions()
+    const { suggestions, setSuggestions, loading } = useSuggestions()
     const [suggestionID, setSuggestionID] = useState("")
     const deleteSuggestion = (id) => {
       suggestionService.delete(id)
@@ -14,7 +14,8 @@ function HomePage() {
       setSuggestions(suggestionFiltered)
       setSuggestionID("")
     }
-      
+    
+    if(loading) return <CircularProgress />
 
     return (
         <Container id="home-page-container" disableGutters>
