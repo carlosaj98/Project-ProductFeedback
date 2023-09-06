@@ -17,6 +17,11 @@ function HomePage() {
     
     if(loading) return <CircularProgress />
 
+    const statusCards = []
+    suggestions.forEach(suggestion => statusCards.push(suggestion.status))
+
+
+
     return (
         <Container id="home-page-container" disableGutters>
             <Stack
@@ -26,7 +31,7 @@ function HomePage() {
                 marginTop={{ sm: "56px", md: "94px" }}
                 justifyContent="flex-start"
             >
-                <Navbar />
+                <Navbar status={statusCards}/>
                 <Box>
                     <Headerbar />
                     <Box

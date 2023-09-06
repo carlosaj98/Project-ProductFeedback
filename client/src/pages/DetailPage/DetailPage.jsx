@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useParams } from "react-router-dom"
 import { useSuggestion } from "../../hooks"
-import Comments from "../../components/Comments"
+import Comments from "../../components/CommentCard/Comments"
 import { Link } from "react-router-dom"
 import { CircularProgress, Stack, Button } from "@mui/material"
 

@@ -5,12 +5,21 @@ import authService from "../../services/auth-service"
 import { useAuth } from "../../hooks/auth"
 import { Navigate } from "react-router-dom"
 
-function Navbar() {
+function Navbar({status}) {
     const [value, dispatch] = useAuth()
     const handleLogout = () => {
         authService.logout()
 
 	    dispatch({ type: 'logout' })
+    }
+
+    function statusValue(value){
+        return status.reduce((contador, elemento) => {
+            if (elemento === value) {
+              return contador + 1;
+            }
+            return contador;
+          }, 0);
     }
     return (
         <Styled.Navbar sx={{ width: { md: "256px" } }}>
@@ -35,17 +44,17 @@ function Navbar() {
                     <li className="rm-list-item">
                         <div id="dot-planned"></div>
                         <p className="rm-item-text">Planned</p>
-                        <p className="rm-item-number">0</p>
+                        <p className="rm-item-number">{statusValue("Planned")}</p>
                     </li>
                     <li className="rm-list-item">
                         <div id="dot-inprogress"></div>
                         <p className="rm-item-text">In-Progress</p>
-                        <p className="rm-item-number">0</p>
+                        <p className="rm-item-number">{statusValue("In-Progress")}</p>
                     </li>
                     <li className="rm-list-item">
                         <div id="dot-live"></div>
                         <p className="rm-item-text">Live</p>
-                        <p className="rm-item-number">0</p>
+                        <p className="rm-item-number">{statusValue("Live")}</p>
                     </li>
                 </ul>
             </div>
