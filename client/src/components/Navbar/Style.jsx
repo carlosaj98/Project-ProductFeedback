@@ -1,5 +1,6 @@
 import { styled } from "@mui/material"
 import { Button } from "@mui/material"
+
 const Navbar = styled("nav")({
     display: "flex",
     flexDirection: "column",
@@ -7,7 +8,7 @@ const Navbar = styled("nav")({
 
     "#feedbackBoard": {
         width: "100%",
-        backgroundImage: "url(../../../assets/suggestions/desktop/background-header.png)",
+        backgroundImage: "url(../../../public/background-header-png)",
         backgroundSize: "cover",
         borderRadius: "10px",
         color: "var(--white)",
