@@ -17,6 +17,7 @@ const suggestionSchema = new mongoose.Schema(
       required: true,
     },
     comments: [{ type: ObjectID, ref: "Comment" }],
+    description: { type: String, required: true }
   },
   { timestamps: true }
 )

@@ -15,6 +15,11 @@ const suggestionValidationSchema = [
     .withMessage("The title is required")
     .isString()
     .withMessage("The title has to be words"),
+    body("description")
+    .notEmpty()
+    .withMessage("The description is required")
+    .isString()
+    .withMessage("The description has to be words"),
   body("category")
     .notEmpty()
     .withMessage("The category is required")
