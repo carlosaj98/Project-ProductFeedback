@@ -28,6 +28,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     "--purple-hover": "#C75AF6",
                     "--blue-hover": "#7C91F9",
                     "--dark-blue-hover": "#656EA3",
+                    "--red": "#D73737",
+                    "--red-hover": "#E98888"
                 },
                 "*": {
                     margin: "0",
