@@ -32,7 +32,7 @@ function HomePage() {
             >
                 <Navbar status={statusCards}/>
                 <Box>
-                    <Headerbar />
+                    <Headerbar counter={suggestions.length}/>
                     <Box
                         component={"main"}
                         marginTop={"24px"}
