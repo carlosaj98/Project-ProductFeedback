@@ -1,6 +1,6 @@
-import Styled from "./Style"
+import CustomNavbar from "./Style"
 import { Link } from "react-router-dom"
-import { Button, Stack } from "@mui/material"
+import { Button, Stack, Box } from "@mui/material"
 import authService from "../../services/auth-service"
 import { useAuth } from "../../hooks/auth"
 import { Navigate } from "react-router-dom"
@@ -23,57 +23,59 @@ function Navbar({ status }) {
     }, 0)
   }
   return (
-    <Styled.Navbar sx={{ width: { md: "256px" } }}>
-      <div id="feedbackBoard">
+    <CustomNavbar
+      component="nav"
+      minWidth={{md: "256px"}}
+      width={{md: "256px", sm: "100%"}}
+      height="100%"
+      flexDirection={{md: "column", sm: "row"}}
+      flexWrap={"wrap"}
+    >
+      <Box id="feedbackBoard" flexGrow="1" maxWidth={{ md:"100%" ,sm: "calc(100%/3)"}}>
         <h2>Frontend Mentor</h2>
         <p>Feedback Board</p>
-      </div>
-      <div id="suggestionCategories">
+      </Box>
+      <Stack id="suggestionCategories" flexGrow="1" maxWidth={{ md:"100%" ,sm: "calc(100%/3)"}}>
         <ButtonCategory text="All" />
-        <ButtonCategory text="UI"/>
+        <ButtonCategory text="UI" />
         <ButtonCategory text="UX" />
         <ButtonCategory text="Enhancement" />
         <ButtonCategory text="Bug" />
         <ButtonCategory text="Feature" />
-      </div>
-      <div id="roadmap-preview">
-        <div id="rm-header">
+      </Stack>
+      <Stack id="roadmap-preview" flexGrow="1" maxWidth={{ md:"100%" ,sm: "calc(100%/3)"}}>
+        <Stack id="rm-header">
           <p>Roadmap</p>
           <a href="">View</a>
-        </div>
+        </Stack>
         <ul id="rm-list">
           <li className="rm-list-item">
-            <div id="dot-planned"></div>
+            <Box id="dot-planned"></Box>
             <p className="rm-item-text">Planned</p>
             <p className="rm-item-number">{statusValue("Planned")}</p>
           </li>
           <li className="rm-list-item">
-            <div id="dot-inprogress"></div>
+            <Box id="dot-inprogress"></Box>
             <p className="rm-item-text">In-Progress</p>
             <p className="rm-item-number">{statusValue("In-Progress")}</p>
           </li>
           <li className="rm-list-item">
-            <div id="dot-live"></div>
+            <Box id="dot-live"></Box>
             <p className="rm-item-text">Live</p>
             <p className="rm-item-number">{statusValue("Live")}</p>
           </li>
         </ul>
-      </div>
+      </Stack>
       <Stack
         id="user-btn"
         direction="row"
-        sx={{
-          justifyContent: "space-evenly",
-        }}
+        justifyContent="center"
+        gap="24px"
+        flexGrow="1"
       >
         <>
           {value.isAuth ? (
-            <Button
-              variant="contained"
-
-              color="error"
-              onClick={handleLogout}
-            >
+            <Button variant="contained" color="error" onClick={handleLogout}>
               Logout
             </Button>
           ) : (
@@ -89,7 +91,7 @@ function Navbar({ status }) {
           )}
         </>
       </Stack>
-    </Styled.Navbar>
+    </CustomNavbar>
   )
 }
 export default Navbar

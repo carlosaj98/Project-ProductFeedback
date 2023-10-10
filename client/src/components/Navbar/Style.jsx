@@ -1,13 +1,10 @@
 import { styled } from "@mui/material"
-import { Button } from "@mui/material"
+import {Stack} from "@mui/material"
 
-const Navbar = styled("nav")({
-    display: "flex",
-    flexDirection: "column",
+const CustomNavbar = styled(Stack)({
     gap: "24px",
 
     "#feedbackBoard": {
-        width: "100%",
         backgroundImage: "url(/background-header.png)",
         backgroundSize: "cover",
         borderRadius: "10px",
@@ -19,20 +16,17 @@ const Navbar = styled("nav")({
         fontSize: "20px",
         fontWeight: "600",
         marginTop: "62px",
-        letterSpacing: "-0.25px",
-        lineHeight: "normal",
     },
 
     "#feedbackBoard p": {
         fontSize: "15px",
         fontWeight: "400",
-        lineHeight: "normal",
     },
 
     "#suggestionCategories": {
-        width: "100%",
+
         backgroundColor: "var(--white)",
-        display: "flex",
+        flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "flex-start",
         gap: "8px",
@@ -41,16 +35,13 @@ const Navbar = styled("nav")({
     },
 
     "#roadmap-preview":{
-        width: "100%",
         backgroundColor:"var(--white)",
-        display: "flex",
-        flexDirection:"column",
-        padding:"24px 19px 24px 24px",
+        padding:"24px",
         borderRadius: "10px"
     },
 
     "#rm-header":{
-        display: "flex",
+        flexDirection:"row",
         justifyContent:"space-between",
         marginBottom: "24px",
         alignItems: "baseline",
@@ -112,32 +103,7 @@ const Navbar = styled("nav")({
         fontWeight:"700"
     },
 
-    "@media(max-width: 900px)":{
-        flexDirection: "row",
-        height: "178px",
-        gap: "10px"
-    }
-
 })
 
-const CategoryButton = styled(Button)({
-    color: "var(--blue)",
-    backgroundColor: "var(--semi-light-gray)",
-    fontSize: "13px",
-    fontWeight: "600",
-    lineHeight: "normal",
-    borderRadius: "10px",
-    textTransform: "none",
-    height: "30px",
-    padding: "0px 16px",
-    "&:hover": {
-        backgroundColor: "#CFD7FF",
-        color: "var(--blue)",
-    },
-    "&:active":{
-        backgroundColor: "var(--blue)",
-        color: "var(--white)",
-    }
-})
 
-export default { Navbar, CategoryButton }
+export default CustomNavbar

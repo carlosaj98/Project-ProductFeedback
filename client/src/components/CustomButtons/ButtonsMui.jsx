@@ -32,6 +32,7 @@ function ButtonBlue({ text }) {
       sx={{
         backgroundColor: "var(--blue)",
         "&:hover": { backgroundColor: "var(--blue-hover)" },
+        padding: "8px 16px",
       }}
     >
       {text}
@@ -92,14 +93,13 @@ function ButtonVote({ number }) {
         backgroundColor: isActive ? "var(--blue)" : "var(--inter-color)",
         color: isActive ? "var(--white)" : "var(--dark-blue-text)",
         fontWeight: "700",
-        "&:hover": { backgroundColor: "var(--inter-hover-color)" },
+        "&:hover": { backgroundColor: "var(--inter-hover-color)", color: "var(--dark-blue-text)" },
         "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
         padding: "14px 12px 8px 12px",
         display: "flex",
         flexDirection: "column",
         gap: "8px",
         minWidth: "40px",
-        borderRadius: "10px",
       }}
       onMouseDown={handleClick}
     >
