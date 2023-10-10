@@ -1,5 +1,7 @@
 import { Button as ButtonsMui } from "@mui/material"
+import { ArrowUp } from "../Icons/IconsSVG"
 import { styled } from "@mui/material"
+import { useState } from "react"
 
 const Button = styled(ButtonsMui)({
   borderRadius: "10px",
@@ -80,17 +82,29 @@ function ButtonCategory({ text }) {
 }
 
 function ButtonVote({ number }) {
+  const [isActive, setIsActive] = useState(false)
+  const handleClick = ()=>{
+    setIsActive(!isActive)
+  }
   return (
     <Button
       sx={{
-        backgroundColor: "var(--inter-color)",
-        color: "var(--blue)",
+        backgroundColor: isActive ? "var(--blue)" : "var(--inter-color)",
+        color: isActive ? "var(--white)" : "var(--dark-blue-text)",
+        fontWeight: "700",
         "&:hover": { backgroundColor: "var(--inter-hover-color)" },
         "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
-        padding: "5px 15px",
+        padding: "14px 12px 8px 12px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "8px",
+        minWidth: "40px",
+        borderRadius: "10px",
       }}
+      onMouseDown={handleClick}
     >
-      {text}
+      <ArrowUp stroke={isActive ? "var(--white)" : "var(--blue)"}/>
+      {number}
     </Button>
   )
 }

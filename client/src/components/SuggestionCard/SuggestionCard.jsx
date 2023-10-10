@@ -3,6 +3,7 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import EditIcon from "@mui/icons-material/Edit"
 import { Button } from "@mui/material"
 import { IconComments, ArrowUp } from "../Icons/IconsSVG"
+import { ButtonVote } from "../CustomButtons/ButtonsMui"
 import { useAuth } from "../../hooks/auth"
 import { Link } from "react-router-dom"
 
@@ -29,10 +30,8 @@ function SuggestionCard({
   return (
     <Styled.SuggestionCard className="suggestion-card-container">
       <div className="upvote-container">
-        <Styled.ButtonScore>
-          <ArrowUp />
-          <p>{upvotes}</p>
-        </Styled.ButtonScore>
+        <ButtonVote number="0">
+        </ButtonVote>
       </div>
       <div className="suggestion-card-text">
         <Link to={`/suggestion/${id}`} style={{ textDecoration: "none" }}>
