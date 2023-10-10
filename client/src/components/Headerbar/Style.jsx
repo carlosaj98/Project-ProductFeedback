@@ -6,12 +6,12 @@ const Header = styled("header")({
   justifyContent: "flex-start",
   alignItems: "center",
   borderRadius:"10px",
-  padding: "14px 0px",
+  padding: "14px 16px",
   color: "var(--white)",
 
   svg:{
     marginRight:"16px",
-    marginLeft: "24px"
+    marginLeft: "8px"
   },
 
   "#title-header":{
@@ -55,4 +55,4 @@ const ButtonHeader = styled(Button)({
   }
 })
 
-export default {Header, ButtonHeader}
+export default {Header}

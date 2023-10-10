@@ -62,4 +62,43 @@ function ButtonRed({ text }) {
     </Button>
   )
 }
-export {ButtonPurple, ButtonBlue, ButtonDark, ButtonRed}
+
+function ButtonCategory({ text }) {
+  return (
+    <Button
+      sx={{
+        backgroundColor: "var(--inter-color)",
+        color: "var(--blue)",
+        "&:hover": { backgroundColor: "var(--inter-hover-color)" },
+        "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
+        padding: "5px 15px",
+      }}
+    >
+      {text}
+    </Button>
+  )
+}
+
+function ButtonVote({ number }) {
+  return (
+    <Button
+      sx={{
+        backgroundColor: "var(--inter-color)",
+        color: "var(--blue)",
+        "&:hover": { backgroundColor: "var(--inter-hover-color)" },
+        "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
+        padding: "5px 15px",
+      }}
+    >
+      {text}
+    </Button>
+  )
+}
+export {
+  ButtonPurple,
+  ButtonBlue,
+  ButtonDark,
+  ButtonRed,
+  ButtonCategory,
+  ButtonVote,
+}

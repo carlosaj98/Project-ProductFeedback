@@ -1,6 +1,7 @@
 import Styled from "./Style"
 import { IconSuggestion, ArrowDown } from "../Icons/IconsSVG"
-import {Link} from 'react-router-dom'
+import { ButtonPurple } from "../CustomButtons/ButtonsMui"
+import { Link } from "react-router-dom"
 function Headerbar() {
   return (
     <Styled.Header id="header-container">
@@ -12,12 +13,12 @@ function Headerbar() {
         <p>
           Sort by : <span>Most Upvotes</span>
         </p>
-        <ArrowDown stroke={"white"}/>
+        <ArrowDown stroke={"white"} />
       </button>
       <div id="add-suggestion">
-        <Styled.ButtonHeader variant="contained" component={Link} to="/createsuggestion">
-          + Add Feedback
-        </Styled.ButtonHeader>
+        <Link to="/createsuggestion">
+          <ButtonPurple text="+ Add Feedback">+ Add Feedback</ButtonPurple>
+        </Link>
       </div>
     </Styled.Header>
   )
