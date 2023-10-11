@@ -28,7 +28,6 @@ const CustomHeader = styled(Stack)({
     color:"var(--semi-light-gray)",
     background: "none",
     border: "none",
-    flexGrow: "1"
   },
 
   "#sort-container svg":{
@@ -39,6 +38,7 @@ const CustomHeader = styled(Stack)({
   "#sort-container span":{
     fontWeight:"600"
   },
+
 })
 
 export default CustomHeader
