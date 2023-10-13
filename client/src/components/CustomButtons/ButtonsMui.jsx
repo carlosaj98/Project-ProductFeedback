@@ -53,13 +53,15 @@ function ButtonDark({ text }) {
   )
 }
 
-function ButtonRed({ text }) {
+function ButtonRed({ text, action }) {
   return (
     <Button
       sx={{
         backgroundColor: "var(--red)",
         "&:hover": { backgroundColor: "var(--red-hover)" },
+        padding: "8px 16px",
       }}
+      onClick={action}
     >
       {text}
     </Button>
@@ -84,7 +86,7 @@ function ButtonCategory({ text }) {
 
 function ButtonVote({ number }) {
   const [isActive, setIsActive] = useState(false)
-  const handleClick = ()=>{
+  const handleClick = () => {
     setIsActive(!isActive)
   }
   return (
@@ -93,7 +95,10 @@ function ButtonVote({ number }) {
         backgroundColor: isActive ? "var(--blue)" : "var(--inter-color)",
         color: isActive ? "var(--white)" : "var(--dark-blue-text)",
         fontWeight: "700",
-        "&:hover": { backgroundColor: "var(--inter-hover-color)", color: "var(--dark-blue-text)" },
+        "&:hover": {
+          backgroundColor: "var(--inter-hover-color)",
+          color: "var(--dark-blue-text)",
+        },
         "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
         padding: "14px 12px 8px 12px",
         display: "flex",
@@ -103,7 +108,7 @@ function ButtonVote({ number }) {
       }}
       onMouseDown={handleClick}
     >
-      <ArrowUp stroke={isActive ? "var(--white)" : "var(--blue)"}/>
+      <ArrowUp stroke={isActive ? "var(--white)" : "var(--blue)"} />
       {number}
     </Button>
   )
