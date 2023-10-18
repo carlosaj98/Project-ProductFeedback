@@ -5,62 +5,52 @@ import { yupResolver } from "@hookform/resolvers/yup"
 
 import { transformData } from "./helpers"
 
-import fields from "./fields"
+import fields from "./InputTemplates"
+import CustomForm from "./Style"
 
-const Form = ({
-    heading,
-    formFields,
-    buttonLabel,
-    onSubmit,
-    validationSchema,
+const Form = ({ heading, formFields, buttonLabel, onSubmit, validationSchema, defaultValues }) => {
+  const {
+    handleSubmit,
+    control,
+    setValue,
+    clearErrors,
+    formState: { errors },
+  } = useForm({
     defaultValues,
-}) => {
-    const {
-        handleSubmit,
-        control,
-        setValue,
-        clearErrors,
-        formState: { errors },
-    } = useForm({
-        defaultValues,
-        resolver: yupResolver(validationSchema),
-    })
-    return (
-        <form onSubmit={handleSubmit((data) => onSubmit(transformData(data)))}>
-            <Typography variant="h2" component="h2" mb="2rem">
-                {heading}
-            </Typography>
+    resolver: yupResolver(validationSchema),
+  })
+  return (
+    <CustomForm onSubmit={handleSubmit((data) => onSubmit(transformData(data)))}>
+      {formFields.map(({ name, ...rest }) => {
+        const InputForm = fields[rest.type] || fields.input
 
-            {formFields.map(({ name, ...rest }) => {
-                const InputForm = fields[rest.type] || fields.input
+        if (rest.type === "file") rest = { ...rest, setValue, clearErrors }
 
-                if (rest.type === "file")
-                    rest = { ...rest, setValue, clearErrors }
+        return (
+          <Controller
+            key={name}
+            control={control}
+            name={name}
+            render={({ field: { ref, ...field } }) => {
+              return (
+                <>
+                  <Box>
+                    <h4>{rest.label}</h4>
+                    {rest.desc && <p>{rest.desc}</p>}
+                  </Box>
+                  <InputForm errors={errors[name]} name={name} {...rest} {...field} />
+                </>
+              )
+            }}
+          />
+        )
+      })}
 
-                return (
-                    <Controller
-                        key={name}
-                        control={control}
-                        name={name}
-                        render={({ field: { ref, ...field } }) => {
-                            return (
-                                <InputForm
-                                    errors={errors[name]}
-                                    name={name}
-                                    {...rest}
-                                    {...field}
-                                />
-                            )
-                        }}
-                    />
-                )
-            })}
-
-            <Box mt="2rem">
-                <Button type="submit">{buttonLabel}</Button>
-            </Box>
-        </form>
-    )
+      <Box mt="2rem">
+        <Button type="submit">{buttonLabel}</Button>
+      </Box>
+    </CustomForm>
+  )
 }
 
 export default Form

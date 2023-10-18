@@ -1,11 +1,12 @@
 import * as yup from "yup"
 
 const formFields = [
-    { name: "title", label: "Feedback Title" },
+    { name: "title", label: "Feedback Title", desc: "Add a short, descriptive headline" },
     {
         name: "category",
         label: "Category",
         type: "select",
+        desc: "Choose a category for your feedback",
         options: [
             {
                 label: "UI",
@@ -28,7 +29,6 @@ const formFields = [
                 value: "Feature",
             },
         ],
-        placeholder:"Select a Category"
     },
     {
         name: "status",
@@ -50,14 +50,14 @@ const formFields = [
         ],
         placeholder:"Select a Status"
     },
-    { name: "description", label: "Description" },
+    { name: "description", label: "Feedback Detail", desc: "Include any specific comments on what should be improved, added, etc." },
 ]
 
 const validationSchema = yup.object().shape({
-    title: yup.string().required("El campo es requerido"),
-    category: yup.string().required("El campo es requerido"),
-    status: yup.string().required("El campo es requerido"),
-    description: yup.string().required("El campo es requerido"),
+    title: yup.string().required("The field is required"),
+    category: yup.string().required("The field is required"),
+    status: yup.string().required("The field is required"),
+    description: yup.string().required("The field is required"),
 })
 
 export { formFields, validationSchema }
