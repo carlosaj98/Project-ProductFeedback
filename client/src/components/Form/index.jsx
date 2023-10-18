@@ -1,4 +1,4 @@
-import { Button, Typography, Box } from "@mui/material"
+import { Button, Box } from "@mui/material"
 
 import { useForm, Controller } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -8,7 +8,7 @@ import { transformData } from "./helpers"
 import fields from "./InputTemplates"
 import CustomForm from "./Style"
 
-const Form = ({ heading, formFields, buttonLabel, onSubmit, validationSchema, defaultValues }) => {
+const Form = ({ formFields, buttonLabel, onSubmit, validationSchema, defaultValues }) => {
   const {
     handleSubmit,
     control,

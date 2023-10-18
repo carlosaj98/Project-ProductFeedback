@@ -9,7 +9,8 @@ import { useNavigate } from 'react-router-dom'
 function NewSuggestionPage() {
     const navigate = useNavigate()
     const onSubmit = (data) => {
-        suggestionService.create(data)
+        const dataNew = {...data, status: "Planned"}
+        suggestionService.create(dataNew)
         .then((data) => navigate(-1, {replace: true}))
         .catch((err) => console.log(err))
 	}

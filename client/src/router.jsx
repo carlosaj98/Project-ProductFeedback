@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage"
 import ErrorPage from "./pages/ErrorPage"
 import DetailPage from "./pages/DetailPage/DetailPage"
 import RoadmapPage from "./pages/RoadmapPage"
-import CreateSuggestionPage from "./pages/NewSuggestionPage/CreateSuggestionPage"
+import NewSuggestionPage from "./pages/NewSuggestionPage/NewSuggestionPage"
 import EditSuggestionPage from "./pages/EditSuggestionPage/EditSuggestionPage"
 import RegisterPage from "./pages/SignUpPage/RegisterPage"
 import LoginPage from "./pages/SignInPage/LoginPage"
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/createsuggestion",
-    element: <ProtectedRoute page={CreateSuggestionPage} role="isAuth"/>,
+    element: <ProtectedRoute page={NewSuggestionPage} role="isAuth"/>,
     errorElement: <ErrorPage />,
   },
   {

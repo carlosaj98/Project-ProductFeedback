@@ -30,33 +30,12 @@ const formFields = [
             },
         ],
     },
-    {
-        name: "status",
-        label: "Status",
-        type: "select",
-        options: [
-            {
-                label: "Planned",
-                value: "Planned",
-            },
-            {
-                label: "In-Progress",
-                value: "In-Progress",
-            },
-            {
-                label: "Live",
-                value: "Live",
-            },
-        ],
-        placeholder:"Select a Status"
-    },
     { name: "description", label: "Feedback Detail", desc: "Include any specific comments on what should be improved, added, etc." },
 ]
 
 const validationSchema = yup.object().shape({
     title: yup.string().required("The field is required"),
     category: yup.string().required("The field is required"),
-    status: yup.string().required("The field is required"),
     description: yup.string().required("The field is required"),
 })
 
