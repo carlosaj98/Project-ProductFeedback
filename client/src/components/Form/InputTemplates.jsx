@@ -23,6 +23,13 @@ const InputField = ({ name, errors, value, label, ...rest }) => {
       value={value || ""}
       label=""
       fullWidth
+      InputProps={{
+        sx: {
+          backgroundColor: "var(--light-gray)",
+          color: "var(--dark-blue-text)",
+          fontFamily: "Jost",
+        },
+      }}
     />
   )
 }
@@ -31,7 +38,7 @@ const SelectField = ({
   name,
   label,
   errors,
-  value = [],
+  value,
   options,
   placeholder,
   customers,
@@ -40,6 +47,13 @@ const SelectField = ({
   return (
     <FormControl fullWidth>
       <Select
+        sx={{
+          backgroundColor: "var(--light-gray)",
+          color: "var(--dark-blue-text)",
+          fontFamily: "Jost",
+          ".MuiOutlinedInput-notchedOutline": { border: "none" },
+        }}
+        MenuProps={{ MenuListProps: { disablePadding: true }, sx: { marginTop: "16px" } }}
         value={value}
         {...rest}
         inputProps={{ IconComponent: () => null }}
@@ -50,7 +64,19 @@ const SelectField = ({
         }
       >
         {options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
+          <MenuItem
+            key={option.value}
+            value={option.value}
+            divider
+            sx={{
+              padding: "12px 24px",
+              color: "var(--gray)",
+              "&:hover": { color: "var(--purple)" },
+              display: "flex",
+              justifyContent: "space-between",
+              fontFamily: "Jost",
+            }}
+          >
             {option.label}
           </MenuItem>
         ))}
@@ -59,18 +85,29 @@ const SelectField = ({
   )
 }
 
-const FileField = ({ name, errors, onChange, value, multiple, setValue, clearErrors, ...rest }) => {
+const FileField = ({
+  name,
+  errors,
+  onChange,
+  value,
+  multiple,
+  label,
+  setValue,
+  clearErrors,
+  ...rest
+}) => {
   const [preview, setPreview] = useState(value)
   return (
     <Stack>
       <Box>
-        <img width="150px" src={preview}/>
+        <img width="150px" src={preview} />
       </Box>
 
       <FormControl>
         <FormGroup>
           <TextField
             error={!!errors}
+            label=""
             helperText={errors?.message}
             id={name}
             {...rest}
