@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ArrowDown } from "../Icons/IconsSVG"
+import { ArrowDown, ArrowUp } from "../Icons/IconsSVG"
 
 import {
   FormControl,
@@ -35,19 +35,13 @@ const InputField = ({ name, errors, value, label, ...rest }) => {
   )
 }
 
-const SelectField = ({
-  name,
-  label,
-  errors,
-  value,
-  options,
-  placeholder,
-  customers,
-  ...rest
-}) => {
+const SelectField = ({ name, label, errors, value, options, placeholder, customers, ...rest }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const handleClick = () => setIsOpen(!isOpen)
   return (
     <FormControl fullWidth>
       <Select
+        onMouseDown={handleClick}
         sx={{
           backgroundColor: "var(--light-gray)",
           color: "var(--dark-blue-text)",
@@ -58,11 +52,7 @@ const SelectField = ({
         value={value}
         {...rest}
         inputProps={{ IconComponent: () => null }}
-        endAdornment={
-          <Box>
-            <ArrowDown />
-          </Box>
-        }
+        endAdornment={<Box>{!isOpen ? <ArrowDown /> : <ArrowUp />}</Box>}
       >
         {options.map((option) => (
           <MenuItem

@@ -5,6 +5,10 @@ const CustomContainer = styled(Stack)({
   alignItems:"center",
   justifyContent:"center",
 
+  "#button-back":{
+    alignSelf:"flex-start"
+  },
+
   "#form-container":{
     backgroundColor:"var(--white)",
     padding:"42px",

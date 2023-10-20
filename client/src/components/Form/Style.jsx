@@ -5,6 +5,10 @@ const CustomForm = styled("form")({
     gap:"24px"
   },
 
+  ".labels-inputs":{
+    marginBottom:"16px"
+  },
+
   ".labels-inputs h4": {
     color: "var(--dark-blue-text)",
     fontSize: "14px",

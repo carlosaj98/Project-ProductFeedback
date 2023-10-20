@@ -6,6 +6,7 @@ import { formFields, validationSchema } from "./form-fields"
 import suggestionService from "../../services/suggestion-service"
 import { useNavigate } from "react-router-dom"
 import CustomContainer from "./Style"
+import { ButtonBack } from "../../components/CustomButtons/ButtonsMui"
 
 function NewSuggestionPage() {
   const navigate = useNavigate()
@@ -20,18 +21,20 @@ function NewSuggestionPage() {
   return (
     <Container disableGutters sx={{ height: "100vh" }} id="main-container">
       <CustomContainer component="main">
-        <Button variant="outlined" component={Link} to="/">
-          Back
-        </Button>
-        <Box id="form-container">
-          <Form
-            heading="Create New Feedback"
-            buttonLabel="Add New Feedback"
-            formFields={formFields}
-            onSubmit={onSubmit}
-            validationSchema={validationSchema}
-          />
-        </Box>
+        <Stack gap="64px">
+          <Box id="button-back">
+            <ButtonBack />
+          </Box>
+          <Box id="form-container">
+            <Form
+              heading="Create New Feedback"
+              buttonLabel="Add Feedback"
+              formFields={formFields}
+              onSubmit={onSubmit}
+              validationSchema={validationSchema}
+            />
+          </Box>
+        </Stack>
       </CustomContainer>
     </Container>
   )

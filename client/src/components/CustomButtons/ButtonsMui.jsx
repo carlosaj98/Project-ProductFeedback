@@ -1,5 +1,6 @@
 import { Button as ButtonsMui } from "@mui/material"
-import { ArrowUp } from "../Icons/IconsSVG"
+import { ArrowLeft, ArrowUp } from "../Icons/IconsSVG"
+import { Link } from "react-router-dom"
 import { styled } from "@mui/material"
 import { useState } from "react"
 
@@ -13,9 +14,10 @@ const Button = styled(ButtonsMui)({
   color: "var(--white)",
 })
 
-function ButtonPurple({ text }) {
+function ButtonPurple({ text, type }) {
   return (
     <Button
+      type={type}
       sx={{
         backgroundColor: "var(--purple)",
         "&:hover": { backgroundColor: "var(--purple-hover)" },
@@ -40,9 +42,10 @@ function ButtonBlue({ text }) {
   )
 }
 
-function ButtonDark({ text }) {
+function ButtonDark({ text, type }) {
   return (
     <Button
+    type={type}
       sx={{
         backgroundColor: "var(--dark-blue-text)",
         "&:hover": { backgroundColor: "var(--dark-blue-hover)" },
@@ -113,11 +116,27 @@ function ButtonVote({ number }) {
     </Button>
   )
 }
-export {
-  ButtonPurple,
-  ButtonBlue,
-  ButtonDark,
-  ButtonRed,
-  ButtonCategory,
-  ButtonVote,
+
+function ButtonBack() {
+  return (
+    <Button
+      component={Link}
+      to={"/"}
+      sx={{
+        color: "var(--gray)",
+        display: "flex",
+        justifyContent: "space-between",
+        gap: "16px",
+        padding:"0px",
+        ".font-button-back:hover": { textDecorationLine: "underline" },
+        "&:hover":{
+          backgroundColor:"transparent"
+        }
+      }}
+    >
+      <ArrowLeft />
+      <p className="font-button-back">Go Back</p>
+    </Button>
+  )
 }
+export { ButtonPurple, ButtonBlue, ButtonDark, ButtonRed, ButtonCategory, ButtonVote, ButtonBack }

@@ -7,11 +7,13 @@ import { transformData } from "./helpers"
 
 import fields from "./InputTemplates"
 import CustomForm from "./Style"
+import { ButtonDark, ButtonPurple } from "../CustomButtons/ButtonsMui"
 
 const Form = ({ heading, formFields, buttonLabel, onSubmit, validationSchema, defaultValues }) => {
   const {
     handleSubmit,
     control,
+    reset,
     setValue,
     clearErrors,
     formState: { errors },
@@ -20,7 +22,7 @@ const Form = ({ heading, formFields, buttonLabel, onSubmit, validationSchema, de
     resolver: yupResolver(validationSchema),
   })
   return (
-    <CustomForm onSubmit={handleSubmit((data) => onSubmit(transformData(data)))}>
+    <CustomForm onSubmit={handleSubmit((data) => onSubmit(transformData(data)))} onReset={reset}>
       <h2>{heading}</h2>
       <Stack className="inputs-container">
         {formFields.map(({ name, ...rest }) => {
@@ -49,8 +51,11 @@ const Form = ({ heading, formFields, buttonLabel, onSubmit, validationSchema, de
         })}
       </Stack>
 
-      <Box mt="2rem">
-        <Button type="submit">{buttonLabel}</Button>
+      <Box mt="32px" >
+        <Stack flexDirection="row" justifyContent="flex-end" gap="16px">
+          <ButtonDark type="reset" text="Cancel" />
+          <ButtonPurple type="submit" text={buttonLabel} />
+        </Stack>
       </Box>
     </CustomForm>
   )
