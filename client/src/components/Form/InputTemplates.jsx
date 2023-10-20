@@ -28,6 +28,7 @@ const InputField = ({ name, errors, value, label, ...rest }) => {
           backgroundColor: "var(--light-gray)",
           color: "var(--dark-blue-text)",
           fontFamily: "Jost",
+          // ".MuiOutlinedInput-notchedOutline": { border: "none" },
         },
       }}
     />
@@ -51,7 +52,7 @@ const SelectField = ({
           backgroundColor: "var(--light-gray)",
           color: "var(--dark-blue-text)",
           fontFamily: "Jost",
-          ".MuiOutlinedInput-notchedOutline": { border: "none" },
+          // ".MuiOutlinedInput-notchedOutline": { border: "none" },
         }}
         MenuProps={{ MenuListProps: { disablePadding: true }, sx: { marginTop: "16px" } }}
         value={value}

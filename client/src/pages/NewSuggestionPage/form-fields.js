@@ -34,9 +34,9 @@ const formFields = [
 ]
 
 const validationSchema = yup.object().shape({
-    title: yup.string().required("The field is required"),
-    category: yup.string().required("The field is required"),
-    description: yup.string().required("The field is required"),
+    title: yup.string().required("Can`t be empty"),
+    category: yup.string().required("Can`t be empty"),
+    description: yup.string().required("Can`t be empty"),
 })
 
 export { formFields, validationSchema }

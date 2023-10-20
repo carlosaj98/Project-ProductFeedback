@@ -19,10 +19,6 @@ const CustomForm = styled("form")({
     fontSize: "24px",
     marginBottom: "40px",
   },
-
-  "input + fieldset": { 
-    border: "none",
-   }
 })
 
 export default CustomForm
