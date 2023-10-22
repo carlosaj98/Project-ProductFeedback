@@ -1,6 +1,5 @@
 import * as React from "react"
-import { Link } from "react-router-dom"
-import { Stack, Typography, Button, Container, Box } from "@mui/material"
+import { Stack, Container, Box } from "@mui/material"
 import Form from "../../components/Form"
 import { formFields, validationSchema } from "./form-fields"
 import suggestionService from "../../services/suggestion-service"
@@ -19,7 +18,7 @@ function NewSuggestionPage() {
   }
 
   return (
-    <Container disableGutters sx={{ height: "100vh" }} id="main-container">
+    <Container sx={{ height: "100vh" }} id="main-container">
       <CustomContainer component="main">
         <Stack gap="64px">
           <Box id="button-back">
