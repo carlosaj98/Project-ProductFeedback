@@ -16,6 +16,7 @@ import {
 const InputField = ({ name, errors, value, label, ...rest }) => {
   return (
     <TextField
+      multiline
       error={!!errors}
       helperText={errors?.message}
       id={name}
@@ -35,7 +36,7 @@ const InputField = ({ name, errors, value, label, ...rest }) => {
   )
 }
 
-const SelectField = ({ name, label, errors, value, options, placeholder, customers, ...rest }) => {
+const SelectField = ({ name, label, errors, value = [], options, placeholder, customers, ...rest }) => {
   const [isOpen, setIsOpen] = useState(false)
   const handleClick = () => setIsOpen(!isOpen)
   return (
