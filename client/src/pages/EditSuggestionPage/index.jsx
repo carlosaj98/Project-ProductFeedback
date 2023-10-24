@@ -39,7 +39,7 @@ function UpdateSuggestion() {
                         "category",
                         "status",
                     ])}
-                    adminExclusive={value.isAdmin}
+                    adminExclusive={!!value.isAdmin}
                 />
             </Stack>
         </Stack>

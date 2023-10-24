@@ -8,15 +8,13 @@ import {
   Stack,
   MenuItem,
   Select,
-  InputLabel,
-  OutlinedInput,
   Box,
 } from "@mui/material"
 
-const InputField = ({ name, errors, value, label, ...rest }) => {
+const InputField = ({ name, errors, value, label, multiline, ...rest }) => {
   return (
     <TextField
-      multiline
+      multiline={multiline}
       error={!!errors}
       helperText={errors?.message}
       id={name}
