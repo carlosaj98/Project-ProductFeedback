@@ -34,7 +34,7 @@ function ButtonBlue({ text }) {
       sx={{
         backgroundColor: "var(--blue)",
         "&:hover": { backgroundColor: "var(--blue-hover)" },
-        padding: "8px 16px",
+        
       }}
     >
       {text}
@@ -62,7 +62,7 @@ function ButtonRed({ text, action }) {
       sx={{
         backgroundColor: "var(--red)",
         "&:hover": { backgroundColor: "var(--red-hover)" },
-        padding: "8px 16px",
+        
       }}
       onClick={action}
     >

@@ -4,10 +4,11 @@ import Form from "../../components/Form/Form"
 import { formFields, validationSchema } from "./form-fields"
 import suggestionService from "../../services/suggestion-service"
 import { useNavigate } from "react-router-dom"
-
+import { useAuth } from "../../hooks/auth"
 import { ButtonBack } from "../../components/CustomButtons/ButtonsMui"
 
 function NewSuggestionPage() {
+  const [value] = useAuth()
   const navigate = useNavigate()
   const onSubmit = (data) => {
     const dataNew = { ...data, status: "Planned" }

@@ -14,11 +14,12 @@ const CustomForm = styled(Stack)({
 
   ".labels-inputs h4": {
     color: "var(--dark-blue-text)",
-    fontSize: "14px",
+
   },
 
   ".labels-inputs p": {
     color: "var(--gray)",
+
   },
 
   h2: {

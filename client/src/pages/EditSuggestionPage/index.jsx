@@ -7,9 +7,11 @@ import suggestionService from '../../services/suggestion-service'
 import { useNavigate } from 'react-router-dom'
 import { useSuggestion } from '../../hooks'
 import { useParams } from 'react-router-dom'
+import { useAuth } from '../../hooks/auth'
 import _ from 'lodash'
 
 function UpdateSuggestion() {
+    const [value] = useAuth()
     const navigate = useNavigate()
     const {suggestionID} = useParams()
     const {suggestion, setSuggestion, loading} = useSuggestion(suggestionID)
@@ -37,6 +39,7 @@ function UpdateSuggestion() {
                         "category",
                         "status",
                     ])}
+                    adminExclusive={value.isAdmin}
                 />
             </Stack>
         </Stack>

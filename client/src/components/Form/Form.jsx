@@ -1,5 +1,4 @@
 import { Box, Stack } from "@mui/material"
-import {useMediaQuery} from "@mui/material"
 
 import { useForm, Controller } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -8,7 +7,7 @@ import { transformData } from "./helpers"
 
 import fields from "./InputTemplates"
 import CustomForm from "./Style"
-import { ButtonDark, ButtonPurple } from "../CustomButtons/ButtonsMui"
+import { ButtonDark, ButtonPurple, ButtonRed } from "../CustomButtons/ButtonsMui"
 
 const Form = ({
   heading,
@@ -17,6 +16,7 @@ const Form = ({
   onSubmit,
   validationSchema,
   defaultValues,
+  adminExclusive = false
 }) => {
   const {
     handleSubmit,
@@ -30,7 +30,10 @@ const Form = ({
     resolver: yupResolver(validationSchema),
   })
   return (
-    <CustomForm width={{sm: "540px", xs:"327px"}} padding={{sm:"42px", xs:"24px"}}>
+    <CustomForm
+      width={{ sm: "540px", xs: "327px" }}
+      padding={{ sm: "42px", xs: "24px" }}
+    >
       <form
         onSubmit={handleSubmit((data) => onSubmit(transformData(data)))}
         onReset={reset}
@@ -50,7 +53,10 @@ const Form = ({
                 render={({ field: { ref, ...field } }) => {
                   return (
                     <Box>
-                      <Box className="labels-inputs">
+                      <Box
+                        className="labels-inputs"
+                        fontSize={{ sm: "14px", xs: "13px" }}
+                      >
                         <h4>{rest.label}</h4>
                         {rest.desc && <p>{rest.desc}</p>}
                       </Box>
@@ -69,7 +75,12 @@ const Form = ({
         </Stack>
 
         <Box marginTop="32px">
-          <Stack flexDirection={{sm:"row", xs:"column"}} justifyContent="flex-end" gap="16px">
+          <Stack
+            flexDirection={{ sm: "row", xs: "column" }}
+            justifyContent="flex-end"
+            gap="16px"
+          >
+            {adminExclusive && <ButtonRed text="Delete"/>}
             <ButtonDark type="reset" text="Cancel" />
             <ButtonPurple type="submit" text={buttonLabel} />
           </Stack>
