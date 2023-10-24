@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material"
+import { Box, Stack, Typography } from "@mui/material"
 
 import { useForm, Controller } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -21,6 +21,7 @@ const Form = ({
   validationSchema,
   defaultValues,
   adminExclusive = false,
+  IconForm,
 }) => {
   const {
     handleSubmit,
@@ -38,11 +39,18 @@ const Form = ({
       width={{ sm: "540px", xs: "327px" }}
       padding={{ sm: "42px", xs: "24px" }}
     >
+      <div id="icon-form">{IconForm && <IconForm />}</div>
       <form
         onSubmit={handleSubmit((data) => onSubmit(transformData(data)))}
         onReset={reset}
       >
-        <h2>{heading}</h2>
+        <Typography
+          variant="h2"
+          marginTop={{ sm: "10px", xs: "44px" }}
+          marginBottom={{ sm: "40px", xs: "24px" }}
+        >
+          {heading}
+        </Typography>
         <Stack className="inputs-container">
           {formFields.map(({ name, ...rest }) => {
             const InputForm = fields[rest.type] || fields.input
@@ -84,11 +92,7 @@ const Form = ({
             justifyContent="space-between"
             gap="16px"
           >
-            <Stack>
-              {adminExclusive && (
-                <ButtonRed text="Delete" />
-              )}
-            </Stack>
+            <Stack>{adminExclusive && <ButtonRed text="Delete" />}</Stack>
 
             <Stack flexDirection={{ sm: "row", xs: "column" }} gap="16px">
               <ButtonDark type="reset" text="Cancel" />

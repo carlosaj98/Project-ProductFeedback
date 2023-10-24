@@ -7,6 +7,7 @@ import { useSuggestion } from "../../hooks"
 import { useAuth } from "../../hooks/auth"
 import _ from "lodash"
 import { ButtonBack } from "../../components/CustomButtons/ButtonsMui"
+import { IconEditFeedback } from "../../components/Icons/IconsSVG"
 
 function EditSuggestionPage() {
   const [value] = useAuth()
@@ -31,8 +32,8 @@ function EditSuggestionPage() {
         alignItems="center"
         height="100%"
       >
-        <Stack gap="64px">
-          <Box id="button-back">
+        <Stack gap="64px" height="100%">
+          <Box id="button-back" marginTop="56px">
             <ButtonBack />
           </Box>
           <Form
@@ -48,6 +49,7 @@ function EditSuggestionPage() {
             ])}
             validationSchema={validationSchema}
             adminExclusive={!!value.isAdmin}
+            IconForm={IconEditFeedback}
           />
         </Stack>
       </Stack>

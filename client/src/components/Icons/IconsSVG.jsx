@@ -80,7 +80,7 @@ function IllustrationEmpty() {
   )
 }
 
-function ArrowDown({stroke}) {
+function ArrowDown({ stroke }) {
   return (
     <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -94,7 +94,7 @@ function ArrowDown({stroke}) {
   )
 }
 
-function ArrowUp({stroke}) {
+function ArrowUp({ stroke }) {
   return (
     <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -149,7 +149,12 @@ function IconComments() {
 
 function IconEditFeedback() {
   return (
-    <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 40 40"
+    >
       <defs>
         <radialGradient
           cx="103.9%"
@@ -178,7 +183,12 @@ function IconEditFeedback() {
 
 function IconNewFeedback() {
   return (
-    <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 56 56"
+    >
       <defs>
         <radialGradient
           cx="103.9%"

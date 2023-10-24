@@ -6,6 +6,7 @@ import suggestionService from "../../services/suggestion-service"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/auth"
 import { ButtonBack } from "../../components/CustomButtons/ButtonsMui"
+import { IconNewFeedback } from "../../components/Icons/IconsSVG"
 
 function NewSuggestionPage() {
   const [value] = useAuth()
@@ -36,6 +37,7 @@ function NewSuggestionPage() {
             formFields={formFields}
             onSubmit={onSubmit}
             validationSchema={validationSchema}
+            IconForm={IconNewFeedback}
           />
         </Stack>
       </Stack>
