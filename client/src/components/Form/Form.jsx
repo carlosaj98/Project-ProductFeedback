@@ -7,7 +7,11 @@ import { transformData } from "./helpers"
 
 import fields from "./InputTemplates"
 import CustomForm from "./Style"
-import { ButtonDark, ButtonPurple, ButtonRed } from "../CustomButtons/ButtonsMui"
+import {
+  ButtonDark,
+  ButtonPurple,
+  ButtonRed,
+} from "../CustomButtons/ButtonsMui"
 
 const Form = ({
   heading,
@@ -16,7 +20,7 @@ const Form = ({
   onSubmit,
   validationSchema,
   defaultValues,
-  adminExclusive = false
+  adminExclusive = false,
 }) => {
   const {
     handleSubmit,
@@ -77,12 +81,19 @@ const Form = ({
         <Box marginTop="32px">
           <Stack
             flexDirection={{ sm: "row", xs: "column" }}
-            justifyContent="flex-end"
+            justifyContent="space-between"
             gap="16px"
           >
-            {adminExclusive && <ButtonRed text="Delete"/>}
-            <ButtonDark type="reset" text="Cancel" />
-            <ButtonPurple type="submit" text={buttonLabel} />
+            <Stack>
+              {adminExclusive && (
+                <ButtonRed text="Delete" />
+              )}
+            </Stack>
+
+            <Stack flexDirection={{ sm: "row", xs: "column" }} gap="16px">
+              <ButtonDark type="reset" text="Cancel" />
+              <ButtonPurple type="submit" text={buttonLabel} />
+            </Stack>
           </Stack>
         </Box>
       </form>
