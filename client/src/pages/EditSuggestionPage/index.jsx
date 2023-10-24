@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from "react-router-dom"
 import { Stack, Typography, Button, CircularProgress } from "@mui/material"
-import Form from "../../components/Form"
+import Form from "../../components/Form/Form"
 import { formFields, validationSchema } from "./form-fields"
 import suggestionService from '../../services/suggestion-service'
 import { useNavigate } from 'react-router-dom'

@@ -125,7 +125,7 @@ function ButtonBack() {
       sx={{
         color: "var(--gray)",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         gap: "16px",
         padding:"0px",
         ".font-button-back:hover": { textDecorationLine: "underline" },

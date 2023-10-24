@@ -1,6 +1,9 @@
-import { styled } from "@mui/material"
+import { styled, Stack } from "@mui/material"
 
-const CustomForm = styled("form")({
+const CustomForm = styled(Stack)({
+  backgroundColor:"var(--white)",
+  borderRadius:"10px",
+
   ".inputs-container":{
     gap:"24px"
   },
