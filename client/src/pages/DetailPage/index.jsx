@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Form from "../../components/Form"
+import Form from "../../components/Form/Form"
 import { formFields, validationSchema } from "./form-fields"
 import { Stack, Button } from "@mui/material"
 import { useSuggestion } from "../../hooks"

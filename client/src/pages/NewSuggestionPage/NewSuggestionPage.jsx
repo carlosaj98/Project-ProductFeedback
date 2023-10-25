@@ -1,29 +1,24 @@
-import { Stack, Container, Box, CircularProgress } from "@mui/material"
+import * as React from "react"
+import { Stack, Container, Box } from "@mui/material"
 import Form from "../../components/Form/Form"
 import { formFields, validationSchema } from "./form-fields"
 import suggestionService from "../../services/suggestion-service"
-import { useNavigate, useParams } from "react-router-dom"
-import { useSuggestion } from "../../hooks"
+import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/auth"
-import _ from "lodash"
 import { ButtonBack } from "../../components/CustomButtons/ButtonsMui"
-import { IconEditFeedback } from "../../components/Icons/IconsSVG"
+import { IconNewFeedback } from "../../components/Icons/IconsSVG"
 import PrincipalContainer from "./Style"
 
-function EditSuggestionPage() {
+function NewSuggestionPage() {
   const [value] = useAuth()
   const navigate = useNavigate()
-  const { suggestionID } = useParams()
-  const { suggestion, setSuggestion, loading } = useSuggestion(suggestionID)
-
   const onSubmit = (data) => {
+    const dataNew = { ...data, status: "Planned" }
     suggestionService
-      .update(data, suggestionID)
+      .create(dataNew)
       .then((data) => navigate(-1, { replace: true }))
       .catch((err) => console.log(err))
   }
-
-  if (loading) return <CircularProgress />
 
   return (
     <PrincipalContainer
@@ -38,18 +33,11 @@ function EditSuggestionPage() {
           buttonLabel="Add Feedback"
           formFields={formFields}
           onSubmit={onSubmit}
-          defaultValues={_.pick(suggestion, [
-            "title",
-            "category",
-            "status",
-            "description",
-          ])}
           validationSchema={validationSchema}
-          adminExclusive={!!value.isAdmin}
-          IconForm={IconEditFeedback}
+          IconForm={IconNewFeedback}
         />
       </Stack>
     </PrincipalContainer>
   )
 }
-export default EditSuggestionPage
+export default NewSuggestionPage

@@ -29,11 +29,10 @@ function HomePage() {
                 padding={{ sm: "0px 39px" }}
                 spacing="30px"
                 marginTop={{ sm: "56px", md: "94px" }}
-                justifyContent="flex-start"
             >
                 <Navbar status={statusCards}/>
                 <Box>
-                    <Headerbar />
+                    <Headerbar counter={suggestions.length}/>
                     <Box
                         component={"main"}
                         marginTop={"24px"}
