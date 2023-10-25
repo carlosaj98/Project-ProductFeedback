@@ -8,6 +8,7 @@ import { useAuth } from "../../hooks/auth"
 import _ from "lodash"
 import { ButtonBack } from "../../components/CustomButtons/ButtonsMui"
 import { IconEditFeedback } from "../../components/Icons/IconsSVG"
+import PrincipalContainer from "./Style"
 
 function EditSuggestionPage() {
   const [value] = useAuth()
@@ -25,35 +26,30 @@ function EditSuggestionPage() {
   if (loading) return <CircularProgress />
 
   return (
-    <Container sx={{ height: "100vh" }} id="principal-container">
-      <Stack
-        component="main"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-      >
-        <Stack gap="64px" height="100%">
-          <Box id="button-back" marginTop="56px">
-            <ButtonBack />
-          </Box>
-          <Form
-            heading="Create New Feedback"
-            buttonLabel="Add Feedback"
-            formFields={formFields}
-            onSubmit={onSubmit}
-            defaultValues={_.pick(suggestion, [
-              "title",
-              "category",
-              "status",
-              "description",
-            ])}
-            validationSchema={validationSchema}
-            adminExclusive={!!value.isAdmin}
-            IconForm={IconEditFeedback}
-          />
-        </Stack>
+    <PrincipalContainer
+      component="main"
+    >
+      <Stack gap="64px">
+        <Box id="button-back">
+          <ButtonBack />
+        </Box>
+        <Form
+          heading="Create New Feedback"
+          buttonLabel="Add Feedback"
+          formFields={formFields}
+          onSubmit={onSubmit}
+          defaultValues={_.pick(suggestion, [
+            "title",
+            "category",
+            "status",
+            "description",
+          ])}
+          validationSchema={validationSchema}
+          adminExclusive={!!value.isAdmin}
+          IconForm={IconEditFeedback}
+        />
       </Stack>
-    </Container>
+    </PrincipalContainer>
   )
 }
 export default EditSuggestionPage

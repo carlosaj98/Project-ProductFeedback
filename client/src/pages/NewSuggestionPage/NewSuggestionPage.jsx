@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/auth"
 import { ButtonBack } from "../../components/CustomButtons/ButtonsMui"
 import { IconNewFeedback } from "../../components/Icons/IconsSVG"
+import PrincipalContainer from "./Style"
 
 function NewSuggestionPage() {
   const [value] = useAuth()
@@ -20,28 +21,23 @@ function NewSuggestionPage() {
   }
 
   return (
-    <Container sx={{ height: "100vh" }} id="principal-container">
-      <Stack
-        component="main"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-      >
-        <Stack gap="64px">
-          <Box id="button-back">
-            <ButtonBack />
-          </Box>
-          <Form
-            heading="Create New Feedback"
-            buttonLabel="Add Feedback"
-            formFields={formFields}
-            onSubmit={onSubmit}
-            validationSchema={validationSchema}
-            IconForm={IconNewFeedback}
-          />
-        </Stack>
+    <PrincipalContainer
+      component="main"
+    >
+      <Stack gap="64px">
+        <Box id="button-back">
+          <ButtonBack />
+        </Box>
+        <Form
+          heading="Create New Feedback"
+          buttonLabel="Add Feedback"
+          formFields={formFields}
+          onSubmit={onSubmit}
+          validationSchema={validationSchema}
+          IconForm={IconNewFeedback}
+        />
       </Stack>
-    </Container>
+    </PrincipalContainer>
   )
 }
 export default NewSuggestionPage
