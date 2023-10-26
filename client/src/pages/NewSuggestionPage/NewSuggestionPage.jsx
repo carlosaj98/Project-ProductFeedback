@@ -5,8 +5,8 @@ import { formFields, validationSchema } from "./form-fields"
 import suggestionService from "../../services/suggestion-service"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/auth"
-import { ButtonBack } from "../../components/CustomButtons/ButtonsMui"
-import { IconNewFeedback } from "../../components/Icons/IconsSVG"
+import { ButtonBack } from "../../common/CustomButtons/ButtonsMui"
+import { IconNewFeedback } from "../../common/Icons/IconsSVG"
 import PrincipalContainer from "./Style"
 
 function NewSuggestionPage() {

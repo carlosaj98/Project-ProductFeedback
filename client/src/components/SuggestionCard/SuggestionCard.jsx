@@ -2,11 +2,10 @@ import Styled from "./Style"
 import DeleteIcon from "@mui/icons-material/Delete"
 import EditIcon from "@mui/icons-material/Edit"
 import { Button } from "@mui/material"
-import { IconComments, ArrowUp } from "../Icons/IconsSVG"
-import { ButtonVote } from "../CustomButtons/ButtonsMui"
+import { IconComments, ArrowUp } from "../../common/Icons/IconsSVG"
 import { useAuth } from "../../hooks/auth"
 import { Link } from "react-router-dom"
-import { ButtonCategory } from "../CustomButtons/ButtonsMui"
+import { ButtonCategory, ButtonVote } from "../../common/CustomButtons/ButtonsMui"
 
 function SuggestionCard({
   title,

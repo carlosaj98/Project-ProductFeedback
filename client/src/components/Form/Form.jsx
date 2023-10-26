@@ -11,7 +11,7 @@ import {
   ButtonDark,
   ButtonPurple,
   ButtonRed,
-} from "../CustomButtons/ButtonsMui"
+} from "../../common/CustomButtons/ButtonsMui"
 
 const Form = ({
   heading,

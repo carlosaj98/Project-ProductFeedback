@@ -5,8 +5,8 @@ import {
   ArrowDown,
   ArrowUp,
   IconCheck,
-} from "../Icons/IconsSVG"
-import { ButtonPurple } from "../CustomButtons/ButtonsMui"
+} from "../../common/Icons/IconsSVG"
+import { ButtonPurple } from "../../common/CustomButtons/ButtonsMui"
 import { Box, Typography, Button, Stack, Menu, MenuItem } from "@mui/material"
 import { Link } from "react-router-dom"
 function Headerbar({ counter }) {

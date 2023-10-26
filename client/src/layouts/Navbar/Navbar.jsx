@@ -4,7 +4,7 @@ import { Button, Stack, Box } from "@mui/material"
 import authService from "../../services/auth-service"
 import { useAuth } from "../../hooks/auth"
 import { Navigate } from "react-router-dom"
-import { ButtonBlue, ButtonCategory, ButtonRed } from "../CustomButtons/ButtonsMui"
+import { ButtonBlue, ButtonCategory, ButtonRed } from "../../common/CustomButtons/ButtonsMui"
 
 function Navbar({ status }) {
   const [value, dispatch] = useAuth()

@@ -6,8 +6,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useSuggestion } from "../../hooks"
 import { useAuth } from "../../hooks/auth"
 import _ from "lodash"
-import { ButtonBack } from "../../components/CustomButtons/ButtonsMui"
-import { IconEditFeedback } from "../../components/Icons/IconsSVG"
+import { ButtonBack } from "../../common/CustomButtons/ButtonsMui"
+import { IconEditFeedback } from "../../common/Icons/IconsSVG"
 import PrincipalContainer from "./Style"
 
 function EditSuggestionPage() {

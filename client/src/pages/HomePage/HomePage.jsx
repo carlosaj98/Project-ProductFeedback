@@ -1,11 +1,11 @@
-import Navbar from "../components/Navbar/Navbar"
-import Headerbar from "../components/Headerbar/Headerbar"
-import SuggestionCard from "../components/SuggestionCard/SuggestionCard"
+import Navbar from "../../layouts/Navbar/Navbar"
+import Headerbar from "../../layouts/Headerbar/Headerbar"
+import SuggestionCard from "../../components/SuggestionCard/SuggestionCard"
 import { Container, Stack, Box, CircularProgress } from "@mui/material"
-import { useSuggestions } from "../hooks"
-import suggestionService from "../services/suggestion-service"
+import { useSuggestions } from "../../hooks"
+import suggestionService from "../../services/suggestion-service"
 import { useState } from "react"
-import EmptySuggestion from "../components/EmptySuggestion/EmptySuggestion"
+import EmptySuggestion from "../../components/EmptySuggestion/EmptySuggestion"
 
 function HomePage() {
   const { suggestions, setSuggestions, loading } = useSuggestions()

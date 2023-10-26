@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Box, Typography, Stack } from "@mui/material"
-import { IllustrationEmpty } from "../Icons/IconsSVG"
-import { ButtonPurple } from "../CustomButtons/ButtonsMui"
+import { IllustrationEmpty } from "../../common/Icons/IconsSVG"
+import { ButtonPurple } from "../../common/CustomButtons/ButtonsMui"
 import CustomContainer from "./Style"
 
 function EmptySuggestion() {
