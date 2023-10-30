@@ -1,4 +1,5 @@
 import Navbar from "../../layouts/Navbar/Navbar"
+import NavbarMobile from "../../layouts/NavbarMobile/NavbarMobile"
 import Headerbar from "../../layouts/Headerbar/Headerbar"
 import SuggestionCard from "../../components/SuggestionCard/SuggestionCard"
 import { Container, Stack, Box, CircularProgress } from "@mui/material"
@@ -6,6 +7,7 @@ import { useSuggestions } from "../../hooks"
 import suggestionService from "../../services/suggestion-service"
 import { useState } from "react"
 import EmptySuggestion from "../../components/EmptySuggestion/EmptySuggestion"
+import { useMediaQuery } from "@mui/material"
 
 function HomePage() {
   const { suggestions, setSuggestions, loading } = useSuggestions()
@@ -18,6 +20,7 @@ function HomePage() {
     setSuggestions(suggestionFiltered)
     setSuggestionID("")
   }
+  const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
   if (loading) return <CircularProgress />
 
@@ -32,7 +35,12 @@ function HomePage() {
         spacing="30px"
         marginTop={{ sm: "56px", md: "94px" }}
       >
-        <Navbar status={statusCards} />
+        {isMobileScreen ? (
+          <NavbarMobile status={statusCards} />
+        ) : (
+          <Navbar status={statusCards} />
+        )}
+
         <Box flexGrow="1">
           <Headerbar counter={suggestions.length} />
           <Box
