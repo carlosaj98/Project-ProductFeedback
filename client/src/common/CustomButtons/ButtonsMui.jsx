@@ -106,11 +106,11 @@ function ButtonVote({ number }) {
           color: "var(--dark-blue-text)",
         },
         "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
-        padding: "14px 12px 8px 12px",
+        padding: {sm:"14px 12px 8px 12px", xs:"6px 16px"},
         display: "flex",
-        flexDirection: "column",
+        flexDirection: {sm:"column", xs:"row"},
         gap: "8px",
-        minWidth: "40px",
+        minWidth: {sm:"40px"},
       }}
       onMouseDown={handleClick}
     >

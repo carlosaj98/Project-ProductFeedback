@@ -1,13 +1,11 @@
-import {styled} from "@mui/material"
+import {styled, Stack} from "@mui/material"
 import { Button } from "@mui/material"
-const SuggestionCard = styled("div")({
+const SuggestionCardContainer = styled(Stack)({
   backgroundColor: "var(--white)",
   marginBottom: "20px",
   padding: "28px 32px",
   borderRadius: "10px",
   gap: "40px",
-  display: "flex",
-  alignItems: "baseline",
 
   ".suggestion-card-text":{
     flexGrow: "1"
@@ -74,4 +72,4 @@ const ButtonScore = styled(Button)({
   }
 })
 
-export default {SuggestionCard, ButtonScore}
+export  {SuggestionCardContainer, ButtonScore}
