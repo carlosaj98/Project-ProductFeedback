@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ArrowDown, ArrowUp } from "../Icons/IconsSVG"
+import { ArrowDown, ArrowUp } from "../../common/Icons/IconsSVG"
 
 import {
   FormControl,

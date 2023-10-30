@@ -5,7 +5,6 @@ const CustomHeader = styled(Stack)({
   flexDirection: "row",
   justifyContent: "flex-start",
   alignItems: "center",
-  borderRadius:"10px",
   padding: "14px 16px",
   color: "var(--white)",
 

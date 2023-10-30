@@ -1,12 +1,15 @@
-import CustomNavbar from "./Style"
-import { Link } from "react-router-dom"
-import { Button, Stack, Box } from "@mui/material"
-import authService from "../../services/auth-service"
+import { Stack, Box } from "@mui/material"
+import {
+  ButtonCategory,
+  ButtonRed,
+  ButtonBlue,
+} from "../../common/CustomButtons/ButtonsMui"
+import { DrawerSectionsContainer } from "./Style"
 import { useAuth } from "../../hooks/auth"
-import { Navigate } from "react-router-dom"
-import { ButtonBlue, ButtonCategory, ButtonRed } from "../CustomButtons/ButtonsMui"
+import authService from "../../services/auth-service"
+import { Link } from "react-router-dom"
 
-function Navbar({ status }) {
+function DrawerSections({ statusValue }) {
   const [value, dispatch] = useAuth()
   const handleLogout = () => {
     authService.logout()
@@ -14,28 +17,9 @@ function Navbar({ status }) {
     dispatch({ type: "logout" })
   }
 
-  function statusValue(value) {
-    return status.reduce((contador, elemento) => {
-      if (elemento === value) {
-        return contador + 1
-      }
-      return contador
-    }, 0)
-  }
   return (
-    <CustomNavbar
-      component="nav"
-      minWidth={{md: "256px"}}
-      width={{md: "256px", sm: "100%"}}
-      height="100%"
-      flexDirection={{md: "column", sm: "row"}}
-      flexWrap={"wrap"}
-    >
-      <Box id="feedbackBoard" flexGrow="1" maxWidth={{ md:"100%" ,sm: "calc(100%/3)"}}>
-        <h2>Frontend Mentor</h2>
-        <p>Feedback Board</p>
-      </Box>
-      <Stack id="suggestionCategories" flexGrow="1" maxWidth={{ md:"100%" ,sm: "calc(100%/3)"}}>
+    <DrawerSectionsContainer padding="24px" width={"300px"} gap={"24px"}>
+      <Stack id="suggestionCategories">
         <ButtonCategory text="All" />
         <ButtonCategory text="UI" />
         <ButtonCategory text="UX" />
@@ -43,8 +27,18 @@ function Navbar({ status }) {
         <ButtonCategory text="Bug" />
         <ButtonCategory text="Feature" />
       </Stack>
-      <Stack id="roadmap-preview" flexGrow="1" maxWidth={{ md:"100%" ,sm: "calc(100%/3)"}}>
-        <Stack id="rm-header">
+      <Stack
+        id="roadmap-preview"
+        backgroundColor="white"
+        padding="20px"
+        borderRadius="10px"
+        gap="8px"
+      >
+        <Stack
+          id="rm-header"
+          flexDirection="row"
+          justifyContent="space-between"
+        >
           <p>Roadmap</p>
           <a href="">View</a>
         </Stack>
@@ -66,17 +60,15 @@ function Navbar({ status }) {
           </li>
         </ul>
       </Stack>
-      <Stack
-        id="user-btn"
-        direction="row"
-        justifyContent="center"
-        gap="24px"
-        flexGrow="1"
-      >
+      <Stack flexDirection="row" justifyContent="center" gap="24px">
         <>
           {value.isAuth ? (
-            <ButtonRed variant="contained" color="error" action={handleLogout} text={"LOGOUT"}>
-            </ButtonRed>
+            <ButtonRed
+              variant="contained"
+              color="error"
+              action={handleLogout}
+              text={"LOGOUT"}
+            ></ButtonRed>
           ) : (
             <>
               <Link to="/signin">
@@ -90,7 +82,7 @@ function Navbar({ status }) {
           )}
         </>
       </Stack>
-    </CustomNavbar>
+    </DrawerSectionsContainer>
   )
 }
-export default Navbar
+export default DrawerSections

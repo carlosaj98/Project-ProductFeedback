@@ -1,5 +1,10 @@
 import { Button as ButtonsMui } from "@mui/material"
-import { ArrowLeft, ArrowUp } from "../Icons/IconsSVG"
+import {
+  ArrowLeft,
+  ArrowUp,
+  IconCloseMobile,
+  IconHamburgerMobile,
+} from "../Icons/IconsSVG"
 import { Link } from "react-router-dom"
 import { styled } from "@mui/material"
 import { useState } from "react"
@@ -34,7 +39,6 @@ function ButtonBlue({ text }) {
       sx={{
         backgroundColor: "var(--blue)",
         "&:hover": { backgroundColor: "var(--blue-hover)" },
-        
       }}
     >
       {text}
@@ -45,7 +49,7 @@ function ButtonBlue({ text }) {
 function ButtonDark({ text, type }) {
   return (
     <Button
-    type={type}
+      type={type}
       sx={{
         backgroundColor: "var(--dark-blue-text)",
         "&:hover": { backgroundColor: "var(--dark-blue-hover)" },
@@ -62,7 +66,6 @@ function ButtonRed({ text, action }) {
       sx={{
         backgroundColor: "var(--red)",
         "&:hover": { backgroundColor: "var(--red-hover)" },
-        
       }}
       onClick={action}
     >
@@ -103,11 +106,11 @@ function ButtonVote({ number }) {
           color: "var(--dark-blue-text)",
         },
         "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
-        padding: "14px 12px 8px 12px",
+        padding: {sm:"14px 12px 8px 12px", xs:"6px 16px"},
         display: "flex",
-        flexDirection: "column",
+        flexDirection: {sm:"column", xs:"row"},
         gap: "8px",
-        minWidth: "40px",
+        minWidth: {sm:"40px"},
       }}
       onMouseDown={handleClick}
     >
@@ -127,11 +130,11 @@ function ButtonBack() {
         display: "flex",
         justifyContent: "flex-start",
         gap: "16px",
-        padding:"0px",
+        padding: "0px",
         ".font-button-back:hover": { textDecorationLine: "underline" },
-        "&:hover":{
-          backgroundColor:"transparent"
-        }
+        "&:hover": {
+          backgroundColor: "transparent",
+        },
       }}
     >
       <ArrowLeft />
@@ -139,4 +142,21 @@ function ButtonBack() {
     </Button>
   )
 }
-export { ButtonPurple, ButtonBlue, ButtonDark, ButtonRed, ButtonCategory, ButtonVote, ButtonBack }
+
+function ButtonHamburger({ action, actionStatus }) {
+  return (
+    <Button onClick={action()}>
+      {actionStatus ? <IconCloseMobile /> : <IconHamburgerMobile />}
+    </Button>
+  )
+}
+export {
+  ButtonPurple,
+  ButtonBlue,
+  ButtonDark,
+  ButtonRed,
+  ButtonCategory,
+  ButtonVote,
+  ButtonBack,
+  ButtonHamburger,
+}
