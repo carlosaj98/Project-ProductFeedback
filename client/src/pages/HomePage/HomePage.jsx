@@ -48,6 +48,7 @@ function HomePage() {
             marginTop={"24px"}
             marginBottom={"120px"}
             height="100%"
+            padding={{sm:"0px", xs:"24px"}}
           >
             {suggestions.length > 0 ? (
               suggestions.map((suggestion) => {

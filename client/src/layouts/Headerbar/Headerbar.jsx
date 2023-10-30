@@ -1,5 +1,6 @@
 import CustomHeader from "./Style"
 import { useState } from "react"
+import { useMediaQuery } from "@mui/material"
 import {
   IconSuggestion,
   ArrowDown,
@@ -9,6 +10,7 @@ import {
 import { ButtonPurple } from "../../common/CustomButtons/ButtonsMui"
 import { Box, Typography, Button, Stack, Menu, MenuItem } from "@mui/material"
 import { Link } from "react-router-dom"
+
 function Headerbar({ counter }) {
   const sortOptions = [
     { label: "Most Upvotes", value: "mostupvotes" },
@@ -20,6 +22,7 @@ function Headerbar({ counter }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const [selectedOption, setSelectedOption] = useState("mostupvotes")
   const [isOpen, setIsOpen] = useState(false)
+  const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
   const handleMenuOpen = (event) => {
     setIsOpen(true)
@@ -35,11 +38,20 @@ function Headerbar({ counter }) {
   }
 
   return (
-    <CustomHeader id="header-container" component="header">
-      <Box id="svg-header-container">
-        <IconSuggestion />
-      </Box>
-      <p id="counter-header">{counter} Suggestions</p>
+    <CustomHeader
+      id="header-container"
+      component="header"
+      borderRadius={{ sm: "10px", xs: "0px" }}
+    >
+      {!isMobileScreen && (
+        <>
+          <Box id="svg-header-container">
+            <IconSuggestion />
+          </Box>{" "}
+          <p id="counter-header">{counter} Suggestions</p>
+        </>
+      )}
+
       <Box>
         <Button
           id="sort-container"
@@ -80,8 +92,8 @@ function Headerbar({ counter }) {
                 padding: "12px 24px",
                 color: "var(--gray)",
                 "&:hover": { color: "var(--purple)" },
-                display:"flex",
-                justifyContent:"space-between"
+                display: "flex",
+                justifyContent: "space-between",
               }}
             >
               {option.label}

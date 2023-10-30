@@ -1,13 +1,25 @@
 import { Stack, Box } from "@mui/material"
-import { ButtonCategory } from "../../common/CustomButtons/ButtonsMui"
+import {
+  ButtonCategory,
+  ButtonRed,
+  ButtonBlue,
+} from "../../common/CustomButtons/ButtonsMui"
 import { DrawerSectionsContainer } from "./Style"
+import { useAuth } from "../../hooks/auth"
+import authService from "../../services/auth-service"
+import { Link } from "react-router-dom"
 
 function DrawerSections({ statusValue }) {
+  const [value, dispatch] = useAuth()
+  const handleLogout = () => {
+    authService.logout()
+
+    dispatch({ type: "logout" })
+  }
+
   return (
     <DrawerSectionsContainer padding="24px" width={"300px"} gap={"24px"}>
-      <Stack
-        id="suggestionCategories"
-      >
+      <Stack id="suggestionCategories">
         <ButtonCategory text="All" />
         <ButtonCategory text="UI" />
         <ButtonCategory text="UX" />
@@ -22,7 +34,11 @@ function DrawerSections({ statusValue }) {
         borderRadius="10px"
         gap="8px"
       >
-        <Stack id="rm-header" flexDirection="row" justifyContent="space-between">
+        <Stack
+          id="rm-header"
+          flexDirection="row"
+          justifyContent="space-between"
+        >
           <p>Roadmap</p>
           <a href="">View</a>
         </Stack>
@@ -43,6 +59,28 @@ function DrawerSections({ statusValue }) {
             <p className="rm-item-number">{statusValue("Live")}</p>
           </li>
         </ul>
+      </Stack>
+      <Stack flexDirection="row" justifyContent="center" gap="24px">
+        <>
+          {value.isAuth ? (
+            <ButtonRed
+              variant="contained"
+              color="error"
+              action={handleLogout}
+              text={"LOGOUT"}
+            ></ButtonRed>
+          ) : (
+            <>
+              <Link to="/signin">
+                <ButtonBlue text="SIGN IN" />
+              </Link>
+
+              <Link to="/signup">
+                <ButtonBlue text="SIGN UP" />
+              </Link>
+            </>
+          )}
+        </>
       </Stack>
     </DrawerSectionsContainer>
   )
