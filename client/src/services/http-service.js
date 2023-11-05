@@ -9,6 +9,8 @@ function create(endpoint) {
 		create: (entity) => apiClient.post(endpoint, entity),
 		update: (entity, id) => apiClient.put(endpoint + '/' + id, entity),
 
+		updateVotes: (id) => apiClient.put(endpoint + '/' + id + "/votes"),
+
 		delete: (id) => apiClient.delete(endpoint + '/' + id),
 	}
 
