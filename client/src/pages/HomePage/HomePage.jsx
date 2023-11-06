@@ -43,12 +43,13 @@ function HomePage() {
 
         <Box flexGrow="1">
           <Headerbar counter={suggestions.length} />
-          <Box
+          <Stack
             component={"main"}
             marginTop={"24px"}
             marginBottom={"120px"}
             height="100%"
             padding={{sm:"0px", xs:"24px"}}
+            gap="20px"
           >
             {suggestions.length > 0 ? (
               suggestions.map((suggestion) => {
@@ -69,7 +70,7 @@ function HomePage() {
             ) : (
               <EmptySuggestion />
             )}
-          </Box>
+          </Stack>
         </Box>
       </Stack>
     </Container>

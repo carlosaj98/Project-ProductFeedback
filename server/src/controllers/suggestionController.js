@@ -46,14 +46,14 @@ const getOne = async (req, res) => {
         populate: [
             {
                 path: "user",
-                select: ["username", "avatar"],
+                select: ["username", "avatar", "firstname", "lastname"],
             },
             {
                 path: "replies",
                 populate: [
                     {
                         path: "user",
-                        select: ["username", "avatar"],
+                        select: ["username", "avatar", "firstname", "lastname"],
                     },
                 ],
             },
