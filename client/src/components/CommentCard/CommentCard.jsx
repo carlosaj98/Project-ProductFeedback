@@ -1,20 +1,37 @@
-import { Stack, Avatar, Button, Typography, Box } from "@mui/material"
+import { Stack, Avatar, Button, Typography, Box, Divider } from "@mui/material"
+import ReplyCard from "./ReplyCard"
 import { NewReply } from "../../pages/DetailPage"
-function Comments({ content, user, replies, id, avatar }) {
+
+import {CommentContainer} from "./Style"
+function Comments({ content, user, replies, id, avatar, isDivider }) {
   return (
-    <Stack flexDirection="row" gap={"24px"}>
+    <CommentContainer>
       <Avatar src={avatar} />
-      <Stack  width="100%">
+      <Stack width="100%" gap="20px">
         <Stack flexDirection="row" justifyContent="space-between">
           <Box>
-            <p>{`${user.firstname} ${user.lastname}`}</p>
-            <p>@{user.username}</p>
+            <Typography className="user-fullname">{`${user.firstname} ${user.lastname}`}</Typography>
+            <Typography className="user-username">@{user.username}</Typography>
           </Box>
           <Button>Reply</Button>
         </Stack>
-        <Typography>{content}</Typography>
+        <Typography className="user-comment">{content}</Typography>
+        {replies.length > 0 && (
+          <Stack>
+            {replies.map((reply) => (
+              <ReplyCard
+                key={reply._id}
+                id={reply._id}
+                content={reply.content}
+                replyTo={reply.replyingTo}
+                user={reply.user}
+              />
+            ))}
+          </Stack>
+        )}
+        {isDivider && <Divider />}
       </Stack>
-    </Stack>
+    </CommentContainer>
   )
 }
 export default Comments

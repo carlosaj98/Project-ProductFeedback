@@ -8,15 +8,16 @@ const PrincipalContainer = styled(Stack)({
 
   "#comments-container":{
     backgroundColor: "var(--white)",
-    padding: "24px",
+    padding: "24px 32px",
     borderRadius: "10px",
+    gap:"28px"
   },
 
   "#comments-counter":{
     fontFamily: "Jost",
     fontWeight: "700",
     fontSize: "18px",
-    color: "var(--dark-blue-text)"
+    color: "var(--dark-blue-text)",
   },
 
   "#add-comment-container":{
