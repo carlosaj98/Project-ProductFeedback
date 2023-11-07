@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 
 import HomePage from "./pages/HomePage/HomePage"
 import ErrorPage from "./pages/ErrorPage"
-import DetailPage from "./pages/DetailPage2/DetailPage"
+import DetailPage from "./pages/DetailPage/DetailPage"
 import RoadmapPage from "./pages/RoadmapPage"
 import NewSuggestionPage from "./pages/NewSuggestionPage/NewSuggestionPage"
 import EditSuggestionPage from "./pages/EditSuggestionPage/EditSuggestionPage"

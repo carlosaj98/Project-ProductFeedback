@@ -1,40 +1,68 @@
-import * as React from "react"
 import { useParams } from "react-router-dom"
 import { useSuggestion } from "../../hooks"
-import Comments from "../../components/CommentCard/Comments"
-import { Link } from "react-router-dom"
-import { CircularProgress, Stack, Button } from "@mui/material"
-import { NewComment, NewReply } from "."
+
+import { Stack, Box, Typography, CircularProgress } from "@mui/material"
+import { ButtonBack, ButtonBlue } from "../../common/CustomButtons/ButtonsMui"
+import SuggestionCard from "../../components/SuggestionCard/SuggestionCard"
+import CommentCard from "../../components/CommentCard/CommentCard"
+import FormComment from "../../components/FormComment/FormComment"
+
+import PrincipalContainer from "./Style"
 
 function DetailPage() {
-    const { suggestionID } = useParams()
-    const { suggestion, setSuggestions, loading } = useSuggestion(suggestionID)
+  const { suggestionID } = useParams()
+  const { suggestion, setSuggestions, loading } = useSuggestion(suggestionID)
+  console.log(suggestion)
 
-    if (loading) return <CircularProgress />
+  if (loading) return <CircularProgress />
 
-    return (
-        // <div>{!loading && (suggestion.comments[0].content)}</div>
-        <>
-            <Button variant="outlined" component={Link} to="/">
-                Back
-            </Button>
-            <h1 style={{ textAlign: "center" }}>Comments</h1>
-            <Stack gap="16px" padding={"30px"}>
-                {suggestion.comments.map((comment) => (
-                        <Comments
-                            key={comment._id}
-                            id= {comment._id}
-                            content={comment.content}
-                            user={comment.user.username}
-                            replies={comment.replies}
-                        >
-                        </Comments>
-                ))}
-            </Stack>
-            <Stack alignItems={"center"}>
-                <NewComment />
-            </Stack>
-        </>
-    )
+  let totalComments = suggestion.comments.length
+  let totalReplies = 0
+  suggestion.comments.forEach((comment) => {
+    totalReplies += comment.replies.length
+  })
+
+  return (
+    <PrincipalContainer id="principal-container">
+      <Stack gap="24px" width="730px">
+        <Stack flexDirection="row" justifyContent="space-between">
+          <ButtonBack />
+          <ButtonBlue text="Edit Feedback" />
+        </Stack>
+        <Box id="suggestion-card-container" component="header">
+          <SuggestionCard
+            key={suggestion._id}
+            id={suggestion._id}
+            upvotes={suggestion.upvotes}
+            title={suggestion.title}
+            description={suggestion.description}
+            category={suggestion.category}
+            comments={suggestion.comments}
+          />
+        </Box>
+        <Stack component="main" id="comments-container">
+          <Typography id="comments-counter">
+            {totalComments + totalReplies} Comments
+          </Typography>
+          <Stack gap={"32px"}>
+            {suggestion.comments.map((comment, index) => (
+              <CommentCard
+                key={comment._id}
+                id={comment._id}
+                content={comment.content}
+                user={comment.user}
+                replies={comment.replies}
+                avatar={comment.user.avatar}
+                isDivider={index < suggestion.comments.length - 1}
+              ></CommentCard>
+            ))}
+          </Stack>
+        </Stack>
+        <Stack id="add-comment-container">
+          <FormComment />
+        </Stack>
+      </Stack>
+    </PrincipalContainer>
+  )
 }
 export default DetailPage

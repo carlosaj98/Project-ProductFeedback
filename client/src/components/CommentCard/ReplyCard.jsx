@@ -1,7 +1,12 @@
-import { Stack, Avatar, Button, Typography, Box, Divider } from "@mui/material"
+
+import { useState } from "react"
+import { Stack, Avatar, Button, Typography, Box } from "@mui/material"
+import FormReply from "../FormReply/FormReply"
 import { ReplyContainer } from "./Style"
 
-function ReplyCard({ id, content, replyTo, user }) {
+function ReplyCard({ id, content, replyTo, user, commentID }) {
+  const [isActive, setIsActive] = useState(false)
+  const handleClick = ()=> {setIsActive(true)}
   return (
     <ReplyContainer>
       <Avatar src={user.avatar} />
@@ -11,13 +16,15 @@ function ReplyCard({ id, content, replyTo, user }) {
             <Typography className="user-fullname">{`${user.firstname} ${user.lastname}`}</Typography>
             <Typography className="user-username">@{user.username}</Typography>
           </Box>
-          <Button>Reply</Button>
+          <Button onClick={handleClick}>Reply</Button>
         </Stack>
         <Typography className="user-comment">
           <span className="username-reply">@{replyTo} </span>
           {content}
         </Typography>
+        {isActive && <FormReply replyingTo={user.username} commentID={commentID}/>}
       </Stack>
+      
     </ReplyContainer>
   )
 }
