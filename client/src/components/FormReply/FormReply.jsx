@@ -42,7 +42,7 @@ function FormReply({replyingTo, commentID}) {
             name={name}
             render={({ field: { ref, ...field } }) => {
               return (
-                <Stack className="form-comment-container" flexDirection="row">
+                <Stack className="form-comment-container" flexDirection={{sm:"row", xs:"column"}}>
                   <InputField
                     errors={errors[name]}
                     name={name}
