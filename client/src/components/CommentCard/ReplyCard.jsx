@@ -20,7 +20,7 @@ function ReplyCard({ id, content, replyTo, user, commentID }) {
                 @{user.username}
               </Typography>
             </Box>
-            <Button onClick={handleClick}>Reply</Button>
+            <Button className="button-reply" onClick={handleClick} variant="text">Reply</Button>
           </Stack>
           <Typography className="user-comment">
             <span className="username-reply">@{replyTo} </span>

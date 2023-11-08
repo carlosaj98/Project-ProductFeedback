@@ -2,7 +2,6 @@ import { styled, Stack } from "@mui/material"
 
 const PrincipalContainer = styled(Stack)({
   alignItems: "center",
-  border: "1px solid blue",
   minHeight: "100vh",
   padding: "80px 0px",
 

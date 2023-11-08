@@ -22,7 +22,7 @@ function Comments({ content, user, replies, id, avatar, isDivider }) {
                 @{user.username}
               </Typography>
             </Box>
-            <Button onClick={handleClick}>Reply</Button>
+            <Button className="button-reply" onClick={handleClick} variant="text">Reply</Button>
           </Stack>
           <Typography className="user-comment">{content}</Typography>
           {isActive && <FormReply replyingTo={user.username} commentID={id} />}

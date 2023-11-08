@@ -24,6 +24,17 @@ const CommentContainer = styled(Stack)({
     fontSize: "15px",
   },
 
+  ".button-reply": {
+    color: "var(--blue)",
+    textTransform: "none",
+    fontFamily: "Jost",
+    fontSize:"13px",
+    fontWeight:"600",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+
   ".reply-flex-container": {
     marginLeft: "20px",
     borderLeft: "1px solid var(--gray-rgba)",
