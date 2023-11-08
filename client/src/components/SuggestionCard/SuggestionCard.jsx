@@ -1,6 +1,7 @@
+import { useState } from "react"
+import suggestionService from "../../services/suggestion-service"
 import { SuggestionCardContainer } from "./Style"
 import DeleteIcon from "@mui/icons-material/Delete"
-import EditIcon from "@mui/icons-material/Edit"
 import { Box, Stack } from "@mui/material"
 import { IconComments, ArrowUp } from "../../common/Icons/IconsSVG"
 import { useAuth } from "../../hooks/auth"
@@ -22,6 +23,10 @@ function SuggestionCard({
   id,
 }) {
   const [value] = useAuth()
+  const [votes, setVotes] = useState(upvotes)
+  const handleVote = () =>
+    suggestionService.updateVotes(id).then(({ data }) => setVotes(data.upvotes))
+
   const categoryCapitalize =
     category.charAt(0).toUpperCase() + category.slice(1)
 
@@ -51,25 +56,15 @@ function SuggestionCard({
           </Box>
           <Stack flexDirection="row" justifyContent="space-between">
             <Box className="upvote-container">
-              <ButtonVote number={upvotes}></ButtonVote>
+              <ButtonVote
+                number={votes.length}
+                action={handleVote}
+              ></ButtonVote>
             </Box>
 
             <Box className="icon-comment">
               <IconComments />
               <p>{totalComments + totalReplies}</p>
-              <Link to={`/suggestion/editsuggestion/${id}`}>
-        <EditIcon color="primary" />
-      </Link>
-      {value.isAdmin && (
-        <Button
-          onClick={() => {
-            onSetID(id)
-            onDelete(id)
-          }}
-        >
-          <DeleteIcon color="error" />
-        </Button>
-      )}
             </Box>
           </Stack>
         </SuggestionCardContainer>
@@ -80,7 +75,7 @@ function SuggestionCard({
           alignItems="baseline"
         >
           <Box className="upvote-container">
-            <ButtonVote number={upvotes}></ButtonVote>
+            <ButtonVote number={votes.length} action={handleVote}></ButtonVote>
           </Box>
           <Box className="suggestion-card-text">
             <Link to={`/suggestion/${id}`} style={{ textDecoration: "none" }}>
@@ -94,19 +89,6 @@ function SuggestionCard({
           <Box className="icon-comment">
             <IconComments />
             <p>{totalComments + totalReplies}</p>
-            <Link to={`/suggestion/editsuggestion/${id}`}>
-        <EditIcon color="primary" />
-      </Link>
-      {value.isAdmin && (
-        <Button
-          onClick={() => {
-            onSetID(id)
-            onDelete(id)
-          }}
-        >
-          <DeleteIcon color="error" />
-        </Button>
-      )}
           </Box>
         </SuggestionCardContainer>
       )}

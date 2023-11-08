@@ -15,6 +15,10 @@ function EditSuggestionPage() {
   const navigate = useNavigate()
   const { suggestionID } = useParams()
   const { suggestion, setSuggestion, loading } = useSuggestion(suggestionID)
+  const deleteSuggestion = () => {
+    suggestionService.delete(suggestionID)
+      .then(()=>navigate("/", { replace: true }))
+  }
 
   const onSubmit = (data) => {
     suggestionService
@@ -26,9 +30,7 @@ function EditSuggestionPage() {
   if (loading) return <CircularProgress />
 
   return (
-    <PrincipalContainer
-      component="main"
-    >
+    <PrincipalContainer component="main">
       <Stack gap="64px">
         <Box id="button-back">
           <ButtonBack />
@@ -47,6 +49,7 @@ function EditSuggestionPage() {
           validationSchema={validationSchema}
           adminExclusive={!!value.isAdmin}
           IconForm={IconEditFeedback}
+          onDelete={deleteSuggestion}
         />
       </Stack>
     </PrincipalContainer>

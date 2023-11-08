@@ -2,7 +2,6 @@ import {styled, Stack} from "@mui/material"
 import { Button } from "@mui/material"
 const SuggestionCardContainer = styled(Stack)({
   backgroundColor: "var(--white)",
-  marginBottom: "20px",
   padding: "28px 32px",
   borderRadius: "10px",
   gap: "40px",

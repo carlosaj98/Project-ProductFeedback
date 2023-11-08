@@ -22,6 +22,7 @@ const Form = ({
   defaultValues,
   adminExclusive = false,
   IconForm,
+  onDelete
 }) => {
   const {
     handleSubmit,
@@ -92,7 +93,7 @@ const Form = ({
             justifyContent="space-between"
             gap="16px"
           >
-            <Stack>{adminExclusive && <ButtonRed text="Delete" />}</Stack>
+            <Stack>{adminExclusive && <ButtonRed text="Delete" action={onDelete}/>}</Stack>
 
             <Stack flexDirection={{ sm: "row", xs: "column" }} gap="16px">
               <ButtonDark type="reset" text="Cancel" />

@@ -90,9 +90,10 @@ function ButtonCategory({ text }) {
   )
 }
 
-function ButtonVote({ number }) {
+function ButtonVote({ number, action }) {
   const [isActive, setIsActive] = useState(false)
   const handleClick = () => {
+    action()
     setIsActive(!isActive)
   }
   return (
