@@ -4,22 +4,12 @@ import Headerbar from "../../layouts/Headerbar/Headerbar"
 import SuggestionCard from "../../components/SuggestionCard/SuggestionCard"
 import { Container, Stack, Box, CircularProgress } from "@mui/material"
 import { useSuggestions } from "../../hooks"
-import suggestionService from "../../services/suggestion-service"
-import { useState } from "react"
 import EmptySuggestion from "../../components/EmptySuggestion/EmptySuggestion"
 import { useMediaQuery } from "@mui/material"
 
 function HomePage() {
   const { suggestions, setSuggestions, loading } = useSuggestions()
-  const [suggestionID, setSuggestionID] = useState("")
-  const deleteSuggestion = (id) => {
-    suggestionService.delete(id)
-    const suggestionFiltered = suggestions.filter(
-      (suggestion) => suggestion._id !== id
-    )
-    setSuggestions(suggestionFiltered)
-    setSuggestionID("")
-  }
+  
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
   if (loading) return <CircularProgress />
@@ -62,8 +52,7 @@ function HomePage() {
                     description={suggestion.description}
                     category={suggestion.category}
                     comments={suggestion.comments}
-                    onSetID={setSuggestionID}
-                    onDelete={deleteSuggestion}
+
                   />
                 )
               })

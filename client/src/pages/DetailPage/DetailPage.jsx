@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useSuggestion } from "../../hooks"
 
 import { Stack, Box, Typography, CircularProgress } from "@mui/material"
+import { Link } from "react-router-dom"
 import { ButtonBack, ButtonBlue } from "../../common/CustomButtons/ButtonsMui"
 import SuggestionCard from "../../components/SuggestionCard/SuggestionCard"
 import CommentCard from "../../components/CommentCard/CommentCard"
@@ -24,13 +25,12 @@ function DetailPage() {
 
   return (
     <PrincipalContainer id="principal-container">
-      <Stack
-        gap="24px"
-        width={{ md: "730px", xs: "100%" }}
-      >
+      <Stack gap="24px" width={{ md: "730px", xs: "100%" }}>
         <Stack flexDirection="row" justifyContent="space-between">
           <ButtonBack />
-          <ButtonBlue text="Edit Feedback" />
+          <Link to={`/suggestion/editsuggestion/${suggestionID}`}>
+            <ButtonBlue text="Edit Feedback" />
+          </Link>
         </Stack>
         <Box id="suggestion-card-container" component="header">
           <SuggestionCard
