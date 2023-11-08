@@ -24,7 +24,10 @@ function DetailPage() {
 
   return (
     <PrincipalContainer id="principal-container">
-      <Stack gap="24px" width="730px">
+      <Stack
+        gap="24px"
+        width={{ md: "730px", xs: "100%" }}
+      >
         <Stack flexDirection="row" justifyContent="space-between">
           <ButtonBack />
           <ButtonBlue text="Edit Feedback" />

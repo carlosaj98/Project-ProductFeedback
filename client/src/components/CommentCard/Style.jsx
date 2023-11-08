@@ -36,7 +36,6 @@ const CommentContainer = styled(Stack)({
   },
 
   ".reply-flex-container": {
-    marginLeft: "20px",
     borderLeft: "1px solid var(--gray-rgba)",
     paddingLeft: "24px",
   },

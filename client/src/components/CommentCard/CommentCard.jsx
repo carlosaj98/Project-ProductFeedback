@@ -22,14 +22,24 @@ function Comments({ content, user, replies, id, avatar, isDivider }) {
                 @{user.username}
               </Typography>
             </Box>
-            <Button className="button-reply" onClick={handleClick} variant="text">Reply</Button>
+            <Button
+              className="button-reply"
+              onClick={handleClick}
+              variant="text"
+            >
+              Reply
+            </Button>
           </Stack>
           <Typography className="user-comment">{content}</Typography>
           {isActive && <FormReply replyingTo={user.username} commentID={id} />}
         </Stack>
       </Stack>
       {replies.length > 0 && (
-        <Stack className="reply-flex-container" gap={"24px"} >
+        <Stack
+          className="reply-flex-container"
+          gap={"24px"}
+          marginLeft={{ sm: "20px", xs: "0px" }}
+        >
           {replies.map((reply) => (
             <ReplyCard
               key={reply._id}
@@ -42,7 +52,9 @@ function Comments({ content, user, replies, id, avatar, isDivider }) {
           ))}
         </Stack>
       )}
-      {isDivider && <Divider sx={{backgroundColor:"var(--gray)", opacity:"0.1"}}/>}
+      {isDivider && (
+        <Divider sx={{ backgroundColor: "var(--gray)", opacity: "0.1" }} />
+      )}
     </CommentContainer>
   )
 }
