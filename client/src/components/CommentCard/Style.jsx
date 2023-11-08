@@ -1,7 +1,6 @@
 import { styled, Stack } from "@mui/material"
 
 const CommentContainer = styled(Stack)({
-  flexDirection: "row",
   gap: "24px",
 
   ".user-fullname": {
@@ -24,16 +23,21 @@ const CommentContainer = styled(Stack)({
     fontWeight: "400",
     fontSize: "15px",
   },
+
+  ".reply-flex-container": {
+    marginLeft: "20px",
+    borderLeft: "1px solid var(--gray-rgba)",
+    paddingLeft: "24px",
+  },
 })
 
-const ReplyContainer = styled(Stack)({ 
-  flexDirection: "row", 
+const ReplyContainer = styled(Stack)({
   gap: "24px",
 
-  ".username-reply":{
-    fontWeight:"700",
-    color:"var(--purple)"
-  }
+  ".username-reply": {
+    fontWeight: "700",
+    color: "var(--purple)",
+  },
 })
 
 export { CommentContainer, ReplyContainer }

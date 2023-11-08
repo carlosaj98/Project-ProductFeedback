@@ -8,7 +8,7 @@ const PrincipalContainer = styled(Stack)({
 
   "#comments-container": {
     backgroundColor: "var(--white)",
-    padding: "24px 32px",
+    padding: "24px 32px 48px 32px",
     borderRadius: "10px",
     gap: "28px",
   },
