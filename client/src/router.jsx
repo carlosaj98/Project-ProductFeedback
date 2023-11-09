@@ -6,8 +6,8 @@ import DetailPage from "./pages/DetailPage/DetailPage"
 import RoadmapPage from "./pages/RoadmapPage"
 import NewSuggestionPage from "./pages/NewSuggestionPage/NewSuggestionPage"
 import EditSuggestionPage from "./pages/EditSuggestionPage/EditSuggestionPage"
-import RegisterPage from "./pages/SignUpPage/RegisterPage"
-import LoginPage from "./pages/SignInPage/LoginPage"
+import SignUpPage from "./pages/SignUpPage/SignUpPage"
+import SignInPage from "./pages/SignInPage/SignInPage"
 import ProtectedRoute from "./utils/ProtectedRoute"
 
 const router = createBrowserRouter([
@@ -39,12 +39,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <ProtectedRoute page={RegisterPage} role="anonymous"/>,
+    element: <ProtectedRoute page={SignUpPage} role="anonymous"/>,
     errorElement: <ErrorPage />,
   },
   {
     path: "/signin",
-    element: <ProtectedRoute page={LoginPage} role="anonymous"/>,
+    element: <ProtectedRoute page={SignInPage} role="anonymous"/>,
     errorElement: <ErrorPage />,
   },
 ])

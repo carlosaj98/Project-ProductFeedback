@@ -4,7 +4,7 @@ const formFields = [
   { name: "firstname", label: "Firstname" },
   { name: "lastname", label: "Lastname" },
   { name: "username", label: "Username" },
-  { name: "password", label: "Paswword", type: "password" },
+  { name: "password", label: "Password", type: "password" },
   { name: "avatar", label: "Avatar", type: "file" },
 ]
 
