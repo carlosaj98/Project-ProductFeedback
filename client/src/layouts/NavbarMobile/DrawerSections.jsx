@@ -9,7 +9,7 @@ import { useAuth } from "../../hooks/auth"
 import authService from "../../services/auth-service"
 import { Link } from "react-router-dom"
 
-function DrawerSections({ statusValue }) {
+function DrawerSections({ statusValue, handleCategory }) {
   const [value, dispatch] = useAuth()
   const handleLogout = () => {
     authService.logout()
@@ -20,12 +20,20 @@ function DrawerSections({ statusValue }) {
   return (
     <DrawerSectionsContainer padding="24px" width={"300px"} gap={"24px"}>
       <Stack id="suggestionCategories">
-        <ButtonCategory text="All" />
-        <ButtonCategory text="UI" />
-        <ButtonCategory text="UX" />
-        <ButtonCategory text="Enhancement" />
-        <ButtonCategory text="Bug" />
-        <ButtonCategory text="Feature" />
+        <ButtonCategory text="All" value="" action={handleCategory} />
+        <ButtonCategory text="UI" value="UI" action={handleCategory} />
+        <ButtonCategory text="UX" value="UX" action={handleCategory} />
+        <ButtonCategory
+          text="Enhancement"
+          value="Enhancement"
+          action={handleCategory}
+        />
+        <ButtonCategory text="Bug" value="Bug" action={handleCategory} />
+        <ButtonCategory
+          text="Feature"
+          value="Feature"
+          action={handleCategory}
+        />
       </Stack>
       <Stack
         id="roadmap-preview"

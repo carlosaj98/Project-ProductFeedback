@@ -2,7 +2,7 @@ import NavbarSections from "./NavbarSections"
 import NavbarUserBtn from "./NavbarUserBtn"
 import CustomNavbar from "./Style"
 
-function Navbar({ status }) {
+function Navbar({ status, handleCategory }) {
   function statusValue(value) {
     return status.reduce((contador, elemento) => {
       if (elemento === value) {
@@ -18,7 +18,7 @@ function Navbar({ status }) {
       width={{ md: "256px", sm: "100%" }}
       height="100%"
     >
-      <NavbarSections statusValue={statusValue} />
+      <NavbarSections statusValue={statusValue} handleCategory={handleCategory}/>
       <NavbarUserBtn />
     </CustomNavbar>
   )

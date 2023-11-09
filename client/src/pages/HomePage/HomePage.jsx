@@ -6,10 +6,26 @@ import { Container, Stack, Box, CircularProgress } from "@mui/material"
 import { useSuggestions } from "../../hooks"
 import EmptySuggestion from "../../components/EmptySuggestion/EmptySuggestion"
 import { useMediaQuery } from "@mui/material"
+import { useState } from "react"
 
 function HomePage() {
-  const { suggestions, setSuggestions, loading } = useSuggestions()
-  
+  const [category, setCategory] = useState("")
+  const [sortUpvotes, setSortUpvotes] = useState("desc")
+  const [sortComments, setSortComments] = useState("")
+  const { suggestions, setSuggestions, loading } = useSuggestions({
+    category: category,
+    sortByUpvotes: sortUpvotes,
+    sortByComments: sortComments,
+  })
+
+  const handleCategory = (activeCategory) => setCategory(activeCategory)
+  const handleSortUpvotes = (activeSort) => {
+    setSortUpvotes(activeSort), setSortComments("")
+  }
+  const handleSortComments = (activeSort) => {
+    setSortComments(activeSort), setSortUpvotes("")
+  }
+
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
   if (loading) return <CircularProgress />
@@ -26,19 +42,23 @@ function HomePage() {
         marginTop={{ sm: "56px", md: "94px" }}
       >
         {isMobileScreen ? (
-          <NavbarMobile status={statusCards} />
+          <NavbarMobile status={statusCards} handleCategory={handleCategory} />
         ) : (
-          <Navbar status={statusCards} />
+          <Navbar status={statusCards} handleCategory={handleCategory} />
         )}
 
         <Box flexGrow="1">
-          <Headerbar counter={suggestions.length} />
+          <Headerbar
+            counter={suggestions.length}
+            handleSortUpvotes={handleSortUpvotes}
+            handleSortComments={handleSortComments}
+          />
           <Stack
             component={"main"}
             marginTop={"24px"}
             marginBottom={"120px"}
             height="100%"
-            padding={{sm:"0px", xs:"24px"}}
+            padding={{ sm: "0px", xs: "24px" }}
             gap="20px"
           >
             {suggestions.length > 0 ? (
@@ -52,7 +72,6 @@ function HomePage() {
                     description={suggestion.description}
                     category={suggestion.category}
                     comments={suggestion.comments}
-
                   />
                 )
               })
