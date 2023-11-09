@@ -11,7 +11,7 @@ import { ButtonPurple } from "../../common/CustomButtons/ButtonsMui"
 import { Box, Typography, Button, Stack, Menu, MenuItem } from "@mui/material"
 import { Link } from "react-router-dom"
 
-function Headerbar({ counter }) {
+function Headerbar({ counter, handleSortUpvotes, handleSortComments }) {
   const sortOptions = [
     { label: "Most Upvotes", value: "mostupvotes" },
     { label: "Least Upvotes", value: "leastupvotes" },
@@ -34,6 +34,18 @@ function Headerbar({ counter }) {
     setAnchorEl(null)
     if (option) {
       setSelectedOption(option.value)
+    }
+
+    if (option.value === "mostupvotes") {
+      handleSortUpvotes("desc")
+    } else if (option.value === "leastupvotes") {
+      handleSortUpvotes("asc")
+    }
+
+    if (option.value === "mostcomments") {
+      handleSortComments("desc")
+    } else if (option.value === "leastcomments") {
+      handleSortComments("asc")
     }
   }
 

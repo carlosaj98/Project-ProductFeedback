@@ -10,12 +10,21 @@ import { useState } from "react"
 
 function HomePage() {
   const [category, setCategory] = useState("")
+  const [sortUpvotes, setSortUpvotes] = useState("desc")
+  const [sortComments, setSortComments] = useState("")
   const { suggestions, setSuggestions, loading } = useSuggestions({
-    category: category
+    category: category,
+    sortByUpvotes: sortUpvotes,
+    sortByComments: sortComments,
   })
 
   const handleCategory = (activeCategory) => setCategory(activeCategory)
-
+  const handleSortUpvotes = (activeSort) => {
+    setSortUpvotes(activeSort), setSortComments("")
+  }
+  const handleSortComments = (activeSort) => {
+    setSortComments(activeSort), setSortUpvotes("")
+  }
 
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
@@ -33,13 +42,17 @@ function HomePage() {
         marginTop={{ sm: "56px", md: "94px" }}
       >
         {isMobileScreen ? (
-          <NavbarMobile status={statusCards} handleCategory={handleCategory}/>
+          <NavbarMobile status={statusCards} handleCategory={handleCategory} />
         ) : (
           <Navbar status={statusCards} handleCategory={handleCategory} />
         )}
 
         <Box flexGrow="1">
-          <Headerbar counter={suggestions.length} />
+          <Headerbar
+            counter={suggestions.length}
+            handleSortUpvotes={handleSortUpvotes}
+            handleSortComments={handleSortComments}
+          />
           <Stack
             component={"main"}
             marginTop={"24px"}

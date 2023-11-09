@@ -12,7 +12,7 @@ function useSuggestions(queryParams){
             .then(({data}) => setSuggestions(data))
             .catch(setErrors)
             .finally(()=> setLoading(false))
-    }, [queryParams.category])
+    }, [queryParams.category, queryParams.sortByUpvotes, queryParams.sortByComments])
 
     return {suggestions, loading, errors, setSuggestions}
 }
