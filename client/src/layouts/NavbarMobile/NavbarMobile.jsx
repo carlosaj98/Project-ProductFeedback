@@ -7,7 +7,7 @@ import {
 import {NavbarContainer} from "./Style"
 import DrawerSections from "./DrawerSections"
 
-function NavbarMobile({ status }) {
+function NavbarMobile({ status, handleCategory }) {
   function statusValue(value) {
     return status.reduce((contador, elemento) => {
       if (elemento === value) {
@@ -43,7 +43,7 @@ function NavbarMobile({ status }) {
         anchor="right"
         PaperProps={{ sx: { backgroundColor: "#F7F8FD" } }}
       >
-        <DrawerSections statusValue={statusValue} />
+        <DrawerSections statusValue={statusValue} handleCategory={(category)=> {handleCategory(category), handleClick()}}/>
       </Drawer>
     </NavbarContainer>
   )

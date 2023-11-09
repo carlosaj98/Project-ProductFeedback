@@ -6,10 +6,22 @@ import { Container, Stack, Box, CircularProgress } from "@mui/material"
 import { useSuggestions } from "../../hooks"
 import EmptySuggestion from "../../components/EmptySuggestion/EmptySuggestion"
 import { useMediaQuery } from "@mui/material"
+import { useState } from "react"
 
 function HomePage() {
+  const [category, setCategory] = useState("All")
   const { suggestions, setSuggestions, loading } = useSuggestions()
-  
+
+  const handleCategory = (activeCategory) => setCategory(activeCategory)
+
+  const suggestionsFiltered = suggestions.filter((suggestion) => {
+    if (category === "All") {
+      return suggestion
+    } else {
+      return suggestion.category === category
+    }
+  })
+
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
   if (loading) return <CircularProgress />
@@ -26,23 +38,23 @@ function HomePage() {
         marginTop={{ sm: "56px", md: "94px" }}
       >
         {isMobileScreen ? (
-          <NavbarMobile status={statusCards} />
+          <NavbarMobile status={statusCards} handleCategory={handleCategory}/>
         ) : (
-          <Navbar status={statusCards} />
+          <Navbar status={statusCards} handleCategory={handleCategory} />
         )}
 
         <Box flexGrow="1">
-          <Headerbar counter={suggestions.length} />
+          <Headerbar counter={suggestionsFiltered.length} />
           <Stack
             component={"main"}
             marginTop={"24px"}
             marginBottom={"120px"}
             height="100%"
-            padding={{sm:"0px", xs:"24px"}}
+            padding={{ sm: "0px", xs: "24px" }}
             gap="20px"
           >
-            {suggestions.length > 0 ? (
-              suggestions.map((suggestion) => {
+            {suggestionsFiltered.length > 0 ? (
+              suggestionsFiltered.map((suggestion) => {
                 return (
                   <SuggestionCard
                     key={suggestion._id}
@@ -52,7 +64,6 @@ function HomePage() {
                     description={suggestion.description}
                     category={suggestion.category}
                     comments={suggestion.comments}
-
                   />
                 )
               })

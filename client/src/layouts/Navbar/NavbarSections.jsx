@@ -1,7 +1,7 @@
 import { Stack, Box } from "@mui/material"
 import { ButtonCategory } from "../../common/CustomButtons/ButtonsMui"
 
-function NavbarSections({statusValue}) {
+function NavbarSections({statusValue, handleCategory}) {
   return (
     <Stack flexDirection={{ md: "column", sm: "row" }} gap="24px">
         <Box
@@ -17,12 +17,12 @@ function NavbarSections({statusValue}) {
           flexGrow="1"
           maxWidth={{ md: "100%", sm: "calc(100%/3)" }}
         >
-          <ButtonCategory text="All" />
-          <ButtonCategory text="UI" />
-          <ButtonCategory text="UX" />
-          <ButtonCategory text="Enhancement" />
-          <ButtonCategory text="Bug" />
-          <ButtonCategory text="Feature" />
+          <ButtonCategory text="All" action={handleCategory}/>
+          <ButtonCategory text="UI" action={handleCategory}/>
+          <ButtonCategory text="UX" action={handleCategory}/>
+          <ButtonCategory text="Enhancement" action={handleCategory}/>
+          <ButtonCategory text="Bug" action={handleCategory}/>
+          <ButtonCategory text="Feature" action={handleCategory}/>
         </Stack>
         <Stack
           id="roadmap-preview"
