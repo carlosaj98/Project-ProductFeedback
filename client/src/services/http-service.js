@@ -2,7 +2,7 @@ import apiClient from './api-client'
 
 function create(endpoint) {
 	const httpService = {
-		getAll: () => apiClient.get(endpoint),
+		getAll: (queryParams) => apiClient.get(endpoint, {params: queryParams}),
 
 		getById: (id) => apiClient.get(endpoint + '/' + id),
 

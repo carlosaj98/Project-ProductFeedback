@@ -74,7 +74,7 @@ function ButtonRed({ text, action }) {
   )
 }
 
-function ButtonCategory({ text, action }) {
+function ButtonCategory({ text, value, action }) {
   return (
     <Button
       sx={{
@@ -84,7 +84,7 @@ function ButtonCategory({ text, action }) {
         "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
         padding: "5px 15px",
       }}
-      onClick={()=>action(text)}
+      onClick={()=>action(value)}
     >
       {text}
     </Button>

@@ -9,18 +9,13 @@ import { useMediaQuery } from "@mui/material"
 import { useState } from "react"
 
 function HomePage() {
-  const [category, setCategory] = useState("All")
-  const { suggestions, setSuggestions, loading } = useSuggestions()
+  const [category, setCategory] = useState("")
+  const { suggestions, setSuggestions, loading } = useSuggestions({
+    category: category
+  })
 
   const handleCategory = (activeCategory) => setCategory(activeCategory)
 
-  const suggestionsFiltered = suggestions.filter((suggestion) => {
-    if (category === "All") {
-      return suggestion
-    } else {
-      return suggestion.category === category
-    }
-  })
 
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
@@ -44,7 +39,7 @@ function HomePage() {
         )}
 
         <Box flexGrow="1">
-          <Headerbar counter={suggestionsFiltered.length} />
+          <Headerbar counter={suggestions.length} />
           <Stack
             component={"main"}
             marginTop={"24px"}
@@ -53,8 +48,8 @@ function HomePage() {
             padding={{ sm: "0px", xs: "24px" }}
             gap="20px"
           >
-            {suggestionsFiltered.length > 0 ? (
-              suggestionsFiltered.map((suggestion) => {
+            {suggestions.length > 0 ? (
+              suggestions.map((suggestion) => {
                 return (
                   <SuggestionCard
                     key={suggestion._id}
