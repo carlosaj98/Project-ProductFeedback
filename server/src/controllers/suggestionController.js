@@ -4,24 +4,27 @@ const User = require("../models/user")
 const { includes } = require("lodash")
 
 const getAll = async (req, res) => {
-    const { category, status, sortByCreation } = req.query
+    const { category, status, sortByUpvotes, sortByComments } = req.query;
 
-    let filter = {}
-    let sort = {
-        createdAt: "",
-    }
+    let filter = {};
+    let sort = {};
 
     if (category) {
-        filter.category = { $in: category }
+        filter.category = { $in: category };
     }
 
     if (status) {
-        filter.status = { $in: status }
+        filter.status = { $in: status };
     }
 
-    if (sortByCreation && ["asc", "desc"].includes(sortByCreation)) {
-        sort.createdAt = sortByCreation
+    if (sortByUpvotes && ["asc", "desc"].includes(sortByUpvotes)) {
+        sort.upvotes = sortByUpvotes === "asc" ? 1 : -1;
     }
+
+    if (sortByComments && ["asc", "desc"].includes(sortByComments)) {
+        sort.comments = sortByComments === "asc" ? 1 : -1;
+    }
+
     const suggestions = await Suggestion.find(filter)
         .sort(sort)
         .populate({
@@ -33,10 +36,11 @@ const getAll = async (req, res) => {
                 },
                 { path: "replies" },
             ],
-        })
+        });
 
-    res.json(suggestions)
-}
+    res.json(suggestions);
+};
+
 
 const getOne = async (req, res) => {
     const suggestionID = await Suggestion.findById(
