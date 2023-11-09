@@ -34,7 +34,16 @@ const InputField = ({ name, errors, value, label, multiline, ...rest }) => {
   )
 }
 
-const SelectField = ({ name, label, errors, value = [], options, placeholder, customers, ...rest }) => {
+const SelectField = ({
+  name,
+  label,
+  errors,
+  value = [],
+  options,
+  placeholder,
+  customers,
+  ...rest
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const handleClick = () => setIsOpen(!isOpen)
   return (
@@ -47,7 +56,10 @@ const SelectField = ({ name, label, errors, value = [], options, placeholder, cu
           fontFamily: "Jost",
           // ".MuiOutlinedInput-notchedOutline": { border: "none" },
         }}
-        MenuProps={{ MenuListProps: { disablePadding: true }, sx: { marginTop: "16px" } }}
+        MenuProps={{
+          MenuListProps: { disablePadding: true },
+          sx: { marginTop: "16px" },
+        }}
         value={value}
         {...rest}
         inputProps={{ IconComponent: () => null }}
@@ -88,13 +100,15 @@ const FileField = ({
 }) => {
   const [preview, setPreview] = useState(value)
   return (
-    <Stack>
-      <Box>
-        <img width="150px" src={preview} />
-      </Box>
+    <Stack gap={"12px"} >
+      {value && (
+        <Box classname="profile-image-preview" sx={{alignSelf:"center", width:"150px", height:"150px"}}>
+          <img src={preview} style={{objectFit:"cover", width: "100%", height:"100%", borderRadius:"100%"}}/>
+        </Box>
+      )}
 
       <FormControl>
-        <FormGroup>
+        <FormGroup >
           <TextField
             error={!!errors}
             label=""

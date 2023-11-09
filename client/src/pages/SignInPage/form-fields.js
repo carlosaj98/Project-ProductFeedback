@@ -2,7 +2,7 @@ import * as yup from "yup"
 
 const formFields = [
     { name: "username", label: "Username" },
-    { name: "password", label: "Paswword", type:"password" }
+    { name: "password", label: "Password", type:"password" }
 ]
 
 const validationSchema = yup.object().shape({
