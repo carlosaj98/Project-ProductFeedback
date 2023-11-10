@@ -19,13 +19,18 @@ function SuggestionCard({
   comments,
   upvotes,
   onSetID,
-  onDelete,
+  onVote,
   id,
 }) {
   const [value] = useAuth()
   const [votes, setVotes] = useState(upvotes)
-  const handleVote = () =>
-    suggestionService.updateVotes(id).then(({ data }) => setVotes(data.upvotes))
+
+    const handleVote = () =>
+      suggestionService.updateVotes(id).then(({ data }) => {
+        setVotes(data.upvotes)
+        onVote()
+      })
+
 
   const categoryCapitalize =
     category.charAt(0).toUpperCase() + category.slice(1)
