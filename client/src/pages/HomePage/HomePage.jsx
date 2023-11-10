@@ -12,7 +12,7 @@ function HomePage() {
   const [category, setCategory] = useState("")
   const [sortUpvotes, setSortUpvotes] = useState("desc")
   const [sortComments, setSortComments] = useState("")
-  const { suggestions, setSuggestions, loading } = useSuggestions({
+  const { suggestions, setSuggestions, loading, markSuggestionsChanged } = useSuggestions({
     category: category,
     sortByUpvotes: sortUpvotes,
     sortByComments: sortComments,
@@ -25,6 +25,8 @@ function HomePage() {
   const handleSortComments = (activeSort) => {
     setSortComments(activeSort), setSortUpvotes("")
   }
+
+  const onVote=()=> markSuggestionsChanged()
 
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
@@ -72,6 +74,7 @@ function HomePage() {
                     description={suggestion.description}
                     category={suggestion.category}
                     comments={suggestion.comments}
+                    onVote={onVote}
                   />
                 )
               })

@@ -1,20 +1,33 @@
-import { useEffect, useState } from 'react'
-import suggestionService from '../services/suggestion-service'
+import { useEffect, useState } from "react"
+import suggestionService from "../services/suggestion-service"
 
-function useSuggestions(queryParams){
-    const [suggestions, setSuggestions] = useState([])
-	const [loading, setLoading] = useState(true)
-	const [errors, setErrors] = useState()
+function useSuggestions(queryParams) {
+  const [suggestions, setSuggestions] = useState([])
+  const [isChanged, setIsChanged] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [errors, setErrors] = useState()
 
-    useEffect(() => {
-        suggestionService
-            .getAll(queryParams)
-            .then(({data}) => setSuggestions(data))
-            .catch(setErrors)
-            .finally(()=> setLoading(false))
-    }, [queryParams.category, queryParams.sortByUpvotes, queryParams.sortByComments])
+  useEffect(() => {
+    suggestionService
+      .getAll(queryParams)
+      .then(({ data }) => {
+        setSuggestions(data)
+        setIsChanged(false)
+      })
+      .catch(setErrors)
+      .finally(() => setLoading(false))
+  }, [
+    queryParams.category,
+    queryParams.sortByUpvotes,
+    queryParams.sortByComments,
+    isChanged,
+  ])
 
-    return {suggestions, loading, errors, setSuggestions}
+  const markSuggestionsChanged = () => {
+    setIsChanged(true);
+  };
+
+  return { suggestions, loading, errors, setSuggestions, markSuggestionsChanged }
 }
 
 export default useSuggestions
