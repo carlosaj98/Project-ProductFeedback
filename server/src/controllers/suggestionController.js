@@ -7,7 +7,6 @@ const getAll = async (req, res) => {
     const { category, status, sortByUpvotes, sortByComments } = req.query;
 
     let filter = {};
-    let sort = {};
 
     if (category) {
         filter.category = { $in: category };
@@ -17,16 +16,7 @@ const getAll = async (req, res) => {
         filter.status = { $in: status };
     }
 
-    if (sortByUpvotes && ["asc", "desc"].includes(sortByUpvotes)) {
-        sort.upvotes = sortByUpvotes === "asc" ? 1 : -1;
-    }
-
-    if (sortByComments && ["asc", "desc"].includes(sortByComments)) {
-        sort.comments = sortByComments === "asc" ? 1 : -1;
-    }
-
     const suggestions = await Suggestion.find(filter)
-        .sort(sort)
         .populate({
             path: "comments",
             populate: [
@@ -38,8 +28,27 @@ const getAll = async (req, res) => {
             ],
         });
 
-    res.json(suggestions);
+    suggestions.forEach((suggestion) => {
+        if (sortByUpvotes) {
+            suggestion.sortField = suggestion.upvotes.length;
+        }
+        if (sortByComments) {
+            suggestion.sortField = suggestion.comments.length;
+        }
+    });
+
+    const sortedSuggestions = suggestions.sort((a, b) => {
+        if (sortByUpvotes) {
+            return (sortByUpvotes === "asc" ? 1 : -1) * (a.sortField - b.sortField);
+        }
+        if (sortByComments) {
+            return (sortByComments === "asc" ? 1 : -1) * (a.sortField - b.sortField);
+        }
+    });
+
+    res.json(sortedSuggestions);
 };
+
 
 
 const getOne = async (req, res) => {

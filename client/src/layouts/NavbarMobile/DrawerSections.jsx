@@ -48,7 +48,7 @@ function DrawerSections({ statusValue, handleCategory }) {
           justifyContent="space-between"
         >
           <p>Roadmap</p>
-          <a href="">View</a>
+          <Link to="/roadmap">View</Link>
         </Stack>
         <ul id="rm-list">
           <li className="rm-list-item">
