@@ -126,7 +126,7 @@ function ButtonBack() {
   return (
     <Button
       component={Link}
-      to={"/"}
+      to={-1}
       sx={{
         color: "var(--gray)",
         display: "flex",
@@ -149,7 +149,7 @@ function ButtonBackWhite() {
   return (
     <Button
       component={Link}
-      to={"/"}
+      to={-1}
       sx={{
         color: "var(--white)",
         display: "flex",
