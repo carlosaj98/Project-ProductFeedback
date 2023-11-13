@@ -1,6 +1,8 @@
 import Roadmap from "../../layouts/Roadmap/Roadmap"
+import RoadmapMobile from "../../layouts/RoadmapMobile/RoadmapMobile"
 import PrincipalContainer from "./Style"
 import { Stack, Typography, Box } from "@mui/material"
+import { useMediaQuery } from "@mui/material"
 import {
   ButtonBackWhite,
   ButtonPurple,
@@ -16,20 +18,21 @@ function RoadmapPage() {
     sortByComments: "",
   })
 
-  console.log(suggestions)
+  const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
   return (
     <PrincipalContainer
       id="principal-container"
-      padding={{ md: "78px 24px", sm: "56px 40px" }}
+      disableGutters
     >
       <Stack id="main-container">
-        <Stack alignItems="center" gap="48px">
+        <Stack alignItems="center" gap={{sm: "48px", xs:"20px"}} padding={{ md: "78px 24px", sm: "56px 40px" }}>
           <Stack
             component="header"
             flexDirection="row"
             justifyContent="space-between"
             alignItems="center"
+            borderRadius={{sm:"10px", xs:"0px"}}
           >
             <Box>
               <ButtonBackWhite />
@@ -43,7 +46,11 @@ function RoadmapPage() {
               </Link>
             </Box>
           </Stack>
-          <Roadmap suggestions={suggestions} />
+          {isMobileScreen ? (
+            <RoadmapMobile suggestions={suggestions} />
+          ) : (
+            <Roadmap suggestions={suggestions} />
+          )}
         </Stack>
       </Stack>
     </PrincipalContainer>

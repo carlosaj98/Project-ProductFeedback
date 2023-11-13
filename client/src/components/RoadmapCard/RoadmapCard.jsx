@@ -45,7 +45,7 @@ function RoadmapCard({
   if (variantStatus === "Planned") {
     dotStatusStyle = "dot-status-planned"
     borderStatusStyle = "6px solid var(--orange)"
-  } else if (variantStatus === "In Progress") {
+  } else if (variantStatus === "In-Progress") {
     dotStatusStyle = "dot-status-progress"
     borderStatusStyle = "6px solid var(--purple)"
   } else if (variantStatus === "Live") {

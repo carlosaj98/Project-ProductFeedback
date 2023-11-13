@@ -44,7 +44,7 @@ function Roadmap({ suggestions }) {
           <Typography variant="h3">
             In-Progress ({suggestionsInProgress.length})
           </Typography>
-          <Typography>Ideas prioritized for research</Typography>
+          <Typography>Currently being developed</Typography>
         </Box>
         <Stack gap="24px">
           {suggestionsInProgress.map((suggestion) => {
@@ -57,7 +57,7 @@ function Roadmap({ suggestions }) {
                   description={suggestion.description}
                   category={suggestion.category}
                   comments={suggestion.comments}
-                  variantStatus={"In Progress"}
+                  variantStatus={"In-Progress"}
                 />
             )
           })}
@@ -66,7 +66,7 @@ function Roadmap({ suggestions }) {
       <Stack className="roadmap-column-container">
         <Box className="roadmap-column-title">
           <Typography variant="h3">Live ({suggestionsLive.length})</Typography>
-          <Typography>Ideas prioritized for research</Typography>
+          <Typography>Released features</Typography>
         </Box>
         <Stack gap="24px">
           {suggestionsLive.map((suggestion) => {

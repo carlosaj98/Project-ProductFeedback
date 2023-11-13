@@ -111,7 +111,7 @@ function ButtonVote({ number, action, isRoadmap }) {
         padding: { sm: "14px 12px 8px 12px", xs: "6px 16px" },
         display: "flex",
         flexDirection: isRoadmap ? "row" : { sm: "column", xs: "row" },
-        gap: isRoadmap ? "12px" : {sm: "8px", xs: "12px"},
+        gap: isRoadmap ? "12px" : { sm: "8px", xs: "12px" },
         minWidth: { sm: "40px" },
       }}
       onMouseDown={handleClick}
@@ -175,6 +175,37 @@ function ButtonHamburger({ action, actionStatus }) {
     </Button>
   )
 }
+
+function ButtonStatus({ text, number, activeStatus, action, isActive }) {
+  let activeColorStatus = ""
+  if (activeStatus === "Planned") {
+    activeColorStatus = "4px solid var(--orange)"
+  } else if (activeStatus === "In-Progress") {
+    activeColorStatus = "4px solid var(--purple)"
+  } else if (activeStatus === "Live") {
+    activeColorStatus = "4px solid var(--light-blue)"
+  }
+
+  return (
+    <Button
+      fullWidth
+      sx={{
+        color: isActive
+          ? "var(--dark-blue-text)"
+          : "var(--dark-blue-text-rgba)",
+        fontSize: "13px",
+        fontWeight: "700",
+        borderRadius: "0px",
+        borderBottom: isActive ? activeColorStatus : "none",
+        padding: "16px 0px",
+      }}
+      onClick={() => action(text)}
+    >
+      {text} ({number})
+    </Button>
+  )
+}
+
 export {
   ButtonPurple,
   ButtonBlue,
@@ -185,4 +216,5 @@ export {
   ButtonBack,
   ButtonBackWhite,
   ButtonHamburger,
+  ButtonStatus,
 }

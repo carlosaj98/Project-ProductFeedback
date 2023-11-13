@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     "--light-blue": "#62BCFA",
                     "--dark-blue-bg": "#373F68",
                     "--dark-blue-text": "#3A4374",
+                    "--dark-blue-text-rgba": "rgba(58, 67, 116, 0.4)",
                     "--inter-color": "#F2F4FF",
                     "--inter-hover-color": "#CFD7FF",
                     "--light-gray": "#F7F8FD",

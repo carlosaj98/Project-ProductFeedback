@@ -1,6 +1,6 @@
-import { styled, Stack } from "@mui/material";
+import { styled, Stack, Container } from "@mui/material";
 
-const PrincipalContainer = styled(Stack)({
+const PrincipalContainer = styled(Container)({
   minHeight:"100vh",
   alignItems:"center",
 
@@ -12,7 +12,6 @@ const PrincipalContainer = styled(Stack)({
     width: "100%",
     backgroundColor: "var(--dark-blue-bg)",
     padding:"27px 32px",
-    borderRadius:"10px"
   },
 
   "#roadmap-title":{
