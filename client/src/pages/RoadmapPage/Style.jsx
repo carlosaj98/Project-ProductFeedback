@@ -1,8 +1,8 @@
 import { styled, Container } from "@mui/material";
 
 const PrincipalContainer = styled(Container)({
-  border: "1px solid red",
   minHeight:"100vh",
+  paddingTop:"78px",
 
   header:{
     width: "100%",

@@ -6,7 +6,7 @@ const RoadmapContainer = styled(Stack)({
 
   ".roadmap-column-container":{
     width:"100%",
-    border:"1px solid blue"
+    gap:"32px"
   },
 
   ".roadmap-column-title h3":{
@@ -20,7 +20,7 @@ const RoadmapContainer = styled(Stack)({
     fontFamily:"Jost",
     fontSize:"16px",
     color:"var(--gray)"
-  }
+  },
 })
 
 export default RoadmapContainer

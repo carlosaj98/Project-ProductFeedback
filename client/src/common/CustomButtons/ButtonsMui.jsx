@@ -91,7 +91,7 @@ function ButtonCategory({ text, value, action }) {
   )
 }
 
-function ButtonVote({ number, action }) {
+function ButtonVote({ number, action, isRoadmap }) {
   const [isActive, setIsActive] = useState(false)
   const handleClick = () => {
     action()
@@ -110,8 +110,8 @@ function ButtonVote({ number, action }) {
         "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
         padding: { sm: "14px 12px 8px 12px", xs: "6px 16px" },
         display: "flex",
-        flexDirection: { sm: "column", xs: "row" },
-        gap: "8px",
+        flexDirection: isRoadmap ? "row" : { sm: "column", xs: "row" },
+        gap: isRoadmap ? "12px" : {sm: "8px", xs: "12px"},
         minWidth: { sm: "40px" },
       }}
       onMouseDown={handleClick}

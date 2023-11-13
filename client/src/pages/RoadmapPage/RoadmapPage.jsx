@@ -5,8 +5,19 @@ import {
   ButtonBackWhite,
   ButtonPurple,
 } from "../../common/CustomButtons/ButtonsMui"
+import { Link } from "react-router-dom"
+
+import { useSuggestions } from "../../hooks"
 
 function RoadmapPage() {
+  const { suggestions, loading } = useSuggestions({
+    category: "",
+    sortByUpvotes: "",
+    sortByComments: "",
+  })
+
+  console.log(suggestions)
+
   return (
     <PrincipalContainer id="principal-container" disableGutters>
       <Stack alignItems="center" gap="48px">
@@ -21,10 +32,12 @@ function RoadmapPage() {
             <Typography id="roadmap-title">Roadmap</Typography>
           </Box>
           <Box>
-            <ButtonPurple text="+ Add Feedback" />
+            <Link to="/createsuggestion">
+              <ButtonPurple text="+ Add Feedback">+ Add Feedback</ButtonPurple>
+            </Link>
           </Box>
         </Stack>
-        <Roadmap />
+        <Roadmap suggestions={suggestions} />
       </Stack>
     </PrincipalContainer>
   )
