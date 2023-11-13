@@ -84,7 +84,7 @@ function ButtonCategory({ text, value, action }) {
         "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
         padding: "5px 15px",
       }}
-      onClick={()=>action(value)}
+      onClick={() => action(value)}
     >
       {text}
     </Button>
@@ -108,11 +108,11 @@ function ButtonVote({ number, action }) {
           color: "var(--dark-blue-text)",
         },
         "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
-        padding: {sm:"14px 12px 8px 12px", xs:"6px 16px"},
+        padding: { sm: "14px 12px 8px 12px", xs: "6px 16px" },
         display: "flex",
-        flexDirection: {sm:"column", xs:"row"},
+        flexDirection: { sm: "column", xs: "row" },
         gap: "8px",
-        minWidth: {sm:"40px"},
+        minWidth: { sm: "40px" },
       }}
       onMouseDown={handleClick}
     >
@@ -145,6 +145,29 @@ function ButtonBack() {
   )
 }
 
+function ButtonBackWhite() {
+  return (
+    <Button
+      component={Link}
+      to={"/"}
+      sx={{
+        color: "var(--white)",
+        display: "flex",
+        justifyContent: "flex-start",
+        gap: "16px",
+        padding: "0px",
+        ".font-button-back:hover": { textDecorationLine: "underline" },
+        "&:hover": {
+          backgroundColor: "transparent",
+        },
+      }}
+    >
+      <ArrowLeft stroke={"var(--white)"} />
+      <p className="font-button-back">Go Back</p>
+    </Button>
+  )
+}
+
 function ButtonHamburger({ action, actionStatus }) {
   return (
     <Button onClick={action()}>
@@ -160,5 +183,6 @@ export {
   ButtonCategory,
   ButtonVote,
   ButtonBack,
+  ButtonBackWhite,
   ButtonHamburger,
 }

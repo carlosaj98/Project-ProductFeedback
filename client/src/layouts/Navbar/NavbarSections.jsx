@@ -1,4 +1,5 @@
 import { Stack, Box } from "@mui/material"
+import { Link } from "react-router-dom"
 import { ButtonCategory } from "../../common/CustomButtons/ButtonsMui"
 
 function NavbarSections({ statusValue, handleCategory }) {
@@ -39,7 +40,7 @@ function NavbarSections({ statusValue, handleCategory }) {
       >
         <Stack id="rm-header">
           <p>Roadmap</p>
-          <a href="">View</a>
+          <Link to="/roadmap">View</Link>
         </Stack>
         <ul id="rm-list">
           <li className="rm-list-item">
