@@ -14,7 +14,7 @@ function Roadmap({ suggestions }) {
   )
 
   return (
-    <RoadmapContainer flexDirection="row" justifyContent="space-between">
+    <RoadmapContainer flexDirection="row" justifyContent="space-between" gap={{md: "30px", sm:"16px"}}>
       <Stack className="roadmap-column-container">
         <Box className="roadmap-column-title">
           <Typography variant="h3">

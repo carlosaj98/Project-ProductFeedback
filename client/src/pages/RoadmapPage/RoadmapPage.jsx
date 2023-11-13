@@ -19,25 +19,32 @@ function RoadmapPage() {
   console.log(suggestions)
 
   return (
-    <PrincipalContainer id="principal-container" disableGutters>
-      <Stack alignItems="center" gap="48px">
-        <Stack
-          component="header"
-          flexDirection="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Box>
-            <ButtonBackWhite />
-            <Typography id="roadmap-title">Roadmap</Typography>
-          </Box>
-          <Box>
-            <Link to="/createsuggestion">
-              <ButtonPurple text="+ Add Feedback">+ Add Feedback</ButtonPurple>
-            </Link>
-          </Box>
+    <PrincipalContainer
+      id="principal-container"
+      padding={{ md: "78px 24px", sm: "56px 40px" }}
+    >
+      <Stack id="main-container">
+        <Stack alignItems="center" gap="48px">
+          <Stack
+            component="header"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <ButtonBackWhite />
+              <Typography id="roadmap-title">Roadmap</Typography>
+            </Box>
+            <Box>
+              <Link to="/createsuggestion">
+                <ButtonPurple text="+ Add Feedback">
+                  + Add Feedback
+                </ButtonPurple>
+              </Link>
+            </Box>
+          </Stack>
+          <Roadmap suggestions={suggestions} />
         </Stack>
-        <Roadmap suggestions={suggestions} />
       </Stack>
     </PrincipalContainer>
   )

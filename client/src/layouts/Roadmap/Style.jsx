@@ -2,7 +2,6 @@ import { styled, Stack } from "@mui/material";
 
 const RoadmapContainer = styled(Stack)({
   width:"100%",
-  gap:"30px",
 
   ".roadmap-column-container":{
     width:"100%",

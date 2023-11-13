@@ -1,8 +1,12 @@
-import { styled, Container } from "@mui/material";
+import { styled, Stack } from "@mui/material";
 
-const PrincipalContainer = styled(Container)({
+const PrincipalContainer = styled(Stack)({
   minHeight:"100vh",
-  paddingTop:"78px",
+  alignItems:"center",
+
+  "#main-container":{
+    maxWidth:"1200px",
+  },
 
   header:{
     width: "100%",
