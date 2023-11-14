@@ -10,6 +10,7 @@ import { styled } from "@mui/material"
 import { useState } from "react"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useToastify } from "../../hooks"
 
 
 const Button = styled(ButtonsMui)({
@@ -22,7 +23,10 @@ const Button = styled(ButtonsMui)({
   color: "var(--white)",
 })
 
-function ButtonPurple({ text, type }) {
+function ButtonPurple({ text, type, userExclusive }) {
+  const handleClick = ()=>{
+    if(userExclusive) useToastify()
+  }
   return (
     <Button
       type={type}
@@ -30,19 +34,25 @@ function ButtonPurple({ text, type }) {
         backgroundColor: "var(--purple)",
         "&:hover": { backgroundColor: "var(--purple-hover)" },
       }}
+      onClick={handleClick}
     >
       {text}
     </Button>
   )
 }
 
-function ButtonBlue({ text }) {
+function ButtonBlue({ text, userExclusive }) {
+
+  const handleClick = ()=>{
+    if(userExclusive) useToastify()
+  }
   return (
     <Button
       sx={{
         backgroundColor: "var(--blue)",
         "&:hover": { backgroundColor: "var(--blue-hover)" },
       }}
+      onClick={handleClick}
     >
       {text}
     </Button>
