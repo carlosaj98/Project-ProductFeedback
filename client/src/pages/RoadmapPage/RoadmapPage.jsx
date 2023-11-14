@@ -1,7 +1,10 @@
+import { useAuth } from "../../hooks/auth"
+import { useSuggestions } from "../../hooks"
+
 import Roadmap from "../../layouts/Roadmap/Roadmap"
 import RoadmapMobile from "../../layouts/RoadmapMobile/RoadmapMobile"
 import PrincipalContainer from "./Style"
-import { Stack, Typography, Box } from "@mui/material"
+import { Stack, Typography, Box, CircularProgress } from "@mui/material"
 import { useMediaQuery } from "@mui/material"
 import {
   ButtonBackWhite,
@@ -9,8 +12,7 @@ import {
 } from "../../common/CustomButtons/ButtonsMui"
 import { Link } from "react-router-dom"
 
-import { useSuggestions } from "../../hooks"
-import { useAuth } from "../../hooks/auth"
+
 
 function RoadmapPage() {
   const [value] = useAuth()
@@ -19,8 +21,14 @@ function RoadmapPage() {
     sortByUpvotes: "",
     sortByComments: "",
   })
-
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
+
+  if (loading)
+  return (
+    <Stack minHeight={"100vh"} alignItems="center" justifyContent="center">
+      <CircularProgress sx={{ color: "var(--purple)" }} size={"64px"}/>
+    </Stack>
+  )
 
   return (
     <PrincipalContainer id="principal-container" disableGutters>

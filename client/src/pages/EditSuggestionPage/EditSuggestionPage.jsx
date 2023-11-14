@@ -1,4 +1,4 @@
-import { Stack, Container, Box, CircularProgress } from "@mui/material"
+import { Stack, Box } from "@mui/material"
 import Form from "../../components/Form/Form"
 import { formFields, validationSchema } from "./form-fields"
 import suggestionService from "../../services/suggestion-service"
@@ -16,8 +16,9 @@ function EditSuggestionPage() {
   const { suggestionID } = useParams()
   const { suggestion, setSuggestion, loading } = useSuggestion(suggestionID)
   const deleteSuggestion = () => {
-    suggestionService.delete(suggestionID)
-      .then(()=>navigate("/", { replace: true }))
+    suggestionService
+      .delete(suggestionID)
+      .then(() => navigate("/", { replace: true }))
   }
 
   const onSubmit = (data) => {
@@ -26,8 +27,6 @@ function EditSuggestionPage() {
       .then((data) => navigate(-1, { replace: true }))
       .catch((err) => console.log(err))
   }
-
-  if (loading) return <CircularProgress />
 
   return (
     <PrincipalContainer component="main">

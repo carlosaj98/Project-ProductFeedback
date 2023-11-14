@@ -16,7 +16,12 @@ function DetailPage() {
   const { suggestionID } = useParams()
   const { suggestion, setSuggestions, loading } = useSuggestion(suggestionID)
 
-  if (loading) return <CircularProgress />
+  if (loading)
+    return (
+      <Stack minHeight={"100vh"} alignItems="center" justifyContent="center">
+        <CircularProgress sx={{ color: "var(--purple)" }} size={"32px"} />
+      </Stack>
+    )
 
   let totalComments = suggestion.comments.length
   let totalReplies = 0
