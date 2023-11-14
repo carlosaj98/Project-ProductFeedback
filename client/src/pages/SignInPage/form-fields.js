@@ -6,8 +6,8 @@ const formFields = [
 ]
 
 const validationSchema = yup.object().shape({
-    username: yup.string().required("El campo es requerido"),
-    password: yup.string().required("El campo es requerido"),
+    username: yup.string().required("Can`t be empty"),
+    password: yup.string().required("Can`t be empty"),
 })
 
 export {formFields, validationSchema}

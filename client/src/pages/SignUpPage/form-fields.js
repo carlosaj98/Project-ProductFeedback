@@ -21,6 +21,12 @@ const validationSchema = yup.object().shape({
         value && (value.type === "image/png" || value.type === "image/jpeg")
       )
     })
+    .test("fileSize", "Image size must be less than 1MB", (value) => {
+      if (!value) return true
+
+      const maxSizeInBytes = 1 * 1024 * 1024
+      return value.size <= maxSizeInBytes
+    })
     .required("Can`t be empty"),
 })
 
