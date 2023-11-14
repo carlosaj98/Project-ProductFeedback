@@ -85,17 +85,20 @@ function ButtonRed({ text, action }) {
   )
 }
 
-function ButtonCategory({ text, value, action, isActive }) {
+function ButtonCategory({ text, value, action, isActive, isCategoryCard }) {
   return (
     <Button
       sx={{
         backgroundColor: isActive ? "var(--blue)" : "var(--inter-color)",
         color: isActive ? "var(--white)" : "var(--blue)",
         "&:hover": { backgroundColor: "var(--inter-hover-color)" },
-        "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
+        "&:focus": { backgroundColor: "var(--blue)", color: "var(--white)" },
         padding: "5px 15px",
       }}
-      onClick={() => action(value)}
+      onClick={() => {
+        if (isCategoryCard) return
+        action(value)
+      }}
     >
       {text}
     </Button>

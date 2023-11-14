@@ -1,4 +1,4 @@
-import { Stack, Box } from "@mui/material"
+import { Stack, Box, CircularProgress } from "@mui/material"
 import Form from "../../components/Form/Form"
 import { formFields, validationSchema } from "./form-fields"
 import suggestionService from "../../services/suggestion-service"
@@ -20,6 +20,13 @@ function EditSuggestionPage() {
       .delete(suggestionID)
       .then(() => navigate("/", { replace: true }))
   }
+
+  if (loading)
+  return (
+    <Stack minHeight={"100vh"} alignItems="center" justifyContent="center">
+      <CircularProgress sx={{ color: "var(--purple)" }} size={"32px"} />
+    </Stack>
+  )
 
   const onSubmit = (data) => {
     suggestionService

@@ -24,11 +24,11 @@ function RoadmapPage() {
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
   if (loading)
-  return (
-    <Stack minHeight={"100vh"} alignItems="center" justifyContent="center">
-      <CircularProgress sx={{ color: "var(--purple)" }} size={"64px"}/>
-    </Stack>
-  )
+    return (
+      <Stack minHeight={"100vh"} alignItems="center" justifyContent="center">
+        <CircularProgress sx={{ color: "var(--purple)" }} size={"32px"} />
+      </Stack>
+    )
 
   return (
     <PrincipalContainer id="principal-container" disableGutters>

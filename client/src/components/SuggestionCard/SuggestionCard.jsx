@@ -60,7 +60,7 @@ function SuggestionCard({
 
               <p>{description}</p>
 
-              <ButtonCategory text={categoryCapitalize} />
+              <ButtonCategory text={categoryCapitalize} isCategoryCard={true}/>
             </Link>
           </Box>
           <Stack flexDirection="row" justifyContent="space-between">
@@ -92,7 +92,7 @@ function SuggestionCard({
 
               <p>{description}</p>
 
-              <ButtonCategory text={categoryCapitalize} />
+              <ButtonCategory text={categoryCapitalize} isCategoryCard={true}/>
             </Link>
           </Box>
           <Box className="icon-comment">
