@@ -8,6 +8,9 @@ import {
 import { Link } from "react-router-dom"
 import { styled } from "@mui/material"
 import { useState } from "react"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Button = styled(ButtonsMui)({
   borderRadius: "10px",
@@ -94,8 +97,15 @@ function ButtonCategory({ text, value, action }) {
 function ButtonVote({ number, action, isRoadmap }) {
   const [isActive, setIsActive] = useState(false)
   const handleClick = () => {
-    action()
-    setIsActive(!isActive)
+    try {
+      action()
+      setIsActive(!isActive)
+    } catch (error) {
+      toast.error("Token does not exist", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+
   }
   return (
     <Button
