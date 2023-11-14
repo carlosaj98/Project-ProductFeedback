@@ -6,12 +6,13 @@ import { Stack, Typography } from "@mui/material"
 import commentService from "../../services/comment-service"
 import { formFields, validationSchema } from "./form-fields"
 import { ButtonPurple } from "../../common/CustomButtons/ButtonsMui"
+import { useToastify } from "../../hooks"
 
 import CustomForm from "./Style"
 
 import InputField from "./InputTemplates"
 
-function FormReply({replyingTo, commentID}) {
+function FormReply({ replyingTo, commentID }) {
   const {
     handleSubmit,
     control,
@@ -21,16 +22,15 @@ function FormReply({replyingTo, commentID}) {
   })
 
   const navigate = useNavigate()
-    const onSend = (data) => {
-        const dataNew = {...data, replyingTo}
-        // console.log(dataNew, commentID)
-        commentService
-            .update(dataNew, commentID)
-            .then((data) => navigate(0, { replace: false }))
-            .catch((err) => console.log(err))
+  const onSend = async (data) => {
+    try {
+      const dataNew = await { ...data, replyingTo }
+      await commentService.update(dataNew, commentID)
+      navigate(0)
+    } catch (error) {
+      useToastify()
     }
-
-
+  }
 
   return (
     <CustomForm onSubmit={handleSubmit(onSend)}>
@@ -42,7 +42,10 @@ function FormReply({replyingTo, commentID}) {
             name={name}
             render={({ field: { ref, ...field } }) => {
               return (
-                <Stack className="form-comment-container" flexDirection={{sm:"row", xs:"column"}}>
+                <Stack
+                  className="form-comment-container"
+                  flexDirection={{ sm: "row", xs: "column" }}
+                >
                   <InputField
                     errors={errors[name]}
                     name={name}
@@ -50,7 +53,6 @@ function FormReply({replyingTo, commentID}) {
                     {...field}
                   />
                   <ButtonPurple type="submit" text="Post Reply" />
-                    
                 </Stack>
               )
             }}

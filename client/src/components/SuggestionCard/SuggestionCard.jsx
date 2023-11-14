@@ -11,6 +11,7 @@ import {
   ButtonVote,
 } from "../../common/CustomButtons/ButtonsMui"
 import { useMediaQuery, Button } from "@mui/material"
+import { useToastify } from "../../hooks"
 
 function SuggestionCard({
   title,
@@ -25,12 +26,15 @@ function SuggestionCard({
   const [value] = useAuth()
   const [votes, setVotes] = useState(upvotes)
 
-    const handleVote = () =>
-      suggestionService.updateVotes(id).then(({ data }) => {
-        setVotes(data.upvotes)
-        onVote()
-      })
-
+  const handleVote = async () => {
+    try {
+      const { data } = await suggestionService.updateVotes(id)
+      setVotes(data.upvotes)
+      onVote()
+    } catch (error) {
+      useToastify()
+    }
+  }
 
   const categoryCapitalize =
     category.charAt(0).toUpperCase() + category.slice(1)
