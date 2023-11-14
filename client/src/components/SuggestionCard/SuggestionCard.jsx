@@ -29,9 +29,10 @@ function SuggestionCard({
   const handleVote = async () => {
     try {
       const { data } = await suggestionService.updateVotes(id)
-      setVotes(data.upvotes)
-      onVote()
+       setVotes(data.upvotes)
+       onVote()
     } catch (error) {
+      console.log(error)
       useToastify()
     }
   }

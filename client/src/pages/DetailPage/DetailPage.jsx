@@ -14,7 +14,7 @@ import PrincipalContainer from "./Style"
 function DetailPage() {
   const [value] = useAuth()
   const { suggestionID } = useParams()
-  const { suggestion, setSuggestions, loading } = useSuggestion(suggestionID)
+  const { suggestion, setSuggestions, loading, markSuggestionsChanged } = useSuggestion(suggestionID)
 
   if (loading)
     return (
@@ -28,6 +28,7 @@ function DetailPage() {
   suggestion.comments.forEach((comment) => {
     totalReplies += comment.replies.length
   })
+  const onVote = () => markSuggestionsChanged()
 
   return (
     <PrincipalContainer id="principal-container">
@@ -51,6 +52,7 @@ function DetailPage() {
             description={suggestion.description}
             category={suggestion.category}
             comments={suggestion.comments}
+            onVote={onVote}
           />
         </Box>
         <Stack component="main" id="comments-container">

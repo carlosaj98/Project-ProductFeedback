@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material"
 import RoadmapContainer from "./Style"
 import RoadmapCard from "../../components/RoadmapCard/RoadmapCard"
-function Roadmap({ suggestions }) {
+function Roadmap({ suggestions, onVote }) {
   const suggestionsPlanned = suggestions.filter(
     (suggestion) => suggestion.status === "Planned"
   )
@@ -34,6 +34,7 @@ function Roadmap({ suggestions }) {
                   category={suggestion.category}
                   comments={suggestion.comments}
                   variantStatus={"Planned"}
+                  onVote={onVote}
                 />
             )
           })}
@@ -58,6 +59,7 @@ function Roadmap({ suggestions }) {
                   category={suggestion.category}
                   comments={suggestion.comments}
                   variantStatus={"In-Progress"}
+                  onVote={onVote}
                 />
             )
           })}
@@ -80,6 +82,7 @@ function Roadmap({ suggestions }) {
                   category={suggestion.category}
                   comments={suggestion.comments}
                   variantStatus={"Live"}
+                  onVote={onVote}
                 />
             )
           })}

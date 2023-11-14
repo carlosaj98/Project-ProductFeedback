@@ -5,6 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import { Box, Stack, Typography } from "@mui/material"
 import { IconComments, ArrowUp } from "../../common/Icons/IconsSVG"
 import { useAuth } from "../../hooks/auth"
+import { useToastify } from "../../hooks"
 import { Link } from "react-router-dom"
 import {
   ButtonCategory,
@@ -25,11 +26,15 @@ function RoadmapCard({
   const [value] = useAuth()
   const [votes, setVotes] = useState(upvotes)
 
-  const handleVote = () =>
-    suggestionService.updateVotes(id).then(({ data }) => {
-      setVotes(data.upvotes)
-      onVote()
-    })
+  const handleVote = async () => {
+    try {
+      const { data } = await suggestionService.updateVotes(id)
+       setVotes(data.upvotes)
+       onVote()
+    } catch (error) {
+      useToastify()
+    }
+  }
 
   const categoryCapitalize =
     category.charAt(0).toUpperCase() + category.slice(1)

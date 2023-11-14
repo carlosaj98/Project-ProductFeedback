@@ -16,12 +16,13 @@ import { Link } from "react-router-dom"
 
 function RoadmapPage() {
   const [value] = useAuth()
-  const { suggestions, loading } = useSuggestions({
+  const { suggestions, loading, markSuggestionsChanged } = useSuggestions({
     category: "",
     sortByUpvotes: "",
     sortByComments: "",
   })
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
+  const onVote = () => markSuggestionsChanged()
 
   if (loading)
     return (
@@ -64,9 +65,9 @@ function RoadmapPage() {
             </Box>
           </Stack>
           {isMobileScreen ? (
-            <RoadmapMobile suggestions={suggestions} />
+            <RoadmapMobile suggestions={suggestions} onVote={onVote}/>
           ) : (
-            <Roadmap suggestions={suggestions} />
+            <Roadmap suggestions={suggestions} onVote={onVote}/>
           )}
         </Stack>
       </Stack>

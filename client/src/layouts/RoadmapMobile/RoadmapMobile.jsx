@@ -4,7 +4,7 @@ import RoadmapCard from "../../components/RoadmapCard/RoadmapCard"
 import { ButtonStatus } from "../../common/CustomButtons/ButtonsMui"
 import { useState } from "react"
 
-function RoadmapMobile({ suggestions }) {
+function RoadmapMobile({ suggestions, onVote }) {
   const [currentStatus, setCurrentStatus] = useState("In-Progress")
   let statusDescription = ""
   const suggestionsPlanned = suggestions.filter(
@@ -80,6 +80,7 @@ function RoadmapMobile({ suggestions }) {
                   category={suggestion.category}
                   comments={suggestion.comments}
                   variantStatus={currentStatus}
+                  onVote={onVote}
                 />
             )
           })}
