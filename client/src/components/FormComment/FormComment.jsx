@@ -10,6 +10,7 @@ import { ButtonPurple } from "../../common/CustomButtons/ButtonsMui"
 import CustomForm from "./Style"
 
 import InputField from "./InputTemplates"
+import { useToastify } from "../../hooks"
 
 function FormComment() {
   const {
@@ -34,11 +35,13 @@ function FormComment() {
     }
   }
 
-  const onSend = (data) => {
-    commentService
-      .create(data, suggestionID)
-      .then((data) => navigate(0, { replace: false }))
-      .catch((err) => console.log(err))
+  const onSend = async (data) => {
+    try {
+      await commentService.create(data, suggestionID)
+      navigate(0)
+    } catch (error) {
+      useToastify()
+    }
   }
 
   return (

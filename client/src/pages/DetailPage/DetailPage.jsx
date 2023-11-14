@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useSuggestion } from "../../hooks"
+import { useAuth } from "../../hooks/auth"
 
 import { Stack, Box, Typography, CircularProgress } from "@mui/material"
 import { Link } from "react-router-dom"
@@ -11,11 +12,16 @@ import FormComment from "../../components/FormComment/FormComment"
 import PrincipalContainer from "./Style"
 
 function DetailPage() {
+  const [value] = useAuth()
   const { suggestionID } = useParams()
   const { suggestion, setSuggestions, loading } = useSuggestion(suggestionID)
-  console.log(suggestion)
 
-  if (loading) return <CircularProgress />
+  if (loading)
+    return (
+      <Stack minHeight={"100vh"} alignItems="center" justifyContent="center">
+        <CircularProgress sx={{ color: "var(--purple)" }} size={"32px"} />
+      </Stack>
+    )
 
   let totalComments = suggestion.comments.length
   let totalReplies = 0
@@ -28,9 +34,13 @@ function DetailPage() {
       <Stack gap="24px" width={{ md: "730px", xs: "100%" }}>
         <Stack flexDirection="row" justifyContent="space-between">
           <ButtonBack />
-          <Link to={`/suggestion/editsuggestion/${suggestionID}`}>
-            <ButtonBlue text="Edit Feedback" />
-          </Link>
+          {value.isAuth ? (
+            <Link to={`/suggestion/editsuggestion/${suggestionID}`}>
+              <ButtonBlue text="Edit Feedback" />
+            </Link>
+          ) : (
+            <ButtonBlue text="Edit Feedback" userExclusive={true} />
+          )}
         </Stack>
         <Box id="suggestion-card-container" component="header">
           <SuggestionCard

@@ -8,6 +8,8 @@ import { GlobalStyles } from "@mui/material"
 import { RouterProvider } from "react-router-dom"
 import router from "./router"
 import { AuthProvider } from "./hooks/auth"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <>
@@ -42,10 +44,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 body: {
                     fontFamily: "Jost",
                 },
+
+                ".toastify-notification":{
+                    fontFamily: "Jost",
+                }
             }}
         />
         <AuthProvider>
             <RouterProvider router={router} />
         </AuthProvider>
+        <ToastContainer toastClassName="toastify-notification"/>
     </>
 )

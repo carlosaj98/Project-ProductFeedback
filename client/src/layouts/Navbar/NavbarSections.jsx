@@ -2,7 +2,7 @@ import { Stack, Box } from "@mui/material"
 import { Link } from "react-router-dom"
 import { ButtonCategory } from "../../common/CustomButtons/ButtonsMui"
 
-function NavbarSections({ statusValue, handleCategory }) {
+function NavbarSections({ statusValue, handleCategory, currentCategory }) {
   return (
     <Stack flexDirection={{ md: "column", sm: "row" }} gap="24px">
       <Box
@@ -18,19 +18,41 @@ function NavbarSections({ statusValue, handleCategory }) {
         flexGrow="1"
         maxWidth={{ md: "100%", sm: "calc(100%/3)" }}
       >
-        <ButtonCategory text="All" value="" action={handleCategory} />
-        <ButtonCategory text="UI" value="UI" action={handleCategory} />
-        <ButtonCategory text="UX" value="UX" action={handleCategory} />
+        <ButtonCategory
+          text="All"
+          value=""
+          action={handleCategory}
+          isActive={currentCategory === ""}
+        />
+        <ButtonCategory
+          text="UI"
+          value="UI"
+          action={handleCategory}
+          isActive={currentCategory === "UI"}
+        />
+        <ButtonCategory
+          text="UX"
+          value="UX"
+          action={handleCategory}
+          isActive={currentCategory === "UX"}
+        />
         <ButtonCategory
           text="Enhancement"
           value="Enhancement"
           action={handleCategory}
+          isActive={currentCategory === "Enhancement"}
         />
-        <ButtonCategory text="Bug" value="Bug" action={handleCategory} />
+        <ButtonCategory
+          text="Bug"
+          value="Bug"
+          action={handleCategory}
+          isActive={currentCategory === "Bug"}
+        />
         <ButtonCategory
           text="Feature"
           value="Feature"
           action={handleCategory}
+          isActive={currentCategory === "Feature"}
         />
       </Stack>
       <Stack

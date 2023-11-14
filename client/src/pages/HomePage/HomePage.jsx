@@ -2,21 +2,23 @@ import Navbar from "../../layouts/Navbar/Navbar"
 import NavbarMobile from "../../layouts/NavbarMobile/NavbarMobile"
 import Headerbar from "../../layouts/Headerbar/Headerbar"
 import SuggestionCard from "../../components/SuggestionCard/SuggestionCard"
-import { Container, Stack, Box, CircularProgress } from "@mui/material"
+import { Container, Stack, Box } from "@mui/material"
 import { useSuggestions } from "../../hooks"
 import EmptySuggestion from "../../components/EmptySuggestion/EmptySuggestion"
 import { useMediaQuery } from "@mui/material"
 import { useState } from "react"
+import LoadingCounter from "../../components/LoadingCounter/LoadingCounter"
 
 function HomePage() {
   const [category, setCategory] = useState("")
   const [sortUpvotes, setSortUpvotes] = useState("desc")
   const [sortComments, setSortComments] = useState("")
-  const { suggestions, setSuggestions, loading, markSuggestionsChanged } = useSuggestions({
-    category: category,
-    sortByUpvotes: sortUpvotes,
-    sortByComments: sortComments,
-  })
+  const { suggestions, setSuggestions, loading, markSuggestionsChanged } =
+    useSuggestions({
+      category: category,
+      sortByUpvotes: sortUpvotes,
+      sortByComments: sortComments,
+    })
 
   const handleCategory = (activeCategory) => setCategory(activeCategory)
   const handleSortUpvotes = (activeSort) => {
@@ -26,11 +28,11 @@ function HomePage() {
     setSortComments(activeSort), setSortUpvotes("")
   }
 
-  const onVote=()=> markSuggestionsChanged()
+  const onVote = () => markSuggestionsChanged()
 
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
-  if (loading) return <CircularProgress />
+  if (loading) return <LoadingCounter />
 
   const statusCards = []
   suggestions.forEach((suggestion) => statusCards.push(suggestion.status))
@@ -44,9 +46,9 @@ function HomePage() {
         marginTop={{ sm: "56px", md: "94px" }}
       >
         {isMobileScreen ? (
-          <NavbarMobile status={statusCards} handleCategory={handleCategory} />
+          <NavbarMobile status={statusCards} handleCategory={handleCategory} currentCategory={category}/>
         ) : (
-          <Navbar status={statusCards} handleCategory={handleCategory} />
+          <Navbar status={statusCards} handleCategory={handleCategory} currentCategory={category}/>
         )}
 
         <Box flexGrow="1">

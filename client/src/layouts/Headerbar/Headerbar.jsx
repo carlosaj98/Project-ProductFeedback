@@ -1,6 +1,7 @@
 import CustomHeader from "./Style"
 import { useState } from "react"
 import { useMediaQuery } from "@mui/material"
+import { useAuth } from "../../hooks/auth"
 import {
   IconSuggestion,
   ArrowDown,
@@ -12,6 +13,7 @@ import { Box, Typography, Button, Stack, Menu, MenuItem } from "@mui/material"
 import { Link } from "react-router-dom"
 
 function Headerbar({ counter, handleSortUpvotes, handleSortComments }) {
+  const [value] = useAuth()
   const sortOptions = [
     { label: "Most Upvotes", value: "mostupvotes" },
     { label: "Least Upvotes", value: "leastupvotes" },
@@ -23,6 +25,8 @@ function Headerbar({ counter, handleSortUpvotes, handleSortComments }) {
   const [selectedOption, setSelectedOption] = useState("mostupvotes")
   const [isOpen, setIsOpen] = useState(false)
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
+
+
 
   const handleMenuOpen = (event) => {
     setIsOpen(true)
@@ -121,9 +125,15 @@ function Headerbar({ counter, handleSortUpvotes, handleSortComments }) {
         flexGrow="1"
         justifyContent="flex-end"
       >
-        <Link to="/createsuggestion">
-          <ButtonPurple text="+ Add Feedback">+ Add Feedback</ButtonPurple>
-        </Link>
+        {value.isAuth ? (
+          <Link to="/createsuggestion">
+            <ButtonPurple text="+ Add Feedback">+ Add Feedback</ButtonPurple>
+          </Link>
+        ) : (
+          <ButtonPurple text="+ Add Feedback" userExclusive={true}>
+            + Add Feedback
+          </ButtonPurple>
+        )}
       </Stack>
     </CustomHeader>
   )

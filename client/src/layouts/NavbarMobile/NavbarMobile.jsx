@@ -4,10 +4,10 @@ import {
   ButtonHamburger,
   ButtonCategory,
 } from "../../common/CustomButtons/ButtonsMui"
-import {NavbarContainer} from "./Style"
+import { NavbarContainer } from "./Style"
 import DrawerSections from "./DrawerSections"
 
-function NavbarMobile({ status, handleCategory }) {
+function NavbarMobile({ status, handleCategory, currentCategory }) {
   function statusValue(value) {
     return status.reduce((contador, elemento) => {
       if (elemento === value) {
@@ -43,7 +43,13 @@ function NavbarMobile({ status, handleCategory }) {
         anchor="right"
         PaperProps={{ sx: { backgroundColor: "#F7F8FD" } }}
       >
-        <DrawerSections statusValue={statusValue} handleCategory={(category)=> {handleCategory(category), handleClick()}}/>
+        <DrawerSections
+          statusValue={statusValue}
+          handleCategory={(category) => {
+            handleCategory(category), handleClick()
+          }}
+          currentCategory={currentCategory}
+        />
       </Drawer>
     </NavbarContainer>
   )
