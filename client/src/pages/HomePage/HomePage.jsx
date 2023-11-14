@@ -27,15 +27,13 @@ function HomePage() {
   const handleSortComments = (activeSort) => {
     setSortComments(activeSort), setSortUpvotes("")
   }
-
+  const statusCards = []
+  suggestions.forEach((suggestion) => statusCards.push(suggestion.status))
   const onVote = () => markSuggestionsChanged()
 
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
   if (loading) return <LoadingCounter />
-
-  const statusCards = []
-  suggestions.forEach((suggestion) => statusCards.push(suggestion.status))
 
   return (
     <Container id="home-page-container" disableGutters>
@@ -46,9 +44,17 @@ function HomePage() {
         marginTop={{ sm: "56px", md: "94px" }}
       >
         {isMobileScreen ? (
-          <NavbarMobile status={statusCards} handleCategory={handleCategory} currentCategory={category}/>
+          <NavbarMobile
+            status={statusCards}
+            handleCategory={handleCategory}
+            currentCategory={category}
+          />
         ) : (
-          <Navbar status={statusCards} handleCategory={handleCategory} currentCategory={category}/>
+          <Navbar
+            status={statusCards}
+            handleCategory={handleCategory}
+            currentCategory={category}
+          />
         )}
 
         <Box flexGrow="1">

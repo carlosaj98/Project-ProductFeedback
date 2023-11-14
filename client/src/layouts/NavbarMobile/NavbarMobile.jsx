@@ -9,11 +9,11 @@ import DrawerSections from "./DrawerSections"
 
 function NavbarMobile({ status, handleCategory, currentCategory }) {
   function statusValue(value) {
-    return status.reduce((contador, elemento) => {
-      if (elemento === value) {
-        return contador + 1
+    return status.reduce((counter, element) => {
+      if (element === value) {
+        return counter + 1
       }
-      return contador
+      return counter
     }, 0)
   }
 

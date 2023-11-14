@@ -1,10 +1,11 @@
-require ("dotenv").config()
-const express = require('express')
+require("dotenv").config()
+const express = require("express")
 
 const app = express()
+const port = process.env.PORT || 9000
 
-require('./startup/config')()
-require('./startup/bd')()
-require('./startup/routes')(app)
+require("./startup/config")()
+require("./startup/bd")()
+require("./startup/routes")(app)
 
-app.listen(9000, ()=> console.log("SERVER ON ..."))
+app.listen(port, () => console.log("SERVER ON PORT... " + port))
