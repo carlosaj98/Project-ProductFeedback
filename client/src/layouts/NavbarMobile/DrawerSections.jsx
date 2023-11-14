@@ -9,7 +9,7 @@ import { useAuth } from "../../hooks/auth"
 import authService from "../../services/auth-service"
 import { Link } from "react-router-dom"
 
-function DrawerSections({ statusValue, handleCategory }) {
+function DrawerSections({ statusValue, handleCategory, currentCategory }) {
   const [value, dispatch] = useAuth()
   const handleLogout = () => {
     authService.logout()
@@ -20,19 +20,41 @@ function DrawerSections({ statusValue, handleCategory }) {
   return (
     <DrawerSectionsContainer padding="24px" width={"300px"} gap={"24px"}>
       <Stack id="suggestionCategories">
-        <ButtonCategory text="All" value="" action={handleCategory} />
-        <ButtonCategory text="UI" value="UI" action={handleCategory} />
-        <ButtonCategory text="UX" value="UX" action={handleCategory} />
+        <ButtonCategory
+          text="All"
+          value=""
+          action={handleCategory}
+          isActive={currentCategory === ""}
+        />
+        <ButtonCategory
+          text="UI"
+          value="UI"
+          action={handleCategory}
+          isActive={currentCategory === "UI"}
+        />
+        <ButtonCategory
+          text="UX"
+          value="UX"
+          action={handleCategory}
+          isActive={currentCategory === "UX"}
+        />
         <ButtonCategory
           text="Enhancement"
           value="Enhancement"
           action={handleCategory}
+          isActive={currentCategory === "Enhancement"}
         />
-        <ButtonCategory text="Bug" value="Bug" action={handleCategory} />
+        <ButtonCategory
+          text="Bug"
+          value="Bug"
+          action={handleCategory}
+          isActive={currentCategory === "Bug"}
+        />
         <ButtonCategory
           text="Feature"
           value="Feature"
           action={handleCategory}
+          isActive={currentCategory === "Feature"}
         />
       </Stack>
       <Stack

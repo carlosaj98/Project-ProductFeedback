@@ -8,10 +8,9 @@ import {
 import { Link } from "react-router-dom"
 import { styled } from "@mui/material"
 import { useState } from "react"
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 import { useToastify } from "../../hooks"
-
 
 const Button = styled(ButtonsMui)({
   borderRadius: "10px",
@@ -24,8 +23,8 @@ const Button = styled(ButtonsMui)({
 })
 
 function ButtonPurple({ text, type, userExclusive }) {
-  const handleClick = ()=>{
-    if(userExclusive) useToastify()
+  const handleClick = () => {
+    if (userExclusive) useToastify()
   }
   return (
     <Button
@@ -42,9 +41,8 @@ function ButtonPurple({ text, type, userExclusive }) {
 }
 
 function ButtonBlue({ text, userExclusive }) {
-
-  const handleClick = ()=>{
-    if(userExclusive) useToastify()
+  const handleClick = () => {
+    if (userExclusive) useToastify()
   }
   return (
     <Button
@@ -87,12 +85,12 @@ function ButtonRed({ text, action }) {
   )
 }
 
-function ButtonCategory({ text, value, action }) {
+function ButtonCategory({ text, value, action, isActive }) {
   return (
     <Button
       sx={{
-        backgroundColor: "var(--inter-color)",
-        color: "var(--blue)",
+        backgroundColor: isActive ? "var(--blue)" : "var(--inter-color)",
+        color: isActive ? "var(--white)" : "var(--blue)",
         "&:hover": { backgroundColor: "var(--inter-hover-color)" },
         "&:active": { backgroundColor: "var(--blue)", color: "var(--white)" },
         padding: "5px 15px",
@@ -113,9 +111,8 @@ function ButtonVote({ number, action, isRoadmap }) {
     } catch (error) {
       toast.error("Token does not exist", {
         position: toast.POSITION.TOP_RIGHT,
-      });
+      })
     }
-
   }
   return (
     <Button

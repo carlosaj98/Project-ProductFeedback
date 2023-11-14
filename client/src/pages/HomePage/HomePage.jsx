@@ -12,11 +12,12 @@ function HomePage() {
   const [category, setCategory] = useState("")
   const [sortUpvotes, setSortUpvotes] = useState("desc")
   const [sortComments, setSortComments] = useState("")
-  const { suggestions, setSuggestions, loading, markSuggestionsChanged } = useSuggestions({
-    category: category,
-    sortByUpvotes: sortUpvotes,
-    sortByComments: sortComments,
-  })
+  const { suggestions, setSuggestions, loading, markSuggestionsChanged } =
+    useSuggestions({
+      category: category,
+      sortByUpvotes: sortUpvotes,
+      sortByComments: sortComments,
+    })
 
   const handleCategory = (activeCategory) => setCategory(activeCategory)
   const handleSortUpvotes = (activeSort) => {
@@ -26,7 +27,7 @@ function HomePage() {
     setSortComments(activeSort), setSortUpvotes("")
   }
 
-  const onVote=()=> markSuggestionsChanged()
+  const onVote = () => markSuggestionsChanged()
 
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
@@ -44,9 +45,9 @@ function HomePage() {
         marginTop={{ sm: "56px", md: "94px" }}
       >
         {isMobileScreen ? (
-          <NavbarMobile status={statusCards} handleCategory={handleCategory} />
+          <NavbarMobile status={statusCards} handleCategory={handleCategory} currentCategory={category}/>
         ) : (
-          <Navbar status={statusCards} handleCategory={handleCategory} />
+          <Navbar status={statusCards} handleCategory={handleCategory} currentCategory={category}/>
         )}
 
         <Box flexGrow="1">
