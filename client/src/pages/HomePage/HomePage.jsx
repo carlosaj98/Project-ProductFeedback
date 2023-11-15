@@ -13,7 +13,7 @@ function HomePage() {
   const [category, setCategory] = useState("")
   const [sortUpvotes, setSortUpvotes] = useState("desc")
   const [sortComments, setSortComments] = useState("")
-  const { suggestions, setSuggestions, loading, markSuggestionsChanged } =
+  const { suggestions, setLoading, loading, markSuggestionsChanged } =
     useSuggestions({
       category: category,
       sortByUpvotes: sortUpvotes,
@@ -31,9 +31,11 @@ function HomePage() {
   suggestions.forEach((suggestion) => statusCards.push(suggestion.status))
   const onVote = () => markSuggestionsChanged()
 
+  const disableLoading = ()=> setLoading(false)
+
   const isMobileScreen = useMediaQuery("(max-width: 600px)")
 
-  if (loading) return <LoadingCounter />
+  if (loading) return <LoadingCounter disableLoading={disableLoading}/>
 
   return (
     <Container id="home-page-container" disableGutters>

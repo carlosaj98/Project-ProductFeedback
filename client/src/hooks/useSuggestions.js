@@ -27,7 +27,7 @@ function useSuggestions(queryParams) {
     setIsChanged(true);
   };
 
-  return { suggestions, loading, errors, setSuggestions, markSuggestionsChanged }
+  return { suggestions, loading, setLoading, errors, setSuggestions, markSuggestionsChanged }
 }
 
 export default useSuggestions

@@ -25,6 +25,13 @@ const CustomContainer = styled(Stack)({
     fontFamily:"Jost",
     fontSize:"18px",
     color: "var(--gray)"
+  },
+
+  "#text-time":{
+    fontFamily:"Jost",
+    fontWeight:"700",
+    fontSize:"18px",
+    color: "var(--red)"
   }
 })
 
