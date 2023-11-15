@@ -33,7 +33,9 @@ const getAll = async (req, res) => {
             suggestion.sortField = suggestion.upvotes.length;
         }
         if (sortByComments) {
-            suggestion.sortField = suggestion.comments.length;
+            let repliesCounter = 0
+            suggestion.comments.forEach((comment)=> repliesCounter += comment.replies.length)
+            suggestion.sortField = suggestion.comments.length + repliesCounter;
         }
     });
 
