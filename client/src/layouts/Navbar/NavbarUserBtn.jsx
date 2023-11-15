@@ -3,13 +3,14 @@ import { ButtonBlue, ButtonRed } from "../../common/CustomButtons/ButtonsMui"
 import { useAuth } from "../../hooks/auth"
 import authService from "../../services/auth-service"
 import {Link} from "react-router-dom"
+import { useToastifyInfo } from "../../hooks"
 
 function NavbarUserBtn() {
   const [value, dispatch] = useAuth()
   const handleLogout = () => {
     authService.logout()
-
     dispatch({ type: "logout" })
+    useToastifyInfo("You have logged out")
   }
   return (
     <Stack

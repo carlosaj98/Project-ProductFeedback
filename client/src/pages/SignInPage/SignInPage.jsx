@@ -7,7 +7,7 @@ import { formFields, validationSchema } from "./form-fields"
 
 import { useAuth } from "../../hooks/auth"
 import authService from "../../services/auth-service"
-import { useToastify } from "../../hooks"
+import { useToastify, useToastifyInfo } from "../../hooks"
 
 import PrincipalContainer from "./Style"
 
@@ -27,6 +27,7 @@ function SignInPage() {
         dispatch(action)
 
         navigate(-1)
+        useToastifyInfo("You are logged in")
       })
       .catch((err) => {
         console.log(err.response)

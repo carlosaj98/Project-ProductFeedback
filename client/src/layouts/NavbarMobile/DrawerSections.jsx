@@ -8,13 +8,14 @@ import { DrawerSectionsContainer } from "./Style"
 import { useAuth } from "../../hooks/auth"
 import authService from "../../services/auth-service"
 import { Link } from "react-router-dom"
+import { useToastifyInfo } from "../../hooks"
 
 function DrawerSections({ statusValue, handleCategory, currentCategory }) {
   const [value, dispatch] = useAuth()
   const handleLogout = () => {
     authService.logout()
-
     dispatch({ type: "logout" })
+    useToastifyInfo("You have logged out")
   }
 
   return (
