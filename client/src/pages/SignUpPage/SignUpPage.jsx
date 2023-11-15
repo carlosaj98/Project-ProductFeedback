@@ -6,6 +6,7 @@ import Form from "../../components/Form/Form"
 import { formFields, validationSchema } from "./form-fields"
 
 import { useAuth } from "../../hooks/auth"
+import { useToastify } from "../../hooks"
 import authService from "../../services/auth-service"
 
 import PrincipalContainer from "./Style"
@@ -16,20 +17,26 @@ function SignUpPage() {
   const [, dispatch] = useAuth()
 
   const onSubmit = async (data) => {
-    const token = await authService.register(data)
-    const user = await authService.loginWithToken(token)
-
-    let action = user.isAdmin ? { type: "admin" } : { type: "login" }
-
-    action.payload = {
-      firstname: user.firstname,
-      lastname: user.lastname,
-      avatar: user.avatar,
-      username: user.username,
+    try {
+      const token = await authService.register(data)
+      const user = await authService.loginWithToken(token)
+  
+      let action = user.isAdmin ? { type: "admin" } : { type: "login" }
+  
+      action.payload = {
+        firstname: user.firstname,
+        lastname: user.lastname,
+        avatar: user.avatar,
+        username: user.username,
+      }
+      dispatch(action)
+  
+      navigate(-1, { replace: true })
+      
+    } catch (error) {
+      useToastify("This username already exists")
     }
-    dispatch(action)
 
-    navigate(-1, { replace: true })
   }
   return (
     <PrincipalContainer component="main">

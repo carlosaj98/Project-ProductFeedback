@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function useToastify() {
+function useToastify(message) {
   return (
-    toast.error("You must log in to access this feature", {
+    toast.error((message || "You must log in to access this feature"), {
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,

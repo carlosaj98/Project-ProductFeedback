@@ -7,6 +7,7 @@ import { formFields, validationSchema } from "./form-fields"
 
 import { useAuth } from "../../hooks/auth"
 import authService from "../../services/auth-service"
+import { useToastify } from "../../hooks"
 
 import PrincipalContainer from "./Style"
 
@@ -28,7 +29,8 @@ function SignInPage() {
         navigate(-1)
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err.response)
+        useToastify("The username and password do not match")
       })
   }
   return (

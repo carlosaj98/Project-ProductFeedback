@@ -25,18 +25,18 @@ const register = async (req, res) => {
   )
   res.setHeader("Access-Control-Expose-Headers", "x-auth-token")
   res.setHeader("x-auth-token", token)
-  res.send("Usuario registrado y logueado")
+  res.send("Registered and logged in user")
 }
 
 const login = async (req, res) => {
   const { password: plainTextPassword, username } = req.body
 
   const user = await User.findOne({ username })
-  if (!user) return res.status(400).send("El usuario y contraseña no coincide")
+  if (!user) return res.status(400).send("The username and password do not match")
 
   const isValidUser = await bcrypt.compare(plainTextPassword, user.password)
   if (!isValidUser)
-    return res.status(400).send("El usuario y contraseña no coincide")
+    return res.status(400).send("The username and password do not match")
 
   const token = jwt.sign(
     { username: user.username, isAdmin: user.isAdmin, id: user.id },
@@ -45,7 +45,7 @@ const login = async (req, res) => {
 
   res.setHeader("Access-Control-Expose-Headers", "x-auth-token")
   res.setHeader("x-auth-token", token)
-  res.send("Usuario logueado")
+  res.send("User logged in")
 }
 
 module.exports = {
